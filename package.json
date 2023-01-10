@@ -1,0 +1,23 @@
+{
+  "name": "westerkracht",
+  "version": "1.0.0",
+  "description": "Westerkracht webdev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanradouane/westerkracht.git"
+  },
+  "keywords": [
+    "Powerlifting",
+    "Westerkracht"
+  ],
+  "author": "Stefan Radouane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefanradouane/westerkracht/issues"
+  },
+  "homepage": "https://github.com/stefanradouane/westerkracht#readme"
+}
