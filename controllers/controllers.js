@@ -1,6 +1,7 @@
 const createUser = require("../config/createUser");
 
 const User = require('../models/model');
+const Coach = require('../models/coach');
 
 
 const signedIn = () => {
@@ -38,6 +39,35 @@ const control_admin_gebruikers = async (req, res) => {
 
 };
 
+const control_admin_coach = async (req, res) => {
+    const coaches = await Coach.find()
+    // console.log(coaches)
+
+    try {
+        res.render('pages/admin/coaches', {coaches});
+    } catch(err) {
+        throw err
+    }
+};
+
+const control_admin_coach_post = async (req, res) => {
+    console.log(req.body)
+    const change = {
+        name: req.body.name,
+        ig: req.body.ig,
+        content: req.body.content,
+    }
+    await Coach.findByIdAndUpdate(req.body.id, change).exec(()=>{})
+    
+    try {
+        res.redirect('/admin/coaches');
+    } catch(err) {
+        throw err
+    }
+};
+
+
+
 
 
 const control_adminpost = (req, res) => {
@@ -68,8 +98,10 @@ module.exports = {
     control_index,
     control_admin,
     control_admin_gebruikers,
+    control_admin_coach,
     control_newadmin,
     control_adminpost,
+    control_admin_coach_post,
     control_register,
     control_registerpost,
 };
