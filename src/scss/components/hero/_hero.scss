@@ -1,0 +1,40 @@
+.hero{
+    width: calc(100% + 168px);
+    position: relative;
+    height:100dvh;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white-color;
+    margin: -70px -84px 0 -84px;
+
+    &:after{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba($color: #000000, $alpha: .4);
+    }
+
+    
+
+    &__content{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
+
+        .logo{
+            fill:$white-color;
+        }
+    }
+
+    &__image{
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}

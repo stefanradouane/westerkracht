@@ -2,6 +2,8 @@
  * Define some constants and variables
  ********************************************************/
 
+ const apiToken = "30bf3ea4c181d657104d935e7e75470f69fd4fa2ed973cb90586ec9e6cf84e40612f1bd88451d8483f4c9bbfced635992bc53a88c6730ab2f06794b9c4f22fd549317a8cd0e98d500e8757d69732d0f6cb4782b2602d4fe84707e70884c110323ab5a14e7d3c4ef7f836008a6812ee709903990162e9704237e5827622f23e87";
+
 const express = require("express");
 let ejs = require("ejs");
 
@@ -45,6 +47,9 @@ const {
 
 const routes = require('./routes/routes');
 
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConnect')
+connectDB()
 
 // inizializePassport(
 // 	passport,
@@ -70,17 +75,17 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// app.use(flash());
-// app.use(
-// 	session({
-// 		secret: process.env.SESSION_SECRET,
-// 		resave: false,
-// 		saveUnitialized: false,
-// 	})
-// );
+app.use(flash());
+app.use(
+	session({
+		secret: 'secret',
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(methodOverride("_method"));
 
@@ -181,12 +186,11 @@ app.use((req, res) => {
 // 	}
 // }
 
-/*******************************************************
+/** *****************************************************
  * Start webserver
- ********************************************************/
-app.listen(port, () => {
-	console.log("+/================================================/+\n\n");
-	console.log(`Webserver lisening on port ${port}\n`);
-	// connectDB().then(console.log("We have connection to mongoDB\n\n"));
-	console.log("+/================================================/+\n\n");
-});
+ ******************************************************* */
+mongoose.connection.once('open', () => {
+	console.log('Connected to MongoDB');
+	app.listen(port, () => console.log(`Server running on port ${port}`));
+  });
+  

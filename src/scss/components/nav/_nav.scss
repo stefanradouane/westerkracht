@@ -1,0 +1,14 @@
+.nav{
+    // display: flex;
+    
+    &__list{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        
+        &-item{
+            color: white;
+            font-weight: bold;
+        }
+    }
+}

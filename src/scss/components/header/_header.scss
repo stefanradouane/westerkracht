@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    // background-color: rgba($color: #111111, $alpha: .25);
+    padding: 0 20px;
+    position: sticky;
+    z-index: 1;
+}

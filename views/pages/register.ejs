@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="index">
+    <%- include('../partials/header'); %>
+    
+    <main class="page">
+        <section>
+            <form method="POST" action="/register" class="auth" style="display: flex; flex-direction: column; max-width: 280px;">
+                <label for="name">Username</label>
+                <input name="name" class="auth__user-name" type="text">
+                <label for="email">Email</label>
+                <input name="email" class="auth__user-name" type="text">
+                <label for="password">Password</label>
+                <input name="password" class="auth__user-pass" type="text">
+                <button type="submit" value="register">Register</button>
+            </form>
+            <a href="/new-admin">Heb je wel al een account?</a>
+
+        </section>
+    </main>
+
+    <%- include('../partials/footer'); %>
+    <script type="module" src="./dist/scripts/all.js"></script>
+    <!-- <script src='https://stefanradouane.github.io/vidplayer/index.js'></script> -->
+</body>
+
+</html>

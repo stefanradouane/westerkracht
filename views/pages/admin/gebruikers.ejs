@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+
+<body class="index">
+    <%- include('../../partials/header'); %>
+    <main class="admin">
+        <h1>Welkom Bij de westerkracht admin</h1>
+        <h2>Dit is een overzicht van de gebruikers die op de site kunnen inloggen</h2>
+        <section style="display: grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <% users.forEach(function(user, index){ %>
+                <section style="background: rgb(<%= 250 - (index + 1) * 20 %>, 251, 251);">
+                    <p>Gebruiker <%= index + 1 %></p><br>
+                    <p>Naam</p>
+                    <p><%= user.name %></p><br>
+                    <p>Email</p>
+                    <p><%= user.email %></p>
+                </section>
+                <% }) %>
+            </section>
+    </main>
+    <aside class="admin-sidebar">
+        <ul class="admin-sidebar__list">
+            <li class="admin-sidebar__list-item">
+                <a href="/admin" class="admin-sidebar__anchor">Terug naar admin</a>
+            </li>
+        </ul>
+        
+        </aside>
+
+    <%- include('../../partials/footer'); %>
+    <script type="module" src="./dist/scripts/all.js"></script>
+    <!-- <script src='https://stefanradouane.github.io/vidplayer/index.js'></script> -->
+</body>
+
+</html>

@@ -92,6 +92,7 @@ async function watchTask() {
 //   watch(['public/uploads/*'], uploadWebp);
   watch(['src/scss/*.scss'], series(style, concatCss));
   watch(['src/scss/*/*.scss'], series(style, concatCss));
+  watch(['src/scss/*/*/*.scss'], series(style, concatCss));
   watch(['src/scripts/*.js'], script);
 }
 

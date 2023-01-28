@@ -1,0 +1,13 @@
+.cta{
+    padding:10px 10px;
+    background-color: $prim-color;
+    transition: $transition-settings;
+    color: $white-color;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover{
+        background-color: $hover-color;
+    }
+}
