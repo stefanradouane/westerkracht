@@ -36,8 +36,8 @@ router.get('/admin/login', checkNotLogged, controller.control_newadmin);
 router.post('/admin/login', checkNotLogged, passportConfig.login);
 
 router.get('/admin/gebruikers', checkLogged, controller.control_admin_gebruikers);
-router.get('/admin/coaches', controller.control_admin_coach);
+router.get('/admin/coaches', checkLogged, controller.control_admin_coach);
 
-router.post('/admin/coaches', controller.control_admin_coach_post);
+router.post('/admin/coaches', checkLogged, controller.control_admin_coach_post);
 
 module.exports = router;
