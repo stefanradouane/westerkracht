@@ -14,10 +14,10 @@
             <% if (messages.error) {%>
             <p><%= messages.error%> <%}%></p>
             <form method="POST" action="/admin/login" class="auth" style="display: flex; flex-direction: column; max-width: 280px;">
-                <label for="username">Username</label>
-                <input name="email" class="auth__user-name" type="text">
+                <label for="username">Email</label>
+                <input name="email" class="auth__user-name" type="text" required>
                 <label for="pass">Password</label>
-                <input name="password" class="auth__user-pass" type="text">
+                <input name="password" class="auth__user-pass" type="password" required>
                 <button value="login" type="submit">Login</button>
             </form>
             <a href="/new-admin">Geen account?</a>

@@ -5,9 +5,7 @@ const passport = require('passport');
 
 function initialize2(passport, getEmail, GetId) {
     const authenticateUser2 = async (email, password, done) => {
-    console.log("testietn")
     const user = await getEmail(email);
-    console.log(user)
     if (user == null) {
       return done(null, false, {
         message: 'Geen gebruikers gevonden',
