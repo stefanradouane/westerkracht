@@ -43,17 +43,24 @@ router.post('/admin/login', checkNotLogged, passportConfig.login);
 
 router.get('/admin/gebruikers', checkLogged, controller.control_admin_gebruikers);
 router.get('/admin/coaches', checkLogged, controller.control_admin_coach);
-router.get('/admin/info', checkLogged, controller.control_admin_info);
+
+// Add checklogged middleware function
+router.get('/admin/info', controller.control_admin_info);
 router.get('/admin/media', checkLogged, controller.control_admin_media);
 
 router.post('/admin/coaches', checkLogged, controller.control_admin_coach_post);
-router.post('/admin/info', checkLogged, controller.control_admin_info_post);
+
+// Add checklogged middleware function
+router.post('/admin/info', controller.control_admin_info_post);
 
 router.post('/admin/media', checkLogged, upload.single('img'), controller.control_admin_media_post);
 
 
 
 router.get('/api', checkLogged, controller.control_api)
-router.get('/api/mediabank', checkLogged, controller.control_api)
+
+// Add checklogged middleware function
+router.get('/api/info', controller.control_api_info)
+router.get('/api/media', controller.control_api_media)
 
 module.exports = router;

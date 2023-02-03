@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 
+import CircularProgress from '@mui/material/CircularProgress';
+
 import {
     DataGrid,
 } from '@mui/x-data-grid';
 
+const endpointMediaAPIget = '/api/media'
+const endpointMediaAPIpost = '/admin/media'
 
 export const Mediabank = () => {
     const [data, setData] = useState(null);
@@ -17,7 +21,7 @@ export const Mediabank = () => {
             const selectedRow = document.querySelector('[aria-selected="true"]')
             const id = selectedRow.dataset.id;
             if(selectedRow){
-                fetch('/admin/media', {
+                fetch(endpointMediaAPIpost, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -26,7 +30,7 @@ export const Mediabank = () => {
                 });
 
                 const fetchData = async () => {
-                    const response = await fetch("/api");
+                    const response = await fetch(endpointMediaAPIget);
                     if (!response.ok) {
                       throw new Error("Network response was not ok");
                     }
@@ -47,13 +51,13 @@ export const Mediabank = () => {
         formData.append("img", fileInput.files[0]);
 
         try{
-            const addItems = fetch("/admin/media", {
+            const addItems = fetch(endpointMediaAPIpost, {
                 method: "POST",
                 body: formData,
             })
 
             const fetchData = async () => {
-                const response = await fetch("/api");
+                const response = await fetch(endpointMediaAPIget);
                 if (!response.ok) {
                   throw new Error("Network response was not ok");
                 }
@@ -72,7 +76,7 @@ export const Mediabank = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("/api");
+            const response = await fetch(endpointMediaAPIget);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -86,7 +90,7 @@ export const Mediabank = () => {
 
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <CircularProgress />;
     }
 
 

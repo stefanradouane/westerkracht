@@ -1,2 +1,2 @@
 import "./mediabank/";
-import "./test/";
+import "./infoblokken/";

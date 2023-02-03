@@ -94,20 +94,25 @@ const control_admin_info = async (req, res) => {
 };
 
 const control_admin_info_post = async (req, res) => {
+    console.log(req.body)
     const change = {
-        title: req.body.name,
+        title: req.body.title,
         subtitle: req.body.subtitle,
         content: req.body.content,
         image: req.body.image,
     }
 
-    await Info.findByIdAndUpdate(req.body.id, change).exec(()=>{})
+    // console.log(change)
+
+
+    Info.findByIdAndUpdate(req.body.id, change).exec(()=>{})
+
     
-    try {
-        res.redirect('/admin/info');
-    } catch(err) {
-        throw err
-    }
+    // try {
+    //     res.redirect('/admin/info');
+    // } catch(err) {
+    //     throw err
+    // }
 
 
 };
@@ -119,6 +124,7 @@ const control_admin_media = (req, res) => {
 };
 
 const control_admin_media_post = async (req, res) => {
+    console.log(req)
     if(req.body.fileBase){
 
     fs.unlink('./public/assets/images/' + req.body.fileBase, (err) => {
@@ -130,8 +136,6 @@ const control_admin_media_post = async (req, res) => {
     })
     }
 
-
-    res.redirect('/admin/media');
 };
 
 
@@ -161,20 +165,30 @@ const control_registerpost = (req, res) => {
 };
 
 
-
-
-
 const control_api = (req, res) => {
     getFilesInDirectory('./public/assets/images').then(data => {
         res.status(200).json(data);
     })
 };
 
+const control_api_media = (req, res) => {
+    getFilesInDirectory('./public/assets/images').then(data => {
+        res.status(200).json(data);
+    })
+};
+
+const control_api_info = async (req, res) => {
+    const info = await Info.find()
+    res.status(200).json(info)
+}
+
 
 
 module.exports = {
     control_index,
     control_api,
+    control_api_media,
+    control_api_info,
     control_admin,
     control_admin_gebruikers,
     control_admin_coach,
