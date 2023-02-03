@@ -1,0 +1,62 @@
+@import '../../node_modules/microscope-sass/lib/typography';
+
+.admin{
+    &__options{
+        margin-top:20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        max-width: 1000px;
+        gap: 5px;
+
+        
+        
+        @include tablet{
+            border:none;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    }
+
+    &__option{
+        @include h6;
+        height: 100px;
+        color: $black-color;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding:14px;
+        text-transform: uppercase;
+        border: 1px solid $prim-color;
+        border-radius: 5px;
+
+        @include laptop{
+            height:150px;
+        }
+
+        &:hover{
+            background-color: $prim-color;
+        }
+
+        .icon{
+            margin-left:20px;
+        }
+
+        &--disabled{
+            pointer-events: none;
+            cursor: default;
+            background-color: darkgrey;
+            border: grey;
+
+            .icon{
+                fill:grey;
+            }
+            
+            &:hover{
+                background-color: darkgrey;
+            }
+        }
+    }
+}

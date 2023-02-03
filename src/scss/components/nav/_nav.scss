@@ -11,4 +11,6 @@
             font-weight: bold;
         }
     }
+
+    @include hide-on-mobile;
 }

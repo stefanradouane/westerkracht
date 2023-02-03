@@ -1,0 +1,87 @@
+.mediabank{
+
+    margin-top: 20px;
+
+    &__footer{
+        background-color: #e5e5e5;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding:20px 10px 10px 10px;
+        border-radius: 0 0 5px 5px;
+        border: 1px solid rgba(224, 224, 224, 1);
+        border-top: none;
+
+    }
+    
+    
+    &-form{
+        display: flex;
+        justify-content: space-between;
+
+        &__section{
+            max-width: 400px;
+
+            &--add{
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            &--remove{
+                display: none;
+                align-self: flex-end;
+
+                &[aria-hidden="false"]{
+                    display: block;
+                }
+            }
+        }
+
+        &__button{
+            border:none;
+        }
+
+
+        &__file{
+            max-width: 300px;
+            width: 100%;
+
+            &-remove{
+                display: none;
+            }
+
+            &::file-selector-button {
+                background-color: #fff;
+                color: #000;
+                border: 1px solid #e5e5e5;
+                padding: 10px 15px;
+                margin-right: 20px;
+                transition: .5s;
+            }
+            
+            &::file-selector-button:hover {
+                background-color: #eee;
+                border: 1px solid #e5e5e5;
+            }
+        }
+
+        &__filename{
+            display: none;
+            flex-direction: column;
+            align-items: baseline;
+            margin-top:20px ;
+            gap: 10px;
+
+            &[aria-hidden="false"]{
+                display: flex;
+            }
+
+            &-input{
+                width: 100%;
+                padding:10px;
+
+            }
+        }
+    }
+
+}

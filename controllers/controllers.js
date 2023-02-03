@@ -3,7 +3,12 @@ const createUser = require("../config/createUser");
 const User = require('../models/model');
 const Coach = require('../models/coach');
 const Info = require('../models/info');
+const getFilesInDirectory = require('../config/fileList');
 
+const { upload } = require('../config/multer');
+
+
+const fs = require('fs')
 
 const signedIn = () => {
     return false   
@@ -19,16 +24,17 @@ const isNewAccount = () => {
 }
 
 
-
 const control_index = async (req, res) => {
+    const user = await User.findById(req.user)
     const infos = await Info.find()
     const coaches = await Coach.find()
 
-    res.render('pages/index', {infos, coaches});
+    res.render('pages/index', {infos, coaches, user});
 };
 
-const control_admin = (req, res) => {
-    res.render('pages/admin');
+const control_admin = async (req, res) => {
+    const user = await User.findById(req.user)
+    res.render('pages/admin', {user});
 };
 
 const control_admin_gebruikers = async (req, res) => {
@@ -72,17 +78,22 @@ const control_admin_coach_post = async (req, res) => {
 
 const control_admin_info = async (req, res) => {
     const info = await Info.find()
-    // console.log(coaches)
+    let files;
+    getFilesInDirectory('./public/assets/images').then(data => {
+        files = data
 
-    try {
-        res.render('pages/admin/info', {info});
-    } catch(err) {
-        throw err
-    }
+        try {
+            res.render('pages/admin/info', {info, files});
+        } catch(err) {
+            throw err
+        }
+    })
+
+
+    
 };
 
 const control_admin_info_post = async (req, res) => {
-    console.log(req.body)
     const change = {
         title: req.body.name,
         subtitle: req.body.subtitle,
@@ -99,6 +110,28 @@ const control_admin_info_post = async (req, res) => {
     }
 
 
+};
+
+
+
+const control_admin_media = (req, res) => {
+    res.render('pages/admin/media');
+};
+
+const control_admin_media_post = async (req, res) => {
+    if(req.body.fileBase){
+
+    fs.unlink('./public/assets/images/' + req.body.fileBase, (err) => {
+        if (err) {
+            res.status(500).send({
+            message: "Could not delete the file. " + err,
+            });
+        }
+    })
+    }
+
+
+    res.redirect('/admin/media');
 };
 
 
@@ -129,12 +162,25 @@ const control_registerpost = (req, res) => {
 
 
 
+
+
+const control_api = (req, res) => {
+    getFilesInDirectory('./public/assets/images').then(data => {
+        res.status(200).json(data);
+    })
+};
+
+
+
 module.exports = {
     control_index,
+    control_api,
     control_admin,
     control_admin_gebruikers,
     control_admin_coach,
     control_admin_info,
+    control_admin_media,
+    control_admin_media_post,
     control_newadmin,
     control_adminpost,
     control_admin_coach_post,

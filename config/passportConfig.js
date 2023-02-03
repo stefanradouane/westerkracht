@@ -13,7 +13,13 @@ function initialize2(passport, getEmail, GetId) {
     }
     try {
       if (await bcrypt.compare(password, user.hashedPassword)) {
-        return done(null, user);
+        if(user.admin){
+          return done(null, user);
+        } else{
+          return done(null, false, {
+            message: 'Deze gebruiker is geen admin...',
+          });
+        }
       } else {
         return done(null, false, {
           message: 'Fout wachtwoord',

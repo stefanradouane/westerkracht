@@ -18,8 +18,8 @@
                             <input type="text" name="name" value="<%= coach.title %>">
                         </div>
                         <div style="display: flex; flex-direction: column;">
-                            <label for="ig">Info blok subtitle <em>*</em></label>
-                            <input type="text" name="ig" value="<%= coach.subtitle %>">
+                            <label for="subtitle">Info blok subtitle <em>*</em></label>
+                            <input type="text" name="subtitle" value="<%= coach.subtitle %>">
                         </div>
                         <div style="display: flex; flex-direction: column;">
                             <label for="name">Info content <em>*</em></label>
@@ -29,11 +29,30 @@
                         <div style="display: flex; flex-direction: column;">
                             <em>Deze foto sectie zal veranderd worden naar een fotobibliotheek van de site o.i.d.</em>
                             <label for="name">Info image</label>
-                            <input type="file" name="image">
+                            <select name="image">
+                                <% if (!coach.image){ %> 
+                                    <option disabled selected>Selecteer een foto</option>
+                                    <% files.forEach(function(file) { %> 
+                                        <option value="<%= file.fileUrl %>"> <%= file.fileName %> </option>
+                                    <%}) %>
+                                <%} else { %>
+                                    <% files.forEach(function(file) { %> 
+                                        <% if(coach.image == file.fileUrl) { %>
+                                            <option value="<%= file.fileUrl %>" selected><%= file.fileName %> </option>  
+                                        <% } else { %>
+                                        <option value="<%= file.fileUrl %>"> <%= file.fileName %> </option>
+                                        <% } %>
+                                    <%}) %>
+                                <% } %>
+                                
+                            </select>
                             <div>
                                 <p>Huidige foto</p>
-                                <p><%= coach.image %></p>
-                                <img src="<%= coach.image %>" alt="">
+                                <% if (!coach.image){ %> 
+                                    <p>Er is momenteel nog geen foto geselecteerd</p>
+                                <%} else { %>
+                                    <img width="100%" src="<%= coach.image %>" alt="">
+                                <% } %>
                             </div>
                         </div>
 

@@ -9,6 +9,8 @@ const sourceMaps = require('gulp-sourcemaps');
 
 const uglify = require('gulp-uglify');
 
+const babel = require('gulp-babel');
+
 // Gulp image-min
 // const imagemin = async () => await import('gulp-imagemin');
 
@@ -23,7 +25,7 @@ const paths = {
     dest: './public/dist/css',
   },
   scripts: {
-    src: './src/scripts/*.js',
+    src: './src/scripts/**/*.js',
     dest: './public/dist/scripts',
   },
 //   images: {
@@ -46,7 +48,7 @@ function style() {
         loadMaps: true,
       })
     )
-    .pipe(sass())
+    .pipe(sass({ includePaths: ['node_modules/microscope-sass/lib'] }))
     .pipe(prefix('last 2 versions'))
     .pipe(sourceMaps.write())
     .pipe(leec())
@@ -68,14 +70,17 @@ function concatCss() {
     .pipe(dest(paths.styles.dest));
 }
 
-function script() {
-  return src(paths.scripts.src)
-    .pipe(sourceMaps.init())
-    .pipe(uglify())
-    .pipe(sourceMaps.write())
-    .pipe(concat('all.js'))
-    .pipe(dest(paths.scripts.dest));
-}
+// function script() {
+//   return src(paths.scripts.src)
+//     .pipe(sourceMaps.init())
+//     .pipe(babel({
+//       presets: ['@babel/preset-env']
+//     }))
+//     .pipe(concat('all.js'))
+//     .pipe(uglify())
+//     .pipe(sourceMaps.write('.'))
+//     .pipe(dest(paths.scripts.dest));
+// }
 
 // // Images
 // function makeWebp() {
@@ -93,7 +98,8 @@ async function watchTask() {
   watch(['src/scss/*.scss'], series(style, concatCss));
   watch(['src/scss/*/*.scss'], series(style, concatCss));
   watch(['src/scss/*/*/*.scss'], series(style, concatCss));
-  watch(['src/scripts/*.js'], script);
+  // watch(['src/scripts/*.js'], script);
+  // watch(['src/scripts/*/*.js'], script);
 }
 
 exports.watch = watchTask;
@@ -101,8 +107,8 @@ exports.watch = watchTask;
 
 exports.default = parallel(
   series(style, concatCss),
-  script,
-  watchTask
+  // script,
+  // watchTask
   );
   
 //   uploadWebp,

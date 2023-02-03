@@ -9,7 +9,6 @@
     <%- include('../partials/header'); %>
     
     <main class="page">
-
         <section class="hero">
             <section class="hero__content">
                 <h1>Westerkracht</h1>
@@ -27,6 +26,7 @@
                         <h2><%= info.title %></h2>
                         <p><%= info.subtitle %></p>
                         <p><%= info.content %></p>
+                        <img width="100%" src="<%= info.image %>">
                     </section>
                 <% })%>
             </section>

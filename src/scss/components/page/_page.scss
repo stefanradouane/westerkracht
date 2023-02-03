@@ -1,4 +1,17 @@
 .page{
-    background: whitesmoke;
-    padding:0 84px;
+    @include responsive(padding, 0 16px, 0 16px, 0 42px, 0 84px);
+
+    &--sidebar {
+        padding: 0 20px;
+
+        .content{
+            display: flex;
+            gap:120px;
+            
+            &__sidebar{
+                order: -1;
+                
+            }
+        }
+    }
 }

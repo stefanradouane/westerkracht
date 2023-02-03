@@ -5,9 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon server.js",
-		"build": "node gulpfile.js",
-		"start": "node server.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"gulp": "gulp",
+		"webpack": "webpack --config webpack.config.js",
+		"watch": "npm run gulp -- watch & npm run webpack -- --watch",
+		"start": "node server.js"
 	},
 	"repository": {
 		"type": "git",
@@ -24,6 +25,10 @@
 	},
 	"homepage": "https://github.com/stefanradouane/westerkracht#readme",
 	"dependencies": {
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
+		"@mui/material": "^5.11.7",
+		"@mui/x-data-grid": "^5.17.21",
 		"array-back": "^6.2.2",
 		"bcrypt": "^5.1.0",
 		"body-parser": "^1.20.1",
@@ -32,23 +37,37 @@
 		"express": "^4.18.2",
 		"express-flash": "^0.0.2",
 		"express-session": "^1.17.3",
+		"fs-extra": "^11.1.0",
+		"gulp-babel": "^8.0.0",
 		"gulp-imagemin": "^8.0.0",
-		"gulp-sass": "^5.1.0",
 		"gulp-webp": "^4.0.1",
 		"method-override": "^3.0.0",
+		"microscope-sass": "^1.1.0",
 		"mongoose": "^6.9.0",
+		"multer": "^1.4.5-lts.1",
 		"node-fetch": "^3.3.0",
 		"nodemon": "^2.0.20",
 		"passport": "^0.6.0",
-		"passport-local": "^1.0.0"
+		"passport-local": "^1.0.0",
+		"react": "^18.2.0",
+		"react-async": "^10.0.1",
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.20.12",
+		"@babel/preset-env": "^7.20.2",
+		"@babel/preset-react": "^7.18.6",
+		"babel-loader": "^9.1.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-line-ending-corrector": "^1.0.3",
+		"gulp-sass": "^5.1.0",
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-uglify": "^3.0.2",
-		"sass": "^1.57.1"
+		"node-sass": "^8.0.0",
+		"sass": "^1.57.1",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1"
 	}
 }
