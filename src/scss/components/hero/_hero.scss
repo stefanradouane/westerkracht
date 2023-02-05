@@ -1,5 +1,12 @@
+$page-padding-mobile:16px;
+$page-padding-tablet:42px;
+$page-padding-dektop:84px;
+$header-height:70px;
+
 .hero{
-    width: calc(100% + 168px);
+    @include responsive(margin-top, -$header-height, -$header-height);
+    @include responsive(margin-left, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
+    @include responsive(margin-right, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
     position: relative;
     height:100dvh;
     height:100vh;
@@ -7,7 +14,7 @@
     align-items: center;
     justify-content: center;
     color: $white-color;
-    margin: -70px -84px 0 -84px;
+    // margin: -70px -84px 0 -84px;
 
     &:after{
         content: '';

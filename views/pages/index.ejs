@@ -11,7 +11,7 @@
     <main class="page">
         <section class="hero">
             <section class="hero__content">
-                <h1>Westerkracht</h1>
+                <h1 class="title title--h1 title--white">Westerkracht</h1>
                 <%- include('../components/logo/logo'); %>
                 <a class="cta" href="#">Schrijf je in bij westerkracht</a>
             </section>
@@ -20,13 +20,16 @@
 
         <section>
             <h2 class="title title--h2">Wat is wersterkracht</h2>
-            <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <section class="infoblokken">
                 <% infos.forEach(function(info, index){ %>
-                    <section>
-                        <h2><%= info.title %></h2>
-                        <p><%= info.subtitle %></p>
-                        <p><%= info.content %></p>
-                        <img width="100%" src="<%= info.image %>">
+                    <section class="infoblok">
+                        <img class="infoblok__image" src="<%= info.image %>">
+                        <section class="infoblok__info">
+                            <h3 class="title title--h3 title--white"><%= info.title %></h3>
+                            <p><%= info.subtitle %></p>
+                            <p><%= info.content %></p>
+                        </section>
+                        <a href="<%= info.link %>" class="cta infoblok__link"><%= info.linkTitle %> </a>
                     </section>
                 <% })%>
             </section>

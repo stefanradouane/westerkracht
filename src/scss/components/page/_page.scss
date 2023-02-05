@@ -1,5 +1,7 @@
 .page{
-    @include responsive(padding, 0 16px, 0 16px, 0 42px, 0 84px);
+    @include responsive(padding, 0 16px, 0 42px, 0 42px, 0 84px);
+    max-width: 1440px;
+    margin: auto;
 
     &--sidebar {
         padding: 0 20px;

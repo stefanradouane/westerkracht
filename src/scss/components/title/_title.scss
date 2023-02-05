@@ -7,4 +7,21 @@
         @include h1;
         color: $prim-color;
     }
+
+    &--h2{
+        @include h2;
+    }
+
+    &--h3{
+        @include h3;
+        text-transform:lowercase;
+
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
+
+    &--white{
+        color:$white-color;
+    }
 }

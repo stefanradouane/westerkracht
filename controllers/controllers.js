@@ -67,6 +67,7 @@ const control_admin_coach_post = async (req, res) => {
         ig: req.body.ig,
         content: req.body.content,
     }
+    
     await Coach.findByIdAndUpdate(req.body.id, change).exec(()=>{})
     
     try {
@@ -100,19 +101,21 @@ const control_admin_info_post = async (req, res) => {
         subtitle: req.body.subtitle,
         content: req.body.content,
         image: req.body.image,
+        linkTitle: req.body.linkTitle,
+        link: req.body.link,
     }
 
     // console.log(change)
 
 
-    Info.findByIdAndUpdate(req.body.id, change).exec(()=>{})
-
     
-    // try {
-    //     res.redirect('/admin/info');
-    // } catch(err) {
-    //     throw err
-    // }
+    
+    try {
+        Info.findByIdAndUpdate(req.body.id, change).exec(()=>{})
+        // res.redirect('/admin/info');
+    } catch(err) {
+        throw err
+    }
 
 
 };

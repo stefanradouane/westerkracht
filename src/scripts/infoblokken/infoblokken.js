@@ -93,10 +93,9 @@ export const Infoblokken = () => {
             }
 
         } 
-        console.log(defaultValue)
 
         return (
-            <select name="image" defaultValue={usedValue.toString()}>
+            <select class="control__input" name="image" defaultValue={usedValue.toString()}>
                 <OptionList/>
             </select>
         )
@@ -110,57 +109,60 @@ export const Infoblokken = () => {
         if(imageUrl.length == 0) {
             return <p>Geen foto geselecteerd</p>
         } else {
-            return (<img width="130px" src={imageUrl.toString()}/>)
+            return (<img className="infoblok__image" src={imageUrl.toString()}/>)
         }
 
-        console.log(imageUrl)
-        return <div>Test</div>
     }
 
     const infoSections = data.map((instance, i)  => {
         console.log(instance._id);
 
-        return (<section key={instance._id}>
-                    <form method="POST" key={instance._id} >
-                    <div >
-                        <label>
-                            Info blok naam
-                            <input type="text" name="title" defaultValue={instance.title}/>
+        return (<form className="infoblok" method="POST" key={instance._id} >
+                    <input type="hidden" name="id" value={instance._id}/>
+                    <Image instance={instance} />
+                    <section className="infoblok__info infoblok__info--admin">
+                        <label class="control">
+                            Info image
+                            <span class="control__required">*</span>
+                            <Options instance={instance} />
                         </label>
-                    </div>
-                    <div>
-                        <label>
-                            Info blok subtitle
-                            <input type="text" name="subtitle" defaultValue={instance.subtitle}/>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Info content
-                            <textarea name="content" cols="30" rows="10" defaultValue={instance.content}/>
-                        </label>
-                    </div>
 
-                    <div >
-                        <em>Deze foto sectie zal veranderd worden naar een fotobibliotheek van de site o.i.d.</em>
-                        <label >Info image</label>
-                        <Options instance={instance} />
-                        <div>
-                            <Image instance={instance} />
-                        </div>
-                    </div>
+                        <label class="control">
+                            Blok naam
+                            <span class="control__required">*</span>
+                            <input class="control__input" type="text" name="title" defaultValue={instance.title}/>
+                        </label>
 
-                    <input type="hidden" name="id" value={instance._id} />
+                        <label class="control">
+                            Blok ondertitel
+                            <span class="control__required">*</span>
+                            <input class="control__input" type="text" name="subtitle" defaultValue={instance.subtitle}/>
+                        </label>
+
+                        <label class="control">
+                            Blok content
+                            <span class="control__required">*</span>
+                            <textarea class="control__input" name="content" cols="30" rows="10" defaultValue={instance.content}/>
+                        </label>  
+                        <label class="control">
+                            Link
+                            <span class="control__required">*</span>
+                            <input class="control__input" type="text" name="linkTitle" defaultValue={instance.linkTitle}/>
+                            <input class="control__input" type="text" name="link" defaultValue={instance.link}/>
+                        </label>                      
+                    </section>
+
                     
-                    <button onClick={handleSubmitInfo}>Verander gegevens</button>
+
+                    
+                    <button className="cta" onClick={handleSubmitInfo}>Verander gegevens</button>
                 </form>
-            </section>
         )
     })
 
-    console.log(data)
+    // console.log(data)
 
-    return (<div className="testings">{infoSections}</div>)
+    return (<section className="infoblokken">{infoSections}</section>)
 
 
 

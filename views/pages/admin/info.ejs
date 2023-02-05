@@ -7,11 +7,10 @@
 
 <body class="index">
     <%- include('../../partials/header-admin'); %>
-    <main class="admin">
-        <h1>Welkom Bij de westerkracht infoblokken</h1>
-        <p>Hier kan je gemakkelijk de informatie op de pagina veranderen</p>
+    <main class="admin page">
+        <h1 class="title title--h1">Westerkracht infoblokken</h1>
         <section class="infoblokken-container"></section>
-        <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
+        <!-- <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
             <% info.forEach(function(coach, index){ %>
                 <section>
                     <form method="POST" style="display: flex; flex-direction: column; gap:20px;  border: 10px solid grey; padding:20px;">
@@ -64,15 +63,15 @@
                     </form>
                 </section>
                 <% }) %>
-            </section>
+            </section> -->
     </main>
-    <aside class="admin-sidebar">
+    <!-- <aside class="admin-sidebar">
         <ul class="admin-sidebar__list">
             <li class="admin-sidebar__list-item">
                 <a href="/admin" class="admin-sidebar__anchor">Terug naar admin</a>
             </li>
         </ul>
-    </aside>
+    </aside> -->
 
     <script src="../dist/scripts/main.js"></script>
     <!-- <script src='https://stefanradouane.github.io/vidplayer/index.js'></script> -->

@@ -1,0 +1,22 @@
+.control{
+    font-size:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 4px;
+    
+    &__input{
+      width:100%;
+      font-size:16px;
+      padding:12px;
+      border:none;
+    //   Change color
+    border-bottom:3px solid #610326;
+    //   Change color
+    background-color:#F1F1F1;
+}
+
+&__required{
+    //   Change color
+      color:#5F5F5F;
+    }
+  }

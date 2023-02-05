@@ -1,0 +1,58 @@
+.infoblokken{
+    @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.infoblok{
+    display: flex;
+    @include responsive(flex-direction, column, row, column, column);
+    @include responsive(max-width, 100%, 100%, 400px, 400px);
+
+    background-color: $dark-prim-color;
+    width: 100%;
+    color:$white-color;
+
+    @include tablet{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+        "image content"
+        "image link";
+    }
+
+    @include laptop{
+        display: flex;
+    }
+
+    &__image{
+        @include responsive(width, 100%, 282px, 100%, 100%);
+        @include responsive(height, unset, 100%, unset, unset);
+        aspect-ratio: 16/12;
+        display: block;
+        object-fit: cover;
+        grid-area: image;
+    }
+
+    &__info{
+        // @include body;
+        // @include body--big;
+        width: 100%;
+        padding:20px;
+        display: flex;
+        flex-direction: column;
+        grid-area: content;
+        
+        &--admin{
+            gap:20px;
+        }
+    }
+
+    &__link {
+        grid-area:link;
+        margin-top: auto;
+    }
+}
