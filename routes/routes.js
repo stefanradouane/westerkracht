@@ -47,11 +47,17 @@ router.get('/admin/coaches', checkLogged, controller.control_admin_coach);
 // Add checklogged middleware function
 router.get('/admin/info', controller.control_admin_info);
 router.get('/admin/media', checkLogged, controller.control_admin_media);
+router.get('/admin/hero', controller.control_admin_hero);
+
+
+
+
 
 router.post('/admin/coaches', checkLogged, controller.control_admin_coach_post);
 
 // Add checklogged middleware function
 router.post('/admin/info', controller.control_admin_info_post);
+router.post('/admin/hero', controller.control_admin_hero_post);
 
 router.post('/admin/media', checkLogged, upload.single('img'), controller.control_admin_media_post);
 
@@ -62,5 +68,6 @@ router.get('/api', checkLogged, controller.control_api)
 // Add checklogged middleware function
 router.get('/api/info', controller.control_api_info)
 router.get('/api/media', controller.control_api_media)
+router.get('/api/hero', controller.control_api_hero)
 
 module.exports = router;

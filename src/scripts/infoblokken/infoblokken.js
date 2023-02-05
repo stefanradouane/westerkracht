@@ -109,7 +109,7 @@ export const Infoblokken = () => {
         if(imageUrl.length == 0) {
             return <p>Geen foto geselecteerd</p>
         } else {
-            return (<img className="infoblok__image" src={imageUrl.toString()}/>)
+            return (<img className="infoblok__image infoblok__image--admin" src={imageUrl.toString()}/>)
         }
 
     }

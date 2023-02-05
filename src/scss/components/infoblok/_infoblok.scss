@@ -30,11 +30,18 @@
 
     &__image{
         @include responsive(width, 100%, 282px, 100%, 100%);
-        @include responsive(height, unset, 100%, unset, unset);
+        @include responsive(height, unset, 100%, unset);
         aspect-ratio: 16/12;
         display: block;
         object-fit: cover;
         grid-area: image;
+
+        
+        
+        &--admin{
+            @include responsive(object-position, unset, top, unset);
+            @include responsive(object-fit, cover, contain, cover);
+        }
     }
 
     &__info{

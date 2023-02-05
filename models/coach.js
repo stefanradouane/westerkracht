@@ -18,6 +18,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+        required: true,
+    }
 });
 
 const Coach = mongoose.model('Coach', userSchema);
