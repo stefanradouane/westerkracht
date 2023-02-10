@@ -19,7 +19,7 @@
         </section>
 
         <section class="content">
-            <section class="content__info">
+            <section class="content__section content__section__info">
                 <h2 class="title title--h2">Wat is wersterkracht</h2>
                 <section class="infoblokken">
                     <% infos.forEach(function(info, index){ %>
@@ -36,8 +36,8 @@
                 </section>
             </section>
 
-            <section class="content__coaches">
-                <h2 class="title title--h2">De coaches</h2>
+            <section class="content__section content__section--coaches">
+                <h2 class="title title--h2 title--margin">De coaches</h2>
 
                 <section class="infoblokken">
                     <% coaches.forEach(function(coach, index){ %>
@@ -70,12 +70,13 @@
             </section>
         </section>
 
-        <section>
-            <h2 class="title title--h2">Schrijf je in</h2>
-            <%- include('../components/logo/logo'); %>
-            <p>Ben jij op zoek naar een krachtvereniging (en personal coaching) schrijf je nu in bij Westerkracht!</p>
-            <a href="#" class="cta">Schrijf je in bij westerkracht</a>
-
+        <section class="content__section content__section--inschrijven">
+            <section>
+                <%- include('../components/logo/logo'); %>
+                <h2 class="title title--h2">Schrijf je in</h2>
+            </section>
+                <p>Ben jij op zoek naar een krachtvereniging (en personal coaching) schrijf je nu in bij Westerkracht!</p>
+                <a href="#" class="cta">Schrijf je in bij westerkracht</a>
         </section>
     </main>
 

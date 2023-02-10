@@ -1,13 +1,8 @@
-.infoblokken-container{
-    margin-top: 20px;
-}
-
 .infoblokken{
     @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
     display: flex;
     gap: 36px;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .infoblok{

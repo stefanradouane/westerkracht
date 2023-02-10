@@ -1,8 +1,13 @@
 @import '../../node_modules/microscope-sass/lib/typography';
 
 .admin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px!important;
+
     &__options{
-        margin-top:20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);

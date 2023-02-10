@@ -6,8 +6,8 @@ $header-height:70px;
 
 .hero{
     @include responsive(margin-top, -$header-height, -$header-height);
-    @include responsive(margin-left, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
-    @include responsive(margin-right, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
+    @include responsive(margin-left, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-tablet, -$page-padding-dektop);
+    @include responsive(margin-right, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-tablet, -$page-padding-dektop);
     position: relative;
     height:100vh;
     height:100dvh;
@@ -26,7 +26,6 @@ $header-height:70px;
     align-items: center;
     justify-content: center;
     color: $white-color;
-    // margin: -70px -84px 0 -84px;
 
     &:after{
         content: '';
@@ -43,9 +42,16 @@ $header-height:70px;
         flex-direction: column;
         justify-content: center;
         z-index: 1;
+        gap: 10px;
 
         .logo{
             fill:$white-color;
+            order: -1;
+            width: 148px!important;
+        }
+
+        .cta{
+            margin-top:40px;
         }
     }
 
@@ -56,4 +62,8 @@ $header-height:70px;
         height: 100%;
         width: 100%;
     }
+
+    
+
+    
 }

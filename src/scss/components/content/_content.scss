@@ -1,29 +1,53 @@
 .content{
-    &__coaches {
-        @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
-        position: relative;
-        display: block;
-        background-color: #E5E5E5;
-        // max-width: 1440px;
-        width: 100vw;
-        width: 100dvw;
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding:42px 0;
 
-        .infoblokken{
-            @include responsive(margin, 0 16px, 0 42px, 0 42px, 0 84px);
-            max-width: 1272px;
+        &--coaches{
+            @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
+            position: relative;
+            display: block;
+            background-color: #E5E5E5;
+            // max-width: 1440px;
+            width: 100vw;
+            width: 100dvw;
+
+            .infoblokken{
+                @include responsive(margin, 0 16px, 0 42px, 0 42px, 0 84px);
+                max-width: 1272px;
+
+                @include breakpoint(1440px) {
+                    margin: auto;
+                }
+            }
 
             @include breakpoint(1440px) {
-                margin: auto;
+                margin-left: -50vw;
+                margin-left: -50dvw;
+                margin-right: -50vw;
+                margin-right: -50dvw;
+                left: 50%;
+                right: 50%;
             }
         }
 
-        @include breakpoint(1440px) {
-            margin-left: -50vw;
-            margin-left: -50dvw;
-            margin-right: -50vw;
-            margin-right: -50dvw;
-            left: 50%;
-            right: 50%;
+        &--inschrijven{
+            align-items: baseline;
+            // flex-direction: row;
+            // flex-wrap: wrap;
+            gap:30px;
+
+            section{
+                display: flex;
+                gap: 20px;
+            }
+
+            p{
+                max-width: 550px;
+            }
         }
     }
 }
+
