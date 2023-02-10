@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import arrayify from 'array-back';
 
+console.log("heyy")
 
-const endpointInfoAPIget = '/api/info'
-const endpointInfoAPIpost = '/admin/info'
+const endpointCoachAPIget = '/api/coaches'
+const endpointCoachAPIpost = '/admin/coaches'
 const endpointMediaAPIget = '/api/media'
 
 export const Infoblokken = () => {
@@ -15,7 +16,7 @@ export const Infoblokken = () => {
     // Fetch data
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(endpointInfoAPIget);
+            const response = await fetch(endpointCoachAPIget);
             const responseMedia = await fetch(endpointMediaAPIget);
             if (!response.ok || !responseMedia.ok) {
                 throw new Error("Network response was not ok");
@@ -43,7 +44,7 @@ export const Infoblokken = () => {
         )
 
         try{
-            const addItems = fetch(endpointInfoAPIpost, {
+            const addItems = fetch(endpointCoachAPIpost, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ export const Infoblokken = () => {
             })
 
             const fetchData = async () => {
-                const response = await fetch(endpointInfoAPIget);
+                const response = await fetch(endpointCoachAPIget);
                 if (!response.ok) {
                   throw new Error("Network response was not ok");
                 }
@@ -122,21 +123,22 @@ export const Infoblokken = () => {
                     <Image instance={instance} />
                     <section className="infoblok__info infoblok__info--admin">
                         <label className="control">
-                            Info image
+                            Coach image
                             <span className="control__required">*</span>
                             <Options instance={instance} />
                         </label>
 
                         <label className="control">
-                            Blok naam
+                            Coach naam
                             <span className="control__required">*</span>
-                            <input className="control__input" type="text" name="title" defaultValue={instance.title}/>
+                            <input className="control__input" type="text" name="name" defaultValue={instance.name}/>
                         </label>
 
                         <label className="control">
                             Blok ondertitel
                             <span className="control__required">*</span>
-                            <input className="control__input" type="text" name="subtitle" defaultValue={instance.subtitle}/>
+                            <input className="control__input" type="text" name="igmain" defaultValue={instance.ig[0]}/>
+                            <input className="control__input" type="text" name="iglift" defaultValue={instance.ig[1]}/>
                         </label>
 
                         <label className="control">
@@ -170,7 +172,7 @@ export const Infoblokken = () => {
 
 
 
-const container = document.querySelector('.infoblokken-container')
+const container = document.querySelector('.coaches-container')
 
 if(container){
     const root = createRoot(container);

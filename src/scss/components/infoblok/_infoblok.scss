@@ -1,3 +1,7 @@
+.infoblokken-container{
+    margin-top: 20px;
+}
+
 .infoblokken{
     @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
     display: flex;
@@ -7,6 +11,7 @@
 }
 
 .infoblok{
+    position: relative;
     display: flex;
     @include responsive(flex-direction, column, row, column, column);
     @include responsive(max-width, 100%, 100%, 400px, 400px);
@@ -61,5 +66,10 @@
     &__link {
         grid-area:link;
         margin-top: auto;
+    }
+
+    &--coach{
+        background-color: $white-color ;
+        color:$black-color;
     }
 }

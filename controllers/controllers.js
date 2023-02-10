@@ -67,17 +67,21 @@ const control_admin_coach_post = async (req, res) => {
     console.log(req.body)
     const change = {
         name: req.body.name,
-        ig: req.body.ig,
+        ig: [req.body.igmain, req.body.iglift],
         content: req.body.content,
+        image: req.body.image,
+        linkTitle: req.body.linkTitle,
+        link: req.body.link,
     }
-    
-    await Coach.findByIdAndUpdate(req.body.id, change).exec(()=>{})
-    
+      
     try {
-        res.redirect('/admin/coaches');
+        Coach.findByIdAndUpdate(req.body.id, change).exec(()=>{})
+        // res.redirect('/admin/info');
     } catch(err) {
         throw err
     }
+
+
 };
 
 const control_admin_info = async (req, res) => {
@@ -217,6 +221,11 @@ const control_api_hero = async (req, res) => {
     res.status(200).json(hero)
 }
 
+const control_api_coaches = async (req, res) => {
+    const coaches = await Coach.find()
+    res.status(200).json(coaches)
+}
+
 
 
 module.exports = {
@@ -225,6 +234,7 @@ module.exports = {
     control_api_media,
     control_api_info,
     control_api_hero,
+    control_api_coaches,
     control_admin,
     control_admin_gebruikers,
     control_admin_coach,

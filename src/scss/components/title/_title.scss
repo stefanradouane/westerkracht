@@ -2,6 +2,7 @@
 
 .title{
     text-transform: uppercase;
+    max-width: 1272px;
     
     &--h1{
         @include h1;
@@ -10,6 +11,7 @@
 
     &--h2{
         @include h2;
+        margin: auto;
     }
 
     &--h3{
@@ -19,6 +21,21 @@
         &::first-letter{
             text-transform: uppercase;
         }
+    }
+
+    &--tag{
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+        letter-spacing: 6px;
+        text-align: left;
+        padding:2px 18px;
+        background-color: $white-color;
+        color:$prim-color;
+        width: fit-content;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 
     &--white{

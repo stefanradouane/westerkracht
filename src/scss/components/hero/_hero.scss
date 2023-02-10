@@ -3,13 +3,25 @@ $page-padding-tablet:42px;
 $page-padding-dektop:84px;
 $header-height:70px;
 
+
 .hero{
     @include responsive(margin-top, -$header-height, -$header-height);
     @include responsive(margin-left, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
     @include responsive(margin-right, -$page-padding-mobile, -$page-padding-tablet, -$page-padding-dektop);
     position: relative;
-    height:100dvh;
     height:100vh;
+    height:100dvh;
+    width: 100vw;
+    width: 100dvw;
+    @include breakpoint(1440px) {
+        margin-left: -50vw;
+        margin-left: -50dvw;
+        margin-right: -50vw;
+        margin-right: -50dvw;
+        left: 50%;
+        right: 50%;
+      }
+
     display: flex;
     align-items: center;
     justify-content: center;

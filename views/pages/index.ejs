@@ -18,40 +18,62 @@
             <img class="hero__image hero__image--light" src="<%= useHero.fileUrl %>">
         </section>
 
-        <section>
-            <h2 class="title title--h2">Wat is wersterkracht</h2>
-            <section class="infoblokken">
-                <% infos.forEach(function(info, index){ %>
-                    <section class="infoblok">
-                        <img class="infoblok__image" src="<%= info.image %>">
-                        <section class="infoblok__info">
-                            <h3 class="title title--h3 title--white"><%= info.title %></h3>
-                            <p><%= info.subtitle %></p>
-                            <p><%= info.content %></p>
+        <section class="content">
+            <section class="content__info">
+                <h2 class="title title--h2">Wat is wersterkracht</h2>
+                <section class="infoblokken">
+                    <% infos.forEach(function(info, index){ %>
+                        <section class="infoblok">
+                            <img class="infoblok__image" src="<%= info.image %>">
+                            <section class="infoblok__info">
+                                <h3 class="title title--h3 title--white"><%= info.title %></h3>
+                                <p><%= info.subtitle %></p>
+                                <p><%= info.content %></p>
+                            </section>
+                            <a href="<%= info.link %>" class="cta infoblok__link"><%= info.linkTitle %> </a>
                         </section>
-                        <a href="<%= info.link %>" class="cta infoblok__link"><%= info.linkTitle %> </a>
-                    </section>
-                <% })%>
+                    <% })%>
+                </section>
+            </section>
+
+            <section class="content__coaches">
+                <h2 class="title title--h2">De coaches</h2>
+
+                <section class="infoblokken">
+                    <% coaches.forEach(function(coach, index){ %>
+                        <section class="infoblok infoblok--coach">
+                            <h3 class="title title--tag">coach</h3>
+                            <% if (coach.image) { %>
+                                <img class="infoblok__image" src="<%= coach.image %>">
+                            <% } else { %>
+                                <p><%= coach.name %> voeg een foto abi</p>
+                            <% } %>
+
+                            <section class="infoblok__info">
+                                <h3 class="title title--h3"><%= coach.name %></h3>
+                                <section>
+                                    <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 39C30.2696 39 39 30.2696 39 19.5C39 8.73045 30.2696 0 19.5 0C8.73045 0 0 8.73045 0 19.5C0 30.2696 8.73045 39 19.5 39ZM12 15.8611C12 13.7094 13.7039 12 15.7632 12H23.3843C25.4436 12 27.1475 13.7094 27.1475 15.8611V23.6389C27.1475 25.7906 25.4436 27.5 23.3843 27.5H15.7632C13.7039 27.5 12 25.7906 12 23.6389V15.8611ZM15.7632 10C12.5612 10 10 12.6434 10 15.8611V23.6389C10 26.8566 12.5612 29.5 15.7632 29.5H23.3843C26.5863 29.5 29.1475 26.8566 29.1475 23.6389V15.8611C29.1475 12.6434 26.5863 10 23.3843 10H15.7632ZM14.7617 19.7502C14.7617 17.0694 16.8964 14.8613 19.5723 14.8613C22.2481 14.8613 24.3828 17.0694 24.3828 19.7502C24.3828 22.431 22.2481 24.6391 19.5723 24.6391C16.8964 24.6391 14.7617 22.431 14.7617 19.7502ZM19.5723 16.8613C18.0391 16.8613 16.7617 18.1354 16.7617 19.7502C16.7617 21.365 18.0391 22.6391 19.5723 22.6391C21.1054 22.6391 22.3828 21.365 22.3828 19.7502C22.3828 18.1355 21.1054 16.8613 19.5723 16.8613ZM25.5895 15.0443C25.9446 14.6212 25.8895 13.9905 25.4664 13.6354C25.0434 13.2804 24.4126 13.3355 24.0576 13.7585L24.0485 13.7693C23.6935 14.1923 23.7486 14.8231 24.1716 15.1782C24.5946 15.5332 25.2254 15.4781 25.5804 15.0551L25.5895 15.0443Z" fill="#99043B"/>
+                                    </svg>
+                                    <a href="https://instagram.com/<%= coach.ig[0] %>">@<%= coach.ig[0] %></a>
+                                    <a href="https://instagram.com/<%= coach.ig[1] %>">@<%= coach.ig[1] %></a>
+                                </section>
+                                <details>
+                                    <summary>Lees meer over <%= coach.name %> </summary>
+                                    <p><%= coach.content %></p>
+                                </details>
+                            </section>
+                            <a href="<%= coach.link %>" class="cta infoblok__link"><%= coach.linkTitle %> </a>
+                        </section>
+                    <% })%>
+                </section>
             </section>
         </section>
 
-        <section>
-            <h2 class="title title--h2">De coaches</h2>
-
-            <section style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-                <% coaches.forEach(function(coach, index){ %>
-                    <section>
-                        <h2><%= coach.name %></h2>
-                        <p><%= coach.ig[0] %></p>
-                        <p><%= coach.ig[1] %></p>
-                        <p><%= coach.content %></p>
-                    </section>
-                <% })%>
-            </section>
-        </section>
         <section>
             <h2 class="title title--h2">Schrijf je in</h2>
             <%- include('../components/logo/logo'); %>
+            <p>Ben jij op zoek naar een krachtvereniging (en personal coaching) schrijf je nu in bij Westerkracht!</p>
             <a href="#" class="cta">Schrijf je in bij westerkracht</a>
 
         </section>

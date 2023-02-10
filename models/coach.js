@@ -21,6 +21,14 @@ const userSchema = new Schema({
     image: {
         type: String,
         required: true,
+    },
+    linkTitle: {
+        type: String,
+        required: true,
+    },
+    link: {
+        type: String,
+        required: true,
     }
 });
 

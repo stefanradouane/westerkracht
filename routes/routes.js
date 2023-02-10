@@ -34,15 +34,15 @@ router.get('/register', controller.control_register);
 router.post('/register', controller.control_registerpost);
 
 // ADMIN
-
-router.get('/admin', checkLogged, controller.control_admin);
+// Add checklogged middleware function
+router.get('/admin', controller.control_admin);
 router.post('/admin', checkLogged, controller.control_adminpost);
 
 router.get('/admin/login', checkNotLogged, controller.control_newadmin);
 router.post('/admin/login', checkNotLogged, passportConfig.login);
 
 router.get('/admin/gebruikers', checkLogged, controller.control_admin_gebruikers);
-router.get('/admin/coaches', checkLogged, controller.control_admin_coach);
+router.get('/admin/coaches', controller.control_admin_coach);
 
 // Add checklogged middleware function
 router.get('/admin/info', controller.control_admin_info);
@@ -53,9 +53,9 @@ router.get('/admin/hero', controller.control_admin_hero);
 
 
 
-router.post('/admin/coaches', checkLogged, controller.control_admin_coach_post);
 
 // Add checklogged middleware function
+router.post('/admin/coaches', controller.control_admin_coach_post);
 router.post('/admin/info', controller.control_admin_info_post);
 router.post('/admin/hero', controller.control_admin_hero_post);
 
@@ -69,5 +69,6 @@ router.get('/api', checkLogged, controller.control_api)
 router.get('/api/info', controller.control_api_info)
 router.get('/api/media', controller.control_api_media)
 router.get('/api/hero', controller.control_api_hero)
+router.get('/api/coaches', controller.control_api_coaches)
 
 module.exports = router;
