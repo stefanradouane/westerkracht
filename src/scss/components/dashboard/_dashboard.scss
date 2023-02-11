@@ -1,0 +1,39 @@
+.dashboard{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: auto 1fr;
+    gap: 1em;
+    
+    &__card{
+        background-color: white;
+        border-radius: 3px;
+        box-shadow: 2px 2px 5px $dark-grey-color;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &:first-of-type{
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        &:nth-of-type(2){
+            max-height: 475px;
+        }
+    
+        &:nth-of-type(3){
+            grid-column: 2;
+            grid-row: 1 / span 2;
+        }
+    }
+
+    
+    img{
+        display: block;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    
+}

@@ -71,4 +71,6 @@ router.get('/api/media', controller.control_api_media)
 router.get('/api/hero', controller.control_api_hero)
 router.get('/api/coaches', controller.control_api_coaches)
 
+router.delete('/logout', controller.control_logout);
+
 module.exports = router;

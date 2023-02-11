@@ -1,4 +1,5 @@
 .cta{
+    @include body;
     display: block;
     padding:17px 25px;
     background-color: $prim-color;

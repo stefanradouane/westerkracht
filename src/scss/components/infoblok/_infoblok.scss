@@ -6,14 +6,16 @@
 }
 
 .infoblok{
-    position: relative;
-    display: flex;
     @include responsive(flex-direction, column, row, column, column);
     @include responsive(max-width, 100%, 100%, 400px, 400px);
-
+    
     background-color: $dark-prim-color;
-    width: 100%;
+    box-shadow: 2px 2px 5px $dark-grey-color;
     color:$white-color;
+    display: flex;
+    position: relative;
+    width: 100%;
+
 
     @include tablet{
         display: grid;
@@ -45,8 +47,6 @@
     }
 
     &__info{
-        // @include body;
-        // @include body--big;
         width: 100%;
         padding:20px;
         display: flex;

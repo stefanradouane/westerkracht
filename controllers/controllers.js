@@ -1,4 +1,5 @@
-const createUser = require("../config/createUser");
+const createUser = require("../config/createUser")
+const logOut = require("../config/logOut")
 
 const User = require('../models/model');
 const Coach = require('../models/coach');
@@ -36,16 +37,19 @@ const control_index = async (req, res) => {
 };
 
 const control_admin = async (req, res) => {
+    const users = await User.find()
     const user = await User.findById(req.user)
-    res.render('pages/admin', {user});
+    const hero = await Hero.find()
+    const currenthero = hero[0]
+    res.render('pages/admin', {users, user, currenthero});
 };
 
 const control_admin_gebruikers = async (req, res) => {
+    const user = await User.findById(req.user)
     const users = await User.find()
-    console.log(users)
 
     try {
-        res.render('pages/admin/gebruikers', {users});
+        res.render('pages/admin/gebruikers', {user, users});
     } catch(err) {
         throw err
     }
@@ -226,10 +230,12 @@ const control_api_coaches = async (req, res) => {
     res.status(200).json(coaches)
 }
 
+const control_logout = logOut;
 
 
 module.exports = {
     control_index,
+    control_logout,
     control_api,
     control_api_media,
     control_api_info,

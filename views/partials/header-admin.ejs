@@ -1,17 +1,14 @@
-<header class="header">
-        <a href="/">
-            <%- include('../components/logo/logo'); %>
-        </a>
+<header class="header header--admin">
+    <% if (typeof user != "undefined") { %>
+     <p><%= user?.name %></p>
+    <% } %>
+    
+    <a href="/" class="cta" style="margin:0 10px 0 auto;">
+        Site bekijken
+    </a>
 
-        <a href="/admin" class="cta">
-            Terug naar admin
-        </a>
-
-        <a href="/" class="cta">
-            Site bekijken
-        </a>
-
-        <button>
-            Log uit -> werkt niet
-        </button>
+    
+    <form action="/logout?_method=DELETE" method="POST">
+        <button class="cta" type="submit">Log out →</button>
+    </form>
 </header>
