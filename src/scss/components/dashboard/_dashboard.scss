@@ -12,6 +12,7 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+        height: fit-content;
 
         &:first-of-type{
             grid-row: 1;
@@ -19,7 +20,7 @@
         }
 
         &:nth-of-type(2){
-            max-height: 475px;
+            // max-height: 475px;
         }
     
         &:nth-of-type(3){

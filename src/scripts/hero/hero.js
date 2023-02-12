@@ -12,23 +12,42 @@ const Hero = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [files, setFiles] = useState([]);
-    const [image, setImage] = useState([])
 
-    // Fetch data
+    // Fetch files
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(endpointHeroAPIget);
+
             const responseMedia = await fetch(endpointMediaAPIget);
-            if (!response.ok || !responseMedia.ok) {
+            if (!responseMedia.ok) {
+                throw new Error("Network response was not ok");
+            }
+            setFiles(await responseMedia.json())
+        }
+        fetchData()
+    }, [])
+
+    // Fetch hero
+    useEffect(() => {
+        const fetchData = async () => {
+
+            const response = await fetch(endpointHeroAPIget);
+            // const responseMedia = await fetch(endpointMediaAPIget);
+            if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             setData(await response.json())
-            setFiles(await responseMedia.json())
-            setLoading(false);
-        };
-    
-        fetchData();
-    }, []);
+        }
+
+        fetchData()
+    }, [files]);
+
+// 
+    // New hero image
+    useEffect(() => {
+        if(data != null) {
+            setLoading(false);        
+        }
+    }, [data]);
 
 
     if(loading){
@@ -47,25 +66,14 @@ const Hero = () => {
         )
 
         try{
-            const addItems = fetch(endpointHeroAPIpost, {
+            const response = await fetch(endpointHeroAPIpost, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newList),
             })
-
-            const fetchData = async () => {
-                const response = await fetch(endpointHeroAPIget);
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                setData(await response.json());
-                setLoading(false);
-
-            };
-
-            fetchData()
+            setData(await response.json())
               
         } catch (err) {
             console.log(err)
@@ -125,13 +133,13 @@ const Hero = () => {
 
     return (
         <form method="POST">
+            <input name="id" type="hidden" value={currentHero._id} />
+            <Image instance={currentHero} />
             <label className="control">
                 Info image
                 <span className="control__required">*</span>
                 <Options instance={currentHero} />
             </label>
-            <Image instance={currentHero} />
-            <input name="id" type="hidden" value={currentHero._id} />
             <button onClick={handleSubmitInfo} className="cta">Verander hero</button>
         </form>)
 }

@@ -10,6 +10,9 @@ const getFilesInDirectory = require('../config/fileList');
 const { upload } = require('../config/multer');
 
 
+const _ = require('underscore')
+
+
 const fs = require('fs')
 
 const signedIn = () => {
@@ -67,25 +70,23 @@ const control_admin_coach = async (req, res) => {
     }
 };
 
-const control_admin_coach_post = async (req, res) => {
-    console.log(req.body)
+const control_admin_coach_post = async (req, res) => {    
     const change = {
         name: req.body.name,
         ig: [req.body.igmain, req.body.iglift],
         content: req.body.content,
         image: req.body.image,
-        linkTitle: req.body.linkTitle,
         link: req.body.link,
+        linkTitle: req.body.linkTitle,
     }
-      
+
     try {
-        Coach.findByIdAndUpdate(req.body.id, change).exec(()=>{})
-        // res.redirect('/admin/info');
+        Coach.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
+            res.send(await Coach.find());
+        })    
     } catch(err) {
         throw err
     }
-
-
 };
 
 const control_admin_info = async (req, res) => {
@@ -99,14 +100,10 @@ const control_admin_info = async (req, res) => {
         } catch(err) {
             throw err
         }
-    })
-
-
-    
+    })    
 };
 
 const control_admin_info_post = async (req, res) => {
-    console.log(req.body)
     const change = {
         title: req.body.title,
         subtitle: req.body.subtitle,
@@ -114,21 +111,15 @@ const control_admin_info_post = async (req, res) => {
         image: req.body.image,
         linkTitle: req.body.linkTitle,
         link: req.body.link,
-    }
-
-    // console.log(change)
-
-
-    
+    } 
     
     try {
-        Info.findByIdAndUpdate(req.body.id, change).exec(()=>{})
-        // res.redirect('/admin/info');
+        Info.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
+            res.send(await Info.find());
+        }) 
     } catch(err) {
         throw err
     }
-
-
 };
 
 const control_admin_hero_post = async (req, res) => {
@@ -137,8 +128,10 @@ const control_admin_hero_post = async (req, res) => {
     }
     
     try {
-        Hero.findByIdAndUpdate(req.body.id, change).exec(()=>{})
-        // res.redirect('/admin/info');
+        Hero.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
+            res.send(await Hero.find());
+        }) 
+
     } catch(err) {
         throw err
     }

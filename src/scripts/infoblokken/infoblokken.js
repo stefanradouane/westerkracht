@@ -12,21 +12,37 @@ export const Infoblokken = () => {
     const [loading, setLoading] = useState(true);
     const [files, setFiles] = useState([]);
 
-    // Fetch data
+    // Fetch files
+    useEffect(() => {
+        const fetchData = async () => {
+
+            const responseMedia = await fetch(endpointMediaAPIget);
+            if (!responseMedia.ok) {
+                throw new Error("Network response was not ok");
+            }
+            setFiles(await responseMedia.json())
+        }
+        fetchData()
+    }, [])
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(endpointInfoAPIget);
-            const responseMedia = await fetch(endpointMediaAPIget);
-            if (!response.ok || !responseMedia.ok) {
+
+            if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             setData(await response.json())
-            setFiles(await responseMedia.json())
-            setLoading(false);
-        };
-    
-        fetchData();
-    }, []);
+        }
+
+        fetchData()
+    }, [files]);
+
+    useEffect(() => {
+        if(data != null) {
+            setLoading(false);        
+        }
+    }, [data]);
 
     if(loading){
         return <div>Loading...</div>
@@ -43,7 +59,7 @@ export const Infoblokken = () => {
         )
 
         try{
-            const addItems = fetch(endpointInfoAPIpost, {
+            const response = await fetch(endpointInfoAPIpost, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,17 +67,7 @@ export const Infoblokken = () => {
                 body: JSON.stringify(newList),
             })
 
-            const fetchData = async () => {
-                const response = await fetch(endpointInfoAPIget);
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                setData(await response.json());
-                setLoading(false);
-
-            };
-
-            fetchData()
+            setData(await response.json())
               
         } catch (err) {
             console.log(err)
@@ -114,9 +120,7 @@ export const Infoblokken = () => {
 
     }
 
-    const infoSections = data.map((instance, i)  => {
-        console.log(instance._id);
-
+    const infoSections = data.map((instance)  => {
         return (<form className="infoblok" method="POST" key={instance._id} >
                     <input type="hidden" name="id" value={instance._id}/>
                     <Image instance={instance} />
@@ -152,20 +156,12 @@ export const Infoblokken = () => {
                         </label>                      
                     </section>
 
-                    
-
-                    
                     <button className="cta" onClick={handleSubmitInfo}>Verander gegevens</button>
                 </form>
         )
     })
 
-    // console.log(data)
-
-    return (<section className="infoblokken">{infoSections}</section>)
-
-
-
+    return (<section className="infoblokken infoblokken--admin">{infoSections}</section>)
 }
 
 

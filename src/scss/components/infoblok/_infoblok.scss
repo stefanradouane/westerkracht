@@ -3,6 +3,24 @@
     display: flex;
     gap: 36px;
     justify-content: center;
+
+    &--admin{
+        justify-content: unset;
+        height: 100%;
+
+        @include laptop{
+            max-width: 100% !important;            
+        }
+
+        .infoblok{
+            height: 100%;
+
+            &__info{
+                height: 100%;
+                overflow: auto;   
+            }
+        }
+    }
 }
 
 .infoblok{
@@ -54,7 +72,7 @@
         grid-area: content;
         
         &--admin{
-            gap:20px;
+            gap:10px;
         }
     }
 
