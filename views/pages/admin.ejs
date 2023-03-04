@@ -14,51 +14,78 @@
         </section>
         <section class="admin__content">
             <% if (typeof user != "undefined") { %>
-                <%- include('../partials/header-admin', {user}); %>            
+            <%- include('../partials/header-admin', {user}); %>
             <% } %>
             <section class="admin__display">
                 <h2 class="title title--h2">Dashboard</h2>
                 <section class="dashboard">
                     <section class="dashboard__card">
                         <h3 class="title title--h3">Huidige Hero:</h3>
-                        <img src="<%= currenthero.fileUrl %>" alt="" srcset="">
-                    </section> 
+                        <img src="<%= currenthero.image %>" alt="" srcset="">
+                    </section>
                     <section class="dashboard__card">
                         <h3 class="title title--h3">Gebruikers</h3>
                         <section class="table-cover table-cover--small">
                             <table class="table">
                                 <tr class="table__head">
-                                    <th class="table__head-item table__head-item--name">Naam</th>        
-                                    <th class="table__head-item table__head-item--admin">Admin</th>        
+                                    <th class="table__head-item table__head-item--name">Naam</th>
+                                    <th class="table__head-item table__head-item--admin">Admin</th>
                                 </tr>
                                 <% users.forEach(function(user, index){ %>
-                                    <tr class="table__body">
-                                        <td class="table__body-item table__body-item--name"><%= user.name %></td>
-                                        <td class="table__body-item table__body-item--admin">
-                                            <% if (user.admin) { %>
-                                                ✅
-                                            <% } else { %>
-                                                ❌
-                                            <% } %>
-                                        </td>
-                                    </tr>
+                                <tr class="table__body">
+                                    <td class="table__body-item table__body-item--name"><%= user.name %></td>
+                                    <td class="table__body-item table__body-item--admin">
+                                        <% if (user.admin) { %>
+                                        ✅
+                                        <% } else { %>
+                                        ❌
+                                        <% } %>
+                                    </td>
+                                </tr>
                                 <% }) %>
                             </table>
-                        </section>  
-                    </section> 
+                        </section>
+                    </section>
                     <section class="dashboard__card">
                         <h3 class="title title--h3">Inbox</h3>
-                        <div style="width: 100%; height:300px; background:crimson;">
-                            Hier komt shi overzicht van bericht enzo
-                        </div>
-                    </section> 
-                </section> 
+                        <section class="inbox">
+                            <table class="table">
+                                <tr class="table__head">
+                                    <th class="table__head-item table__head-item--name">Naam</th>
+                                    <th class="table__head-item table__head-item--coach">Telefoon nr</th>
+                                    <th class="table__head-item table__head-item--coach">Coach</th>
+                                    <th class="table__head-item table__head-item--admin">Afgehandelt</th>
+                                </tr>
+                                <% inschrijvingen.forEach(function(inschrijving, index){ %>
+                                <tr class="table__body">
+                                    <td class="table__body-item table__body-item--name"><%= inschrijving.name %></td>
+                                    <td class="table__body-item table__body-item--name"><%= inschrijving.phone %></td>
+                                    <td class="table__body-item table__body-item--coach">
+                                        <% if (inschrijving.coach) { %>
+                                        <%= inschrijving.coach %>
+                                        <% } else { %>
+                                        ❌
+                                        <% } %>
+                                    </td>
+                                    <td class="table__body-item table__body-item--admin">
+                                        <% if (inschrijving.handled) { %>
+                                        ✅
+                                        <% } else { %>
+                                        ❌
+                                        <% } %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </table>
+                        </section>
+                    </section>
+                </section>
             </section>
         </section>
 
         </section>
     </main>
-    
+
     <script src="../dist/scripts/main.js"></script>
 </body>
 

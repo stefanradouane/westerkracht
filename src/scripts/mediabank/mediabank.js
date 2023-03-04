@@ -88,12 +88,12 @@ export const Mediabank = () => {
         fetchData();
     }, []);
 
-
+    
     if (loading) {
-        return <CircularProgress />;
+        return (<CircularProgress/>);
     }
-
-
+    
+    
     const rows = data.map((file, index) => {
         const { fileBase, fileName, fileType, fileUrl } = file;
         return { 
@@ -177,12 +177,12 @@ export const Mediabank = () => {
 
     return (
         <section className="mediabank">
-            <section className="datagrid" style={{height: 'calc(100vh - 300px)', width: '100%'}}>
+            <section className="datagrid">
                 {Datagrid()}
             </section>
 
             <footer className="mediabank__footer">
-                <h2 className="title title--h2">Bestand toevoegen aan de site</h2>
+                <h3 className="title title--h3">Bestand toevoegen aan de site</h3>
 
                 <form method="POST" className="mediabank-form" encType="multipart/form-data" onSubmit={handleSubmit} id="fileForm">
 

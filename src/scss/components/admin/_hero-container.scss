@@ -1,0 +1,23 @@
+.hero-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+
+
+
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+
+        // flex-wrap: wrap;
+        // ustify-content: space-between;
+        // align-items: baseline;
+        // max-width: 600px;
+
+        .cta{
+            align-self: flex-end;
+        }
+    }
+}

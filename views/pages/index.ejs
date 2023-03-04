@@ -5,7 +5,7 @@
     <%- include('../partials/head'); %>
 </head>
 
-<body class="index">
+<body>
     <%- include('../partials/header'); %>
     
     <main class="page">
@@ -13,9 +13,9 @@
             <section class="hero__content">
                 <h1 class="title title--h1 title--white">Westerkracht</h1>
                 <%- include('../components/logo/logo'); %>
-                <a class="cta" href="#">Schrijf je in bij westerkracht</a>
+                <a class="cta" href="<%= useHero.link %>"><%= useHero.linkTitle %></a>
             </section>
-            <img class="hero__image hero__image--light" src="<%= useHero.fileUrl %>">
+            <img class="hero__image hero__image--light" src="<%= useHero.image %>">
         </section>
 
         <section class="content">
@@ -81,7 +81,7 @@
     </main>
 
     <%- include('../partials/footer'); %>
-    <script type="module" src="./dist/scripts/all.js"></script>
+    <script type="module" src="./dist/scripts/main.js"></script>
 </body>
 
 </html>

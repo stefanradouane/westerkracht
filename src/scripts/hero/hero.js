@@ -53,6 +53,7 @@ const Hero = () => {
     if(loading){
         return <div>Loading...</div>
     }
+    console.log(data)
     const currentHero = data[0]
 
 
@@ -83,22 +84,23 @@ const Hero = () => {
 
 
     const Image = ({instance}) => {
-        const imageUrl = files.filter(file => file.fileUrl == instance.fileUrl).map(file => {
-            return file.fileUrl == instance.fileUrl ? file.fileUrl : null;
+        console.log(files)
+        const imageUrl = files.filter(file => file.fileUrl == instance.image).map(file => {
+            return file.fileUrl == instance.image ? file.image : null;
         })
 
         if(imageUrl.length == 0) {
             return <p>Geen foto geselecteerd</p>
         } else {
-            return (<img width="100%" src={instance.fileUrl}/>)
+            return (<img width="100%" src={instance.image}/>)
         }
 
     }
 
 
     const Options = ({ instance }) => {
-        const defaultValue = files.filter(file => file.fileUrl == instance.fileUrl).map(file => {
-            return file.fileUrl == instance.fileUrl ? file.fileUrl : null;
+        const defaultValue = files.filter(file => file.fileUrl == instance.image).map(file => {
+            return file.fileUrl == instance.image ? file.fileUrl : null;
         })
 
         const usedValue = defaultValue.length == 0 ? "Selecteer een foto" : defaultValue;
@@ -125,23 +127,35 @@ const Hero = () => {
         } 
 
         return (
-            <select className="control__input" name="fileUrl" defaultValue={usedValue.toString()}>
+            <select className="control__input" name="image" defaultValue={usedValue.toString()}>
                 <OptionList/>
             </select>
         )
     }
 
-    return (
-        <form method="POST">
-            <input name="id" type="hidden" value={currentHero._id} />
-            <Image instance={currentHero} />
-            <label className="control">
-                Info image
-                <span className="control__required">*</span>
-                <Options instance={currentHero} />
-            </label>
-            <button onClick={handleSubmitInfo} className="cta">Verander hero</button>
-        </form>)
+    return data.map(instance => {
+        return (
+            <form method="POST">
+                <h3 className="title title--h3">{instance.name}</h3>
+                <input name="id" type="hidden" value={instance._id} />
+                <Image instance={instance} />
+                <label className="control">
+                    Hero image
+                    <span className="control__required">*</span>
+                    <Options instance={instance} />
+                </label>
+                <label className="control">
+                    Link
+                    <span className="control__required">*</span>
+                    <input className="control__input" type="text" name="linkTitle" defaultValue={instance.linkTitle}/>
+                    <input className="control__input" type="text" name="link" defaultValue={instance.link} placeholder="Link met een '#' of een '/'"/>
+                </label> 
+
+                <button onClick={handleSubmitInfo} className="cta">Verander hero</button>
+            </form>)
+    })
+
+    
 }
 
 

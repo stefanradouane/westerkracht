@@ -1,4 +1,13 @@
 .mediabank{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &-container{
+        box-shadow: 2px 2px 5px $dark-grey-color;
+        border-radius: 5px;
+    }
+
     &__footer{
         background-color: #e5e5e5;
         display: flex;
@@ -8,13 +17,13 @@
         border-radius: 0 0 5px 5px;
         border: 1px solid rgba(224, 224, 224, 1);
         border-top: none;
-
+        max-height: 200px;
     }
     
     
     &-form{
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
 
         &__section{
             max-width: 400px;
@@ -79,6 +88,8 @@
 
             }
         }
+
+        // &__display
     }
 
 }

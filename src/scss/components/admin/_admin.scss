@@ -38,19 +38,6 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d + $padd
             margin-top: 1em;
             overflow: hidden;
         }
-
-        .hero-container > form{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            max-width: 600px;
-            gap:20px;
-
-            .cta{
-                align-self: flex-end;
-            }
-        }
     }
 
     &__sidebar{

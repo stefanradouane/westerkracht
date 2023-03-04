@@ -14,14 +14,16 @@
         </section>
         <section class="admin__content">
             <% if (typeof user != "undefined") { %>
-            <%- include('../../partials/header-admin', {user:user}); %>            
+            <%- include('../../partials/header-admin', {user:user}); %>
             <% } else { %>
-                <%- include('../../partials/header-admin', {user:undefined}); %>            
+            <%- include('../../partials/header-admin', {user:undefined}); %>
             <% } %>
             <section class="admin__display">
                 <h2 class="title title--h2">Mediabank</h2>
-                <section class="mediabank-container"></section>   
-            </section> 
+                <p><em>TO DO: back-end handle & verwijderen</em></p>
+
+                <section class="mediabank-container"></section>
+            </section>
         </section>
     </main>
 

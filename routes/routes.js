@@ -10,18 +10,20 @@ const passport = require('passport');
 
 const User = require('../models/model');
 
-const { upload } = require('../config/multer');
+const {
+  upload
+} = require('../config/multer');
 
 passportConfig.initialize2(
-    passport,
-    async (email) =>
-      await User.findOne({
-        email,
-      }),
+  passport,
+  async (email) =>
+    await User.findOne({
+      email,
+    }),
     (id) => id
 );
 
-express().use( express.json() )
+express().use(express.json())
 
 
 
@@ -30,23 +32,26 @@ const checkNotLogged = passportConfig.checkNotAuthenticated;
 
 
 router.get('/', controller.control_index);
+router.get('/inschrijven', controller.control_inschrijven);
+router.post('/inschrijven', controller.control_post_inschrijven);
 router.get('/register', controller.control_register);
 router.post('/register', controller.control_registerpost);
 
 // ADMIN
 // Add checklogged middleware function
 router.get('/admin', controller.control_admin);
-router.post('/admin', checkLogged, controller.control_adminpost);
+router.post('/admin', controller.control_adminpost);
 
 router.get('/admin/login', checkNotLogged, controller.control_newadmin);
 router.post('/admin/login', checkNotLogged, passportConfig.login);
 
-router.get('/admin/gebruikers', checkLogged, controller.control_admin_gebruikers);
+router.get('/admin/gebruikers', controller.control_admin_gebruikers);
+router.get('/admin/inschrijvingen', controller.control_admin_inschrijvingen);
 router.get('/admin/coaches', controller.control_admin_coach);
 
 // Add checklogged middleware function
 router.get('/admin/info', controller.control_admin_info);
-router.get('/admin/media', checkLogged, controller.control_admin_media);
+router.get('/admin/media', controller.control_admin_media);
 router.get('/admin/hero', controller.control_admin_hero);
 
 
@@ -59,7 +64,7 @@ router.post('/admin/coaches', controller.control_admin_coach_post);
 router.post('/admin/info', controller.control_admin_info_post);
 router.post('/admin/hero', controller.control_admin_hero_post);
 
-router.post('/admin/media', checkLogged, upload.single('img'), controller.control_admin_media_post);
+router.post('/admin/media', upload.single('img'), controller.control_admin_media_post);
 
 
 

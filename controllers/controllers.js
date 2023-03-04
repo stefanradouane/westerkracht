@@ -6,26 +6,29 @@ const Coach = require('../models/coach');
 const Info = require('../models/info');
 const Hero = require('../models/hero');
 const getFilesInDirectory = require('../config/fileList');
+const Inschrijving = require("../models/inschrijving");
 
-const { upload } = require('../config/multer');
+const {
+    upload
+} = require('../config/multer');
 
 
 const _ = require('underscore')
 
 
-const fs = require('fs')
+const fs = require('fs');
 
 const signedIn = () => {
-    return false   
+    return false
 }
 
 let newAccount = false;
 
 const isNewAccount = () => {
-    if(newAccount){
+    if (newAccount) {
         return newAccount;
     }
-    return false   
+    return false
 }
 
 
@@ -36,15 +39,58 @@ const control_index = async (req, res) => {
     const hero = await Hero.find()
     const useHero = hero[0]
 
-    res.render('pages/index', {infos, coaches, user, useHero});
+    res.render('pages/index', {
+        infos,
+        coaches,
+        user,
+        useHero
+    });
 };
+
+const control_inschrijven = async (req, res) => {
+    const coaches = await Coach.find()
+
+    res.render('pages/inschrijven', {
+        coaches,
+    });
+};
+
+const control_post_inschrijven = async (req, res) => {
+    const now = new Intl.DateTimeFormat('nl-NL', {
+        dateStyle: 'short',
+        timeStyle: 'short'
+    }).format(Date.now());
+
+    const object = {
+        "name": req.body.name,
+        "email": req.body.email,
+        "age": req.body.age,
+        "phone": req.body.phone,
+        "coach": req.body.coach ? req.body.coach : null,
+        "content": req.body.content,
+        "date": now,
+        "handled": false,
+    }
+    console.log(req.body)
+
+    const newUser = await Inschrijving.create(object)
+    res.redirect('/inschrijven');
+};
+
+
 
 const control_admin = async (req, res) => {
     const users = await User.find()
     const user = await User.findById(req.user)
     const hero = await Hero.find()
+    const inschrijvingen = await Inschrijving.find()
     const currenthero = hero[0]
-    res.render('pages/admin', {users, user, currenthero});
+    res.render('pages/admin', {
+        users,
+        user,
+        currenthero,
+        inschrijvingen
+    });
 };
 
 const control_admin_gebruikers = async (req, res) => {
@@ -52,8 +98,26 @@ const control_admin_gebruikers = async (req, res) => {
     const users = await User.find()
 
     try {
-        res.render('pages/admin/gebruikers', {user, users});
-    } catch(err) {
+        res.render('pages/admin/gebruikers', {
+            user,
+            users
+        });
+    } catch (err) {
+        throw err
+    }
+
+};
+
+const control_admin_inschrijvingen = async (req, res) => {
+    const user = await User.findById(req.user)
+    const users = await Inschrijving.find()
+
+    try {
+        res.render('pages/admin/inschrijvingen', {
+            user,
+            users
+        });
+    } catch (err) {
         throw err
     }
 
@@ -64,13 +128,15 @@ const control_admin_coach = async (req, res) => {
     // console.log(coaches)
 
     try {
-        res.render('pages/admin/coaches', {coaches});
-    } catch(err) {
+        res.render('pages/admin/coaches', {
+            coaches
+        });
+    } catch (err) {
         throw err
     }
 };
 
-const control_admin_coach_post = async (req, res) => {    
+const control_admin_coach_post = async (req, res) => {
     const change = {
         name: req.body.name,
         ig: [req.body.igmain, req.body.iglift],
@@ -80,12 +146,29 @@ const control_admin_coach_post = async (req, res) => {
         linkTitle: req.body.linkTitle,
     }
 
-    try {
-        Coach.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
-            res.send(await Coach.find());
-        })    
-    } catch(err) {
-        throw err
+    if(req.body.new){
+        try {
+            await Coach.create(change).then(async (data) => {
+                console.log(data)
+                res.send(await Coach.find())
+
+            })
+        } catch (error) {
+            throw error
+        }
+
+    } else {
+        try {
+            Coach.findOneAndUpdate({
+                _id: req.body.id
+            }, change, {
+                new: true
+            }).exec(async () => {
+                res.send(await Coach.find());
+            })
+        } catch (err) {
+            throw err
+        }
     }
 };
 
@@ -96,11 +179,14 @@ const control_admin_info = async (req, res) => {
         files = data
 
         try {
-            res.render('pages/admin/info', {info, files});
-        } catch(err) {
+            res.render('pages/admin/info', {
+                info,
+                files
+            });
+        } catch (err) {
             throw err
         }
-    })    
+    })
 };
 
 const control_admin_info_post = async (req, res) => {
@@ -111,28 +197,47 @@ const control_admin_info_post = async (req, res) => {
         image: req.body.image,
         linkTitle: req.body.linkTitle,
         link: req.body.link,
-    } 
-    
+    }
+
     try {
-        Info.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
+        Info.findOneAndUpdate({
+            _id: req.body.id
+        }, change, {
+            new: true
+        }).exec(async () => {
             res.send(await Info.find());
-        }) 
-    } catch(err) {
+        })
+    } catch (err) {
         throw err
     }
 };
 
 const control_admin_hero_post = async (req, res) => {
+    console.log(req.body)
     const change = {
-        fileUrl: req.body.fileUrl,
+        image: req.body.fileUrl,
     }
-    
-    try {
-        Hero.findOneAndUpdate({_id: req.body.id}, change, {new: true}).exec( async () => {
-            res.send(await Hero.find());
-        }) 
 
-    } catch(err) {
+    // try{
+    //     Hero.create({
+    //         "name":"hero-light",
+    //         "image":"../assets/jack-hero.png",
+    //         "link": "/inschrijven",
+    //         "linkTitle":"Inschrijven",
+    //     })
+    // }
+
+    try {
+        Hero.findOneAndUpdate({
+            _id: req.body.id
+        }, req.body , {
+            new: true
+        }).exec(async () => {
+            res.send(await Hero.find());
+        })
+
+    }
+     catch (err) {
         throw err
     }
 
@@ -149,22 +254,25 @@ const control_admin_hero = async (req, res) => {
     const title = "Test";
     const fileType = "image";
     const fileUrl = "../assets/image";
-    const fileOptions = {"options": "test", "opties": "testjes"};
-    
+    const fileOptions = {
+        "options": "test",
+        "opties": "testjes"
+    };
+
     res.render('pages/admin/hero');
 };
 
 const control_admin_media_post = async (req, res) => {
     console.log(req)
-    if(req.body.fileBase){
+    if (req.body.fileBase) {
 
-    fs.unlink('./public/assets/images/' + req.body.fileBase, (err) => {
-        if (err) {
-            res.status(500).send({
-            message: "Could not delete the file. " + err,
-            });
-        }
-    })
+        fs.unlink('./public/assets/images/' + req.body.fileBase, (err) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Could not delete the file. " + err,
+                });
+            }
+        })
     }
 
 };
@@ -228,6 +336,9 @@ const control_logout = logOut;
 
 module.exports = {
     control_index,
+    control_inschrijven,
+    control_post_inschrijven,
+    control_admin_inschrijvingen,
     control_logout,
     control_api,
     control_api_media,
