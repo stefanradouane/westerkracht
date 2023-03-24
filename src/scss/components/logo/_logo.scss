@@ -1,4 +1,13 @@
 .logo{
   fill: currentColor;
   width:51px; 
+  display: block;
+
+  &--medium{
+    @include responsive(width, 50px, 55px, 60px);
+  }
+
+  &--large{
+    @include responsive(width, 112px, 130px, 148px);
+  }
 }

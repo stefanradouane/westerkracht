@@ -2,14 +2,24 @@
     <section class="footer__content">
         <section class="footer__coaches">
             <h3 class="title title--h3">Meet the team</h3>
-
+            <p>Bekijk het team van Westerkracht</p>
+            <section class="footer__coaches-images">
+            <% coaches.forEach(coach => { %>
+                <img class="footer__coaches-image" src="<%- coach.image %>" alt="" srcset="">
+                    <!-- <section class="form__coach"> -->
+                        <!-- <input class="control__input control__input--check" type="checkbox" name="coach" value="<%- coach.name %>" style="background-image: url('')" data-name="<%- coach.name %>"> -->
+                    <!-- </section> -->
+                <% }) %>
+            </section>
+            <a href="/#coaches" class="cta">Bekijk de caoches</a>
         </section>
         <section class="footer__redirect">
             <h3 class="title title--h3">Ga direct naar</h3>
             <a href="#" class="footer__redirect-link">
                 <svg class="icon icon--social" viewBox="0 0 39 39" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 39C30.2696 39 39 30.2696 39 19.5C39 8.73045 30.2696 0 19.5 0C8.73045 0 0 8.73045 0 19.5C0 30.2696 8.73045 39 19.5 39ZM12 15.8611C12 13.7094 13.7039 12 15.7632 12H23.3843C25.4436 12 27.1475 13.7094 27.1475 15.8611V23.6389C27.1475 25.7906 25.4436 27.5 23.3843 27.5H15.7632C13.7039 27.5 12 25.7906 12 23.6389V15.8611ZM15.7632 10C12.5612 10 10 12.6434 10 15.8611V23.6389C10 26.8566 12.5612 29.5 15.7632 29.5H23.3843C26.5863 29.5 29.1475 26.8566 29.1475 23.6389V15.8611C29.1475 12.6434 26.5863 10 23.3843 10H15.7632ZM14.7617 19.7502C14.7617 17.0694 16.8964 14.8613 19.5723 14.8613C22.2481 14.8613 24.3828 17.0694 24.3828 19.7502C24.3828 22.431 22.2481 24.6391 19.5723 24.6391C16.8964 24.6391 14.7617 22.431 14.7617 19.7502ZM19.5723 16.8613C18.0391 16.8613 16.7617 18.1354 16.7617 19.7502C16.7617 21.365 18.0391 22.6391 19.5723 22.6391C21.1054 22.6391 22.3828 21.365 22.3828 19.7502C22.3828 18.1355 21.1054 16.8613 19.5723 16.8613ZM25.5895 15.0443C25.9446 14.6212 25.8895 13.9905 25.4664 13.6354C25.0434 13.2804 24.4126 13.3355 24.0576 13.7585L24.0485 13.7693C23.6935 14.1923 23.7486 14.8231 24.1716 15.1782C24.5946 15.5332 25.2254 15.4781 25.5804 15.0551L25.5895 15.0443Z"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 39C30.2696 39 39 30.2696 39 19.5C39 8.73045 30.2696 0 19.5 0C8.73045 0 0 8.73045 0 19.5C0 30.2696 8.73045 39 19.5 39ZM22 9H25V13.4H22C21.7348 13.4 21.4804 13.5159 21.2929 13.7222C21.1054 13.9285 21 14.2083 21 14.5V17.8H25L24 22.2H21V31H17V22.2H14V17.8H17V14.5C17 13.0413 17.5268 11.6424 18.4645 10.6109C19.4021 9.57946 20.6739 9 22 9Z"/>
                 </svg>
+                    
                 westerkracht
             </a>
             <a href="#" class="footer__redirect-link">
@@ -23,14 +33,13 @@
             <h3 class="title title--h3">Schrijf je nu in</h3>
             <p>Schrijf je in als lid of voor de personal coaching</p>
             <a href="#" class="cta">Inschrijven bij Westerkracht</a>
-
         </section>
 
     </section>
     
     <section class="footer__branding">
         <section class="footer__branding-content">
-            <%- include('../components/logo/logo'); %>
+            <%- include('../components/logo/logo', {size: "small"}); %>
             <h2 class="title title--h2">Westerkracht</h2>
         </section>
     </section>

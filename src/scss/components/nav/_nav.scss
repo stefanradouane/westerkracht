@@ -1,7 +1,11 @@
 .nav{
-    // display: flex;
+    @include hide-on-mobile;
+    display: flex;
+    align-items: center;
+    height: 100%;
     
     &__list{
+        height: 100%;
         display: flex;
         align-items: center;
         gap: 30px;
@@ -9,8 +13,22 @@
         &-item{
             color: white;
             font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-top: 6px solid transparent;
+
+            &--active{
+                border-top: 6px solid $white-color;
+            }
+        
+            a{
+                @include responsive(font-size, 12px, 14px, 16px, 18px);
+                @include responsive(line-height, 20px,22px,24px,26px);
+                text-transform: uppercase;
+                text-decoration: none;
+            }
         }
     }
 
-    @include hide-on-mobile;
 }

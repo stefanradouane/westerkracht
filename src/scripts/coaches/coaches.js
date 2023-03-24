@@ -62,6 +62,7 @@ export const Infoblokken = () => {
     const addCoach = async (e) => {
         e.preventDefault()
         const body = form.parseToBody(e.target.form);
+        console.log(body)
         const notifcation = document.querySelector(".cm-block__notification--new")
         
         if(body.invalid) {

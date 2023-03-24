@@ -1,9 +1,10 @@
 .infoblokken{
     @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
+    @include responsive(gap, 15px, 20px, 20px, 36px);
     display: flex;
-    gap: 36px;
     justify-content: center;
     position: relative;
+
 
     &--admin{
         justify-content: unset;
@@ -53,7 +54,11 @@
     position: relative;
     width: 100%;
 
+    @include breakpoint($min: 450px){
+        width: calc(50% - 7.5px);
+    }
 
+    
     @include tablet{
         display: grid;
         grid-template-columns: auto 1fr;
@@ -61,6 +66,17 @@
         grid-template-areas: 
         "image content"
         "image link";
+        width: 100%;
+    }
+    &--coach{
+        @include tablet{
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-areas: 
+            "content image"
+            "link image";
+        }
+
     }
 
     @include laptop{

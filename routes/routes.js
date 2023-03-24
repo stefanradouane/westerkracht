@@ -34,6 +34,8 @@ const checkNotLogged = passportConfig.checkNotAuthenticated;
 router.get('/', controller.control_index);
 router.get('/inschrijven', controller.control_inschrijven);
 router.post('/inschrijven', controller.control_post_inschrijven);
+router.get('/contact', controller.control_contact);
+router.post('/contact', controller.control_post_contact);
 router.get('/register', controller.control_register);
 router.post('/register', controller.control_registerpost);
 

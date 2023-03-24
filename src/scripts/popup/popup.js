@@ -11,7 +11,7 @@ export function popUp (e) {
         // Open popup
         case "open":
             console.log("open")
-            currentPopup.style.display = "block"
+            currentPopup.style.display = "flex"
             break;
         // Close popup
         case "close":

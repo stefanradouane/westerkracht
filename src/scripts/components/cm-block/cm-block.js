@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {Image} from '../../components/image/image'
 import {Options} from '../../components/optionlist/optionlist'
@@ -7,6 +7,7 @@ import {popUp} from '../../popup/popup'
 
 
 export const CM_Block = (props) => {
+    const [image, setImage] = useState(props.instance.image)
     const dataValue = props.instance.name ? props.instance.name : "New";
     const dataId = props.instance._id ? props.instance._id : "New";
     const dataName = props.instance.name ? props.instance.name : "new";
@@ -24,10 +25,7 @@ export const CM_Block = (props) => {
             <input type="hidden" name={method} value={dataId} required/>
                 <section className="cm-block__grid">
                         <section className="cm-block__grid-img">
-                        {props?.instance?.image
-                            ? <Image files={props.files} instance={props?.instance} />
-                            : <h1 className="title title--h1">NEW</h1>
-                        }
+                        <Image files={props.files} image={image} />
                         </section>
                         <section className="cm-block__grid-info">
                             <label className="control" htmlFor="name">
@@ -42,10 +40,7 @@ export const CM_Block = (props) => {
                                     Coach image
                                     <span className="control__required">*</span>
                                 </span>
-                                {props?.instance?.image
-                                    ? <Options files={props.files} instance={props.instance} />
-                                    : <p>options</p>
-                                }
+                                <Options files={props.files} instance={props.instance} imageOptions={{image, setImage}} />
                             </label>
 
                             <label className="control control--insta" htmlFor="igmain">
@@ -82,9 +77,11 @@ export const CM_Block = (props) => {
                             <button className="cta" onClick={props.next ? props.next : popUp} value="open" role="button" data-name={props.instance?.name}>Verwijder coach😧</button>
                         </section>
                         <section className="cm-block__grid-popup" data-name={props.instance?.name}>
-                            <p>Weet je zeker dat je <span>{props.instance?.name}</span> wilt verwijderen</p>
-                            <button onClick={popUp} value="close" data-name={props.instance?.name}>Annuleer</button>
-                            <button onClick={popUp} value="remove" data-name={props.instance?.name}>Ja ik wil {props.instance?.name} verwijderen</button>
+                            <h2 className='title title--h2'>Weet je zeker dat je <span>{props.instance?.name}</span> wilt verwijderen</h2>
+                            <section>
+                            <button className='cta' onClick={popUp} value="close" data-name={props.instance?.name}>Annuleer</button>
+                            <button className='cta' onClick={popUp} value="remove" data-name={props.instance?.name}>Ja ik wil {props.instance?.name} verwijderen</button>
+                            </section>
                         </section>
                     </section>
         </form>

@@ -55,6 +55,14 @@ const control_inschrijven = async (req, res) => {
     });
 };
 
+const control_contact = async (req, res) => {
+    const coaches = await Coach.find()
+
+    res.render('pages/contact', {
+        coaches,
+    });
+};
+
 const control_post_inschrijven = async (req, res) => {
     const now = new Intl.DateTimeFormat('nl-NL', {
         dateStyle: 'short',
@@ -74,6 +82,28 @@ const control_post_inschrijven = async (req, res) => {
     console.log(req.body)
 
     const newUser = await Inschrijving.create(object)
+    res.redirect('/inschrijven');
+};
+
+const control_post_contact = async (req, res) => {
+    // const now = new Intl.DateTimeFormat('nl-NL', {
+    //     dateStyle: 'short',
+    //     timeStyle: 'short'
+    // }).format(Date.now());
+
+    // const object = {
+    //     "name": req.body.name,
+    //     "email": req.body.email,
+    //     "age": req.body.age,
+    //     "phone": req.body.phone,
+    //     "coach": req.body.coach ? req.body.coach : null,
+    //     "content": req.body.content,
+    //     "date": now,
+    //     "handled": false,
+    // }
+    // console.log(req.body)
+
+    // const newUser = await Inschrijving.create(object)
     res.redirect('/inschrijven');
 };
 
@@ -337,6 +367,8 @@ const control_logout = logOut;
 module.exports = {
     control_index,
     control_inschrijven,
+    control_contact,
+    control_post_contact,
     control_post_inschrijven,
     control_admin_inschrijvingen,
     control_logout,

@@ -8,18 +8,18 @@
 <body>
     <%- include('../partials/header'); %>
     
-    <main class="page">
+    <main class="page" id="top">
         <section class="hero">
             <section class="hero__content">
-                <h1 class="title title--h1 title--white">Westerkracht</h1>
-                <%- include('../components/logo/logo'); %>
-                <a class="cta" href="<%= useHero.link %>"><%= useHero.linkTitle %></a>
+                <h1 class="title title--h1">Westerkracht</h1>
+                <%- include('../components/logo/logo', {size: "large"}); %>
+                <a class="cta cta--home" href="<%= useHero.link %>"><%= useHero.linkTitle %></a>
             </section>
             <img class="hero__image hero__image--light" src="<%= useHero.image %>">
         </section>
 
         <section class="content">
-            <section class="content__section content__section__info">
+            <section class="content__section content__section__info" id="westerkracht">
                 <h2 class="title title--h2">Wat is wersterkracht</h2>
                 <section class="infoblokken">
                     <% infos.forEach(function(info, index){ %>
@@ -39,7 +39,7 @@
             <section class="content__section content__section--coaches">
                 <h2 class="title title--h2 title--margin">De coaches</h2>
 
-                <section class="infoblokken">
+                <section class="infoblokken" id="coaches">
                     <% coaches.forEach(function(coach, index){ %>
                         <section class="infoblok infoblok--coach">
                             <h3 class="title title--tag">coach</h3>
@@ -72,11 +72,11 @@
 
         <section class="content__section content__section--inschrijven">
             <section>
-                <%- include('../components/logo/logo'); %>
+                <%- include('../components/logo/logo', {size: "medium"}); %>
                 <h2 class="title title--h2">Schrijf je in</h2>
             </section>
                 <p>Ben jij op zoek naar een krachtvereniging (en personal coaching) schrijf je nu in bij Westerkracht!</p>
-                <a href="#" class="cta">Schrijf je in bij westerkracht</a>
+                <a href="/inschrijven" class="cta">Schrijf je in bij westerkracht</a>
         </section>
     </main>
 

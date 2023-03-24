@@ -1,6 +1,6 @@
 .form{
     @include responsive(padding, 16px 20px 16px 16px, 16px 20px 16px, 20px 40px, 42px 84px);
-    @include responsive(width, fit-content, fit-content, 500px, 600px);
+    @include responsive(width, 500px, 500px, 500px, 600px);
     // @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
     // margin-top: 10px;
     // padding: 16px;

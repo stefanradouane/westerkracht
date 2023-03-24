@@ -81,20 +81,46 @@
         &-controls{
             position: relative;
             grid-area: controls;
-            // background-color: red;
+            height: fit-content;
+            flex-wrap: wrap;
             display: flex;
-            align-items: flex-end;
+            align-self: flex-end;
             gap: 10px;
             justify-content: flex-end;
+
+            p{
+                opacity: 0;
+                width: 100%;
+                text-align: right;
+            }
         }
         
         &-popup{
             display: none;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: $dark-grey-color;
+            top: 0;
+            left: 0;
+            // transform: translate(-50%, -50%);
+            background-color: rgba($dark-grey, .9);
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+            section{
+                display: flex;
+                gap: 10px;
+
+                button{
+                    appearance: none;
+                }
+            }
+
+            h2{
+                color: $white-color;
+            }
+
         }
     }
 }

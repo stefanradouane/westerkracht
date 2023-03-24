@@ -1,6 +1,6 @@
 .footer{
-    background-color: $grey-color;
     @include responsive(padding-top,16px, 42px, 42px, 42px);
+    border-top: 1px solid $grey-color;
     
     &__content{
         @include responsive(padding,0 16px, 0 42px, 0 42px, 0 84px);
@@ -18,7 +18,7 @@
         }
 
 
-        section{
+        > section{
             width: 100%;
             @include breakpoint(650px){
                 width: calc(50% - 12px);
@@ -52,5 +52,27 @@
             display: flex;
             gap: 20px;
         }
+    }
+
+    &__coaches{
+
+        &-images{
+            display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    gap: 10px;
+    max-width: 380px;
+        }
+
+        &-image{
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: relative;
+    border: none;
+    object-fit: cover;
+    padding: 0;
+    width: 100%;
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 .page{
-    @include responsive(padding, 0 16px, 0 42px, 0 42px, 0 84px);
+    @include padding-lay-out;
     max-width: 1440px;
     margin: auto;
 

@@ -1,0 +1,3 @@
+@mixin padding-lay-out {
+    @include responsive(padding, 0 $padding-mobile, 0 $padding-tablet, 0 $padding-laptop, 0 $padding-desktop);
+}

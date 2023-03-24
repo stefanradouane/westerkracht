@@ -23,6 +23,7 @@ class Api {
         }
 
         const data = response.json()
+        console.log(data)
         return data
     }
 }

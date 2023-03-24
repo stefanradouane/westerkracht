@@ -6,7 +6,9 @@
     
     &--h1{
         @include h1;
-        color: $prim-color;
+        // color: $prim-color;
+    color: currentColor;
+
     }
 
     &--h2{
@@ -17,7 +19,6 @@
         @include h3;
         text-transform:lowercase;
         color: inherit;
-
 
         &::first-letter{
             text-transform: uppercase;

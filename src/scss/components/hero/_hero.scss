@@ -43,15 +43,14 @@ $header-height:70px;
         justify-content: center;
         z-index: 1;
         gap: 10px;
-
-        .logo{
-            fill:$white-color;
-            order: -1;
-            width: 148px!important;
-        }
+        // padding: 16px;
 
         .cta{
             margin-top:40px;
+        }
+
+        .logo{
+            order: -1;
         }
     }
 
@@ -61,9 +60,5 @@ $header-height:70px;
         object-fit: cover;
         height: 100%;
         width: 100%;
-    }
-
-    
-
-    
+    }  
 }
