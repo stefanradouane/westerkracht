@@ -140,13 +140,17 @@ const Hero = () => {
                 <input name="id" type="hidden" value={instance._id} />
                 <Image instance={instance} />
                 <label className="control">
-                    Hero image
-                    <span className="control__required">*</span>
+                    <span>
+                        Hero image
+                        <span className="control__required">*</span>
+                    </span>
                     <Options instance={instance} />
                 </label>
                 <label className="control">
-                    Link
-                    <span className="control__required">*</span>
+                    <span>
+                        Link
+                        <span className="control__required">*</span>
+                    </span>
                     <input className="control__input" type="text" name="linkTitle" defaultValue={instance.linkTitle}/>
                     <input className="control__input" type="text" name="link" defaultValue={instance.link} placeholder="Link met een '#' of een '/'"/>
                 </label> 

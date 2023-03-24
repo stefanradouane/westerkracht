@@ -3,6 +3,12 @@
     display:flex;
     flex-wrap:wrap;
     gap:10px 4px;
+    
+    span:not(span > span){
+      display: flex;
+      gap: 4px;
+      width: 100%;
+    }
 
     &--check span{
       width: 100%;
@@ -14,6 +20,7 @@
       font-size:16px;
       padding:12px;
       border:none;
+      // line-height: 20px;
       //   Change color
       border-bottom:3px solid #610326;
       //   Change color

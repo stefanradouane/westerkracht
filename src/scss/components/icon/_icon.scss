@@ -1,8 +1,10 @@
 .icon {
-    fill:$black-color;
+    display: block;
+    fill: inherit;
     width: fit-content;
     height: fit-content;
     height: 30px;
+    pointer-events: none;
 
     &--user{
         // height: 25px;

@@ -1,7 +1,7 @@
 .cta{
     @include body;
     display: block;
-    padding:17px 25px;
+    padding:7px 15px;
     background-color: $prim-color;
     transition: $transition-settings;
     color: $white-color;
@@ -10,6 +10,7 @@
     text-decoration: none;
     text-align: center;
     border: none;
+    cursor: pointer;
 
     &:hover{
         background-color: $hover-color;

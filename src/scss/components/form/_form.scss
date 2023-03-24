@@ -1,16 +1,37 @@
 .form{
-    @include responsive(padding, 16px 20px 16px 0, 16px 20px 16px, 20px 40px, 42px 84px);
-    padding: 16px;
-    // @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
+    @include responsive(padding, 16px 20px 16px 16px, 16px 20px 16px, 20px 40px, 42px 84px);
     @include responsive(width, fit-content, fit-content, 500px, 600px);
+    // @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
     // margin-top: 10px;
+    // padding: 16px;
     // max-width: 500px;
-    // width: 100%;
-    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    align-items: baseline;
     gap: 10px;
     background-color: white;
+
+    &__coaches{
+        display: grid;
+        grid-auto-flow: column;
+        // grid-auto-columns: 1fr;
+        // grid-auto-rows: 1fr;
+        
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__coach{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &-name{
+            font-size: 10px;
+        }
+    }
 
     *{
         max-width: 380px;
@@ -18,35 +39,50 @@
 
     input[type="checkbox"]{
         appearance: none;
-        width: 90px;
-        height: 90px;
+        aspect-ratio: 1/1;
         background-color: white;
         border-radius: 50%;
-        background-size: 100% 100%;
         position: relative;
         border:none;
+        background-size: cover;
+        background-position: center;
+        display: block;
+        // max-width: 75px;
+        padding: 0;
+        margin-bottom: 20px;
+
+
+        &::before{
+            content: attr(data-name);
+            position: absolute;
+            bottom: -20px;
+            font-size: 14px;
+            line-height: 20px;
+            width: 100%;
+            text-align: center;
+        }
 
         &::after{
             content: "";
         }
 
-       &:checked::after{
-           background-color: $prim-color;
-           position: absolute;
-           inset: 0;
-           opacity: .3;
-           border-radius: 50%;
-       }
+        &::before, &::after, &{
+            cursor: pointer;
+        }
+
+        // Coach checked styling
+        &:checked::after{
+            background-color: $prim-color;
+            position: absolute;
+            inset: 0;
+            opacity: .5;
+            border-radius: 50%;
+        }
     }
 
 
-
-
-
-
-
-@include tablet{
-        margin-left: auto;
+    @include tablet{
+        margin-right: auto;
         max-width: 750px;
 
         *{
@@ -79,8 +115,9 @@
         }
 
         img{
-            filter: blur(1.5px) opacity(.25);
+            // filter: blur(1.5px) opacity(.25);
             position: absolute;
+            right: 0;
             @include responsive(width, calc(100% - 300px), calc(100% - 300px), calc(100% - 500px), calc(100% - 600px));
             // width: 100%;
             // @include responsive(width, fit-content, 500px, 600px, 600px);

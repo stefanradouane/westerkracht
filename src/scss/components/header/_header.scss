@@ -11,6 +11,10 @@
     transition: 300ms all;
     background-color: transparent;
 
+    a{
+        color: $white-color;
+    }
+
 
     &--scrolled{
         background-color: $dark-grey;

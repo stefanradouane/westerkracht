@@ -191,10 +191,10 @@ export const Mediabank = () => {
                         <input className="mediabank-form__file" name="img" type="file" onInput={showUploadSection}/>
 
                         {/* CHANGE TO DISCARD: SOMETHING */}
-                        <div style={{height:"20px", width:"20px", background:"crimson"}} className="mediabank-form__file-remove" onClick={resetImage}> X </div>
+                        <div className="mediabank-form__file-remove" onClick={resetImage}> X </div>
 
                         <section className="mediabank-form__filename">
-                            <img width={"100%"} className="mediabank-form__displayed-image"/>
+                            <img className="mediabank-form__displayed-image"/>
 
                             <label className="mediabank-form__filename-label">Naam van het bestand</label>
 

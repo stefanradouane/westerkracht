@@ -1,0 +1,100 @@
+.cm-block{
+    // CHANGE COLOR
+    background-color:#b7b7b7;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+
+
+    &[aria-disabled="true"]{
+        display: none;
+    }
+
+    &__image{
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        object-position: top right;
+    }
+    &__notification{
+        // display: none;
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+
+
+    &__grid{
+        display: grid;
+        height: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 10px;
+
+        grid-template-areas:
+        "info info image"
+        "content content content"
+        "content content content"
+        // "link x x"
+        "link controls controls";
+
+        &-img{
+            grid-area: image;
+            // background-color: green;
+
+            .title{
+                text-align: right;
+            }
+        }
+
+        &-info{
+            display: grid;
+            grid-template-rows: min-content min-content;
+            grid-template-columns: 1fr 1fr;
+            gap:10px;
+            grid-area: info;
+            // background-color: purple;
+
+            .control--insta{
+                grid-column: 1/3;
+                display: grid;
+                grid-template-rows: auto 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap:10px;
+                
+                span:not(span> span){
+                    grid-column: 1/3;
+                }
+
+                input{
+                }
+            }
+        }
+        &-content{
+            grid-area: content;
+            // background-color: yellow;
+        }
+        &-link{
+            grid-area: link;
+            // background-color: orange;
+        }
+        &-controls{
+            position: relative;
+            grid-area: controls;
+            // background-color: red;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        &-popup{
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $dark-grey-color;
+        }
+    }
+}

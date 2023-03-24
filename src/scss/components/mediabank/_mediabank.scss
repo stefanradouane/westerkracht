@@ -17,13 +17,16 @@
         border-radius: 0 0 5px 5px;
         border: 1px solid rgba(224, 224, 224, 1);
         border-top: none;
-        max-height: 200px;
     }
-    
     
     &-form{
         display: flex;
         // justify-content: space-between;
+
+        &__displayed-image{
+            max-height: 300px;
+            max-width: 100%;
+        }
 
         &__section{
             max-width: 400px;
@@ -54,6 +57,9 @@
 
             &-remove{
                 display: none;
+                height: 20px;
+                aspect-ratio: 1/1;
+                background: $prim-color;
             }
 
             &::file-selector-button {
