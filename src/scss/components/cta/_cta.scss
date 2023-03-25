@@ -1,33 +1,33 @@
-.cta{
-    @include responsive(font-size, 16px, 16px, 18px, 20px);
-    @include responsive(line-height,24px, 24px,26px,28px);
+.cta {
+  @include responsive(font-size, 16px, 16px, 18px, 20px);
+  @include responsive(line-height, 24px, 24px, 26px, 28px);
 
-    font-size: clamp(14px, 4.5vw ,16px);
-    display: block;
-    padding:17px 15px;
-    background-color: $prim-color;
-    transition: $transition-settings;
-    color: $white-color;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    max-width: 408px;
-    width: 100%;
+  font-size: clamp(12px, 4.5vw, 16px);
+  display: block;
+  padding: 17px 15px;
+  background-color: $prim-color;
+  transition: $transition-settings;
+  color: $white-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  max-width: 408px;
+  width: 100%;
 
-    &--small{
-        padding:9px 15px;
-        @include responsive(font-size, 12px, 14px, 16px, 18px);
-        @include responsive(line-height, 20px,22px,24px,26px);
-    }
+  &--small {
+    padding: 9px 15px;
+    @include responsive(font-size, 12px, 14px, 16px, 18px);
+    @include responsive(line-height, 20px, 22px, 24px, 26px);
+  }
 
-    &--home{
-        padding:17px 34px;
-    }
+  &--home {
+    padding: 17px 34px;
+  }
 
-    &:hover{
-        background-color: $hover-color;
-    }
+  &:hover {
+    background-color: $hover-color;
+  }
 }

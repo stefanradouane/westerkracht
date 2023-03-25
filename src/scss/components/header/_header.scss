@@ -1,26 +1,53 @@
-.header{
-    display: flex;
+.header {
+  @include header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  transition: $transition-settings;
+  background-color: transparent;
+
+  @include mobile-only {
+    padding: 0 0 0 20px;
+
+    &--open {
+      background-color: $dark-grey;
+    }
+  }
+
+  a {
+    color: $white-color;
+  }
+
+  .cta {
+    width: unset;
+  }
+
+  &__controller {
+    @include header-control;
+    appearance: none;
     align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    // background-color: rgba($color: #111111, $alpha: .25);
-    padding: 0 20px;
-    position: sticky;
-    z-index: 10;
-    top: 0;
-    transition: 300ms all;
-    background-color: transparent;
+    justify-content: center;
+    display: none;
+    border: none;
+    background-color: $prim-color;
+    color: $white-color;
+    cursor: pointer;
 
-    a{
-        color: $white-color;
+    @include mobile-only {
+      display: flex;
     }
+  }
 
-
-    &--scrolled{
-        background-color: $dark-grey;
-    }
+  &--scrolled {
+    background-color: $dark-grey;
+  }
 }
 
-body:has(.page--form) .header{
-    background-color: $dark-grey;
+body:has(.page--form) .header {
+  background-color: $dark-grey;
 }

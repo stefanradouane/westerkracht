@@ -1,0 +1,38 @@
+.hb-menu {
+  position: relative;
+  width: 30px;
+  height: 5px;
+  background-color: $white-color;
+  transition: all 200ms ease-in-out;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    transition: all 200ms ease-in-out;
+    background-color: $white-color;
+    left: 0;
+  }
+
+  &::before {
+    transform: translateY(-10px);
+  }
+
+  &::after {
+    transform: translateY(10px);
+  }
+
+  .header--open & {
+    background-color: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}

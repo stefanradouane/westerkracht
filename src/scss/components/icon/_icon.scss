@@ -1,17 +1,16 @@
 .icon {
-    display: block;
-    fill: inherit;
+  display: block;
+  fill: inherit;
+  width: fit-content;
+  height: fit-content;
+  height: 30px;
+  pointer-events: none;
+
+  &--user {
     width: fit-content;
-    height: fit-content;
-    height: 30px;
-    pointer-events: none;
+  }
 
-    &--user{
-        // height: 25px;
-        width: fit-content;
-    }
-
-    &--social{
-        fill: $prim-color;
-    }
+  &--social {
+    fill: $prim-color;
+  }
 }

@@ -1,56 +1,39 @@
-.content{
-    &__section {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        padding:42px 0;
+.content {
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 42px 0;
 
-        &--coaches{
-            @include responsive(margin, 0 -16px, 0 -42px, 0 -42px, 0 -84px);
-            position: relative;
-            display: block;
-            background-color: $grey-color;
-            // max-width: 1440px;
-            width: 100vw;
-            width: 100dvw;
+    &--coaches {
+      @include fullwidth;
+      position: relative;
+      background-color: $grey-color;
 
-            .infoblokken{
-                @include responsive(margin, 0 16px, 0 42px, 0 42px, 0 84px);
-                max-width: 1272px;
-
-                @include breakpoint(1440px) {
-                    margin: auto;
-                }
-            }
-
-            @include breakpoint(1440px) {
-                margin-left: -50vw;
-                margin-left: -50dvw;
-                margin-right: -50vw;
-                margin-right: -50dvw;
-                left: 50%;
-                right: 50%;
-            }
-        }
-
-        &--inschrijven{
-            align-items: baseline;
-            gap:30px;
-
-            section{
-                display: flex;
-                gap: 15px;
-                align-items: center;
-
-                .logo{
-                    color: $prim-color;
-                }
-            }
-
-            p{
-                max-width: 550px;
-            }
-        }
+      .infoblokken {
+        @include padding-lay-out;
+        max-width: $max-page-width;
+        margin: auto;
+      }
     }
-}
 
+    &--inschrijven {
+      align-items: baseline;
+      gap: 30px;
+
+      section {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .logo {
+          color: $prim-color;
+        }
+      }
+
+      p {
+        max-width: 550px;
+      }
+    }
+  }
+}

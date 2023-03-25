@@ -7,11 +7,8 @@
 
 <body>
     <main class="admin">
-        <section class="admin__sidebar">
-            <%- include('../../components/logo/logo'); %>
-            <h1 class="title title--h1">Admin</h1>
-            <%- include('../../components/sidebar/admin-sidebar', {adminpage: "inschrijf"}); %>
-        </section>
+        <%- include('../../components/sidebar/admin-sidebar', {adminpage: "inschrijf"}); %>
+        
         <section class="admin__content">
             <% if (typeof user != "undefined") { %>
             <%- include('../../partials/header-admin', {user:user}); %>

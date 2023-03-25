@@ -1,3 +1,71 @@
+// Create a lay-out with the padding from setting lay-out
 @mixin padding-lay-out {
-    @include responsive(padding, 0 $padding-mobile, 0 $padding-tablet, 0 $padding-laptop, 0 $padding-desktop);
+  @include responsive(
+    padding,
+    0 $padding-mobile,
+    0 $padding-tablet,
+    0 $padding-laptop,
+    0 $padding-desktop
+  );
+}
+
+// Make a page full width, based on settings page padding;
+@mixin fullwidth {
+  @include responsive(
+    margin-left,
+    -$padding-mobile,
+    -$padding-tablet,
+    -$padding-laptop,
+    -$padding-desktop
+  );
+
+  @include responsive(
+    margin-right,
+    -$padding-mobile,
+    -$padding-tablet,
+    -$padding-tablet,
+    -$padding-desktop
+  );
+
+  width: 100vw;
+  width: 100dvw;
+
+  @include breakpoint(#{$max-page-width}) {
+    margin-left: -50vw;
+    margin-left: -50dvw;
+    margin-right: -50vw;
+    margin-right: -50dvw;
+    left: 50%;
+    right: 50%;
+  }
+}
+
+// make the header height based on the settings
+@mixin header-height {
+  @include responsive(
+    height,
+    $header-h-mob,
+    $header-h-mob,
+    $header-h-tab,
+    $header-h-tab
+  );
+}
+
+// Make the height and with for the controller based on the header height from the settings
+@mixin header-control {
+  @include responsive(
+    height,
+    $header-h-mob,
+    $header-h-mob,
+    $header-h-tab,
+    $header-h-tab
+  );
+
+  @include responsive(
+    width,
+    $header-h-mob,
+    $header-h-mob,
+    $header-h-tab,
+    $header-h-tab
+  );
 }

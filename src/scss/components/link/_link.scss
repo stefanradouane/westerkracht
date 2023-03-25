@@ -1,0 +1,32 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: $prim-color;
+  flex-wrap: wrap;
+
+  a {
+    @include body;
+    @include anchor;
+    font-style: italic;
+  }
+
+  &--double {
+    a:nth-of-type(2) {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        height: 4px;
+        width: 4px;
+        aspect-ratio: 1/1;
+        background-color: black;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+    }
+  }
+}

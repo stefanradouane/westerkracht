@@ -1,78 +1,74 @@
-.footer{
-    @include responsive(padding-top,16px, 42px, 42px, 42px);
-    border-top: 1px solid $grey-color;
-    
-    &__content{
-        @include responsive(padding,0 16px, 0 42px, 0 42px, 0 84px);
-        // @include responsive(gap, 10px, 16px, 20px, 24px);
-        gap: 24px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        max-width: 1440px;
-        margin: auto;
-        justify-content: center;
+.footer {
+  @include responsive(padding-top, 16px, 42px, 42px, 42px);
+  border-top: 1px solid $grey-color;
 
-        @include breakpoint(650px){
-            flex-direction: row;
-        }
+  &__content {
+    @include padding-lay-out;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: $max-page-width;
+    margin: auto;
+    justify-content: center;
 
-
-        > section{
-            width: 100%;
-            @include breakpoint(650px){
-                width: calc(50% - 12px);
-            }
-            @include laptop{
-                width: calc((100% / 3) - 16px);
-            }
-        }
+    @include breakpoint(650px) {
+      flex-direction: row;
     }
 
-    &__redirect{
-        &-link{
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-        .icon{
-            width: 30px;
-        }
+    > section {
+      width: 100%;
+      @include breakpoint(650px) {
+        width: calc(50% - 12px);
+      }
+      @include laptop {
+        width: calc((100% / 3) - 16px);
+      }
+    }
+  }
+
+  &__redirect {
+    &-link {
+      @include anchor;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+
+  &__branding {
+    @include padding-lay-out;
+    @include responsive(margin-top, 16px, 42px, 42px, 42px);
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    background-color: $prim-color;
+
+    &-content {
+      color: $white-color;
+      max-width: 1272px;
+      margin: auto;
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  &__coaches {
+    &-images {
+      display: grid;
+      grid-auto-flow: column;
+      width: 100%;
+      gap: 10px;
+      max-width: 280px;
     }
 
-    &__branding{
-        @include responsive(margin-top,16px, 42px, 42px, 42px);
-        @include responsive(padding, 16px, 16px 42px, 20px 42px, 20px 84px);
-        background-color: $prim-color;
-
-        
-        &-content{
-            max-width: 1272px;
-            margin:auto;
-            display: flex;
-            gap: 20px;
-        }
+    &-image {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      position: relative;
+      border: none;
+      object-fit: cover;
+      padding: 0;
+      width: 100%;
     }
-
-    &__coaches{
-
-        &-images{
-            display: grid;
-    grid-auto-flow: column;
-    width: 100%;
-    gap: 10px;
-    max-width: 380px;
-        }
-
-        &-image{
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    position: relative;
-    border: none;
-    object-fit: cover;
-    padding: 0;
-    width: 100%;
-        }
-
-    }
+  }
 }

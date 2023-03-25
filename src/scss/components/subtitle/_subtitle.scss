@@ -1,0 +1,6 @@
+.subtitle{
+    @include body;
+    @include body--small;
+    color:$grey-color;
+    font-style: italic;
+}

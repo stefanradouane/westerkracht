@@ -1,0 +1,12 @@
+.text {
+  @include body;
+  color: currentColor;
+
+  &--small {
+    @include body--small;
+  }
+
+  &--big {
+    @include body--big;
+  }
+}

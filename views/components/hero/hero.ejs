@@ -1,0 +1,10 @@
+<section class="hero">
+  <section class="hero__content">
+    <h1 class="title title--h1">Westerkracht</h1>
+    <%- include('../../components/logo/logo', {size: "large"}); %>
+    <a class="cta cta--home" href="<%= useHero.link %>"
+      ><%= useHero.linkTitle %></a
+    >
+  </section>
+  <img class="hero__image hero__image--light" src="<%= useHero.image %>" />
+</section>
