@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <%- include('../partials/header'); %>
+    <%- include('../partials/header', {active: "index"}); %>
 
     <main class="page" id="top">
       <%- include('../components/hero/hero', {useHero: useHero}); %>
@@ -19,14 +19,14 @@
           </h2>
           <section class="infoblokken">
             <% infos.forEach(function(info, index){ %>
-            <section class="infoblok">
+            <section class="infoblok infoblok--about">
               <img class="infoblok__image" src="<%= info.image %>" />
               <section class="infoblok__info">
                 <h3 class="title title--h3 title--white"><%= info.title %></h3>
                 <p class="subtitle"><%= info.subtitle %></p>
                 <p class="text"><%= info.content %></p>
               </section>
-              <a href="<%= info.link %>" class="cta infoblok__link"
+              <a href="<%= info.link %>" class="cta cta-theme infoblok__link"
                 ><%= info.linkTitle %>
               </a>
             </section>
@@ -34,10 +34,12 @@
           </section>
         </section>
 
-        <section class="content__section content__section--coaches">
+        <section
+          class="content__section content__section--coaches"
+          id="coaches">
           <h2 class="title title--h2 title--margin">De coaches</h2>
 
-          <section class="infoblokken" id="coaches">
+          <section class="infoblokken">
             <% coaches.forEach(function(coach, index){ %>
             <section class="infoblok infoblok--coach">
               <h3 class="title title--tag">coach</h3>
@@ -66,12 +68,16 @@
                     >@<%= coach.ig[1] %></a
                   >
                 </section>
-                <details>
-                  <summary>Lees meer over <%= coach.name %></summary>
-                  <p><%= coach.content %></p>
+                <details class="details" data-details>
+                  <summary class="details__hint">
+                    Ontdek wie <%= coach.name %> is
+                  </summary>
+                  <section class="details__content" data-summary>
+                    <p class="text"><%= coach.content %></p>
+                  </section>
                 </details>
               </section>
-              <a href="<%= coach.link %>" class="cta infoblok__link"
+              <a href="<%= coach.link %>" class="cta cta-theme infoblok__link"
                 ><%= coach.linkTitle %>
               </a>
             </section>
@@ -88,7 +94,9 @@
             Ben jij op zoek naar een krachtvereniging (en personal coaching)
             schrijf je nu in bij Westerkracht!
           </p>
-          <a href="/inschrijven" class="cta">Schrijf je in bij westerkracht</a>
+          <a href="/inschrijven" class="cta cta-theme"
+            >Schrijf je in bij westerkracht</a
+          >
         </section>
       </section>
     </main>

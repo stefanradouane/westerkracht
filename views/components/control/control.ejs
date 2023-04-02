@@ -1,0 +1,40 @@
+<label class="control" for="<%- name %>">
+  <span class="control__label">
+    <%- label %> <% if (required) { %>
+    <span class="control__required">*</span>
+    <% } %>
+  </span>
+  <% if (name=="age") {%>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    min="16"
+    max="80"
+    pattern="\d"
+    placeholder="<%- placeholder %>"
+    required />
+  <%} else if (type=="phone") { %>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    pattern="[\d,+, ]{10,}"
+    placeholder="<%- placeholder %>"
+    required />
+
+  <%} else if (required) { %>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    placeholder="<%- placeholder %>"
+    required />
+  <%} else {%>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    placeholder="<%- placeholder %>" />
+  <% } %>
+</label>

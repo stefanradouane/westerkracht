@@ -9,11 +9,11 @@ $typography-font-family-sec: Poppins, -apple-system, BlinkMacSystemFont,
 $typography-line-height-base: 1.5 !default;
 
 // Body font
-$typography-font-size-text: 18px;
-$typography-font-size-text-mobile: 16px;
-$typography-font-size-text-tablet: $typography-font-size-text-mobile;
-$typography-font-size-text-laptop: 18px;
-$typography-font-size-text-desktop: $typography-font-size-text-tablet;
+$typography-font-size-text: 17px;
+$typography-font-size-text-mobile: 15px;
+$typography-font-size-text-tablet: 16px;
+$typography-font-size-text-laptop: 16px;
+$typography-font-size-text-desktop: 17px;
 
 $typography-line-height-text: 26px;
 $typography-line-height-text-mobile: 24px;
@@ -22,11 +22,11 @@ $typography-line-height-text-laptop: 26px;
 $typography-line-height-text-desktop: $typography-line-height-text-laptop;
 
 // small text font-size
-$typography-font-size-text-small: 16px;
-$typography-font-size-text-small-mobile: 14px; // no difference on mobile
-$typography-font-size-text-small-tablet: $typography-font-size-text-small-mobile; // no difference on tablet
-$typography-font-size-text-small-laptop: 16px;
-$typography-font-size-text-small-desktop: $typography-font-size-text-small-laptop;
+$typography-font-size-text-small: 15px;
+$typography-font-size-text-small-mobile: 13.5px;
+$typography-font-size-text-small-tablet: 14.5px;
+$typography-font-size-text-small-laptop: 14.5px;
+$typography-font-size-text-small-desktop: 15.5px;
 
 $typography-line-height-text-small: 24px;
 $typography-line-height-text-small-mobile: 22px; // no difference on mobile

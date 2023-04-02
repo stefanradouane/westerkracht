@@ -1,0 +1,17 @@
+<section class="coachselect">
+  <p class="coachselect__label">Plan een intake gesprek voor meer informatie</p>
+  <fieldset class="coachselect__fieldset" id="fieldset">
+    <% coaches.forEach(coach => { %>
+    <label>
+      <span><%= coach.name %></span>
+      <input
+        class="coachselect__input"
+        type="checkbox"
+        name="coach"
+        value="<%= coach.name %>"
+        style="background-image: url('<%= coach.image %>')"
+        data-name="<%= coach.name %>" />
+    </label>
+    <% }) %>
+  </fieldset>
+</section>

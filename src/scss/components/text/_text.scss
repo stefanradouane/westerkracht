@@ -1,9 +1,14 @@
 .text {
-  @include body;
+  @include fluidbody;
   color: currentColor;
 
   &--small {
-    @include body--small;
+    @include fluidbody--small;
+    // @include body--small;
+
+    // @include breakpoint($min: 0px) {
+    //   font-size: clamp(14px, 2.25vmin, 15.5px);
+    // }
   }
 
   &--big {

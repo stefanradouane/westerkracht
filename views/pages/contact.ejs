@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../partials/head'); %>
-</head>
+  </head>
 
-<body>
-    <%- include('../partials/header'); %>
+  <body>
+    <%- include('../partials/header', {active: "contact"}); %>
 
     <main class="page page--form">
+      <section class="form-container">
+        <form method="post" class="form">
+          <h1 class="title title--h2">Contact</h1>
+          <p>
+            Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij
+            nemen zo snel mogelijk contact met je op!
+          </p>
+          <label class="control">
+            <span>
+              Naam
+              <span class="control__required">*</span>
+            </span>
+            <input
+              class="control__input"
+              type="text"
+              name="name"
+              placeholder="Naam"
+              required />
+          </label>
+          <label class="control">
+            <span>
+              E-mailadres (voor de reactie)
+              <span class="control__required">*</span>
+            </span>
+            <input
+              class="control__input"
+              type="email"
+              name="email"
+              placeholder="naam@voorbeeld.nl"
+              required />
+          </label>
+          <label class="control">
+            <span>
+              Onderwerp
+              <span class="control__required">*</span>
+            </span>
+            <input
+              class="control__input"
+              type="text"
+              placeholder="Onderwerp"
+              required />
+          </label>
 
-        <section class="form-container">
-            <form method="post" class="form">
-                <h1 class="title title--h2">Contact</h1>
-                <p>Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij nemen zo snel mogelijk contact met
-                    je op!</p>
-                <label class="control">
-                    <span>
-                        Naam
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="text" name="name" placeholder="Naam" required />
-                </label>
-                <label class="control">
-                    <span>
-                        E-mailadres (voor de reactie)
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="email" name="email" placeholder="naam@voorbeeld.nl" required />
-                </label>
-                <label class="control">
-                    <span>
-                        Onderwerp
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="text" placeholder="Onderwerp" required />
-                </label>
+          <label class="control">
+            <span>
+              Wat is je bericht aan ons?
+              <span class="control__required">*</span>
+            </span>
+            <textarea
+              class="control__input"
+              name="content"
+              cols="30"
+              rows="5"
+              required></textarea>
+          </label>
 
-                <label class="control">
-                    <span>
-                        Wat is je bericht aan ons?
-                        <span class="control__required">*</span>
-                    </span>
-                    <textarea class="control__input" name="content" cols="30" rows="10" required></textarea>
-                </label>
-
-                <p>*Verplicht</p>
-                <button class="cta">Verstuur inschrijving</button>
-            </form>
-            <section>
-                <img src="./assets/images/zyco-hero.png">
-            </section>
+          <p>*Verplicht</p>
+          <button class="cta cta-theme">Verstuur inschrijving</button>
+        </form>
+        <section>
+          <img src="./assets/images/zyco-hero.png" />
         </section>
-
+      </section>
     </main>
 
     <%- include('../partials/footer'); %>
     <script type="module" src="./dist/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>

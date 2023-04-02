@@ -4,9 +4,9 @@
   margin: auto;
 
   &--form {
+    @include margin-top-lay-out;
     position: relative;
     padding: unset;
-    margin: unset;
     max-width: unset;
   }
 

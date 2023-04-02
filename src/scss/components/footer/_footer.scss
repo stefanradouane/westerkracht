@@ -17,6 +17,9 @@
     }
 
     > section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px; // fixme to responsive gap
       width: 100%;
       @include breakpoint(650px) {
         width: calc(50% - 12px);
@@ -28,37 +31,47 @@
   }
 
   &__redirect {
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
     &-link {
       @include anchor;
       display: flex;
       gap: 5px;
       align-items: center;
+      font-style: italic;
     }
   }
 
   &__branding {
-    @include padding-lay-out;
     @include responsive(margin-top, 16px, 42px, 42px, 42px);
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
     background-color: $prim-color;
+    padding: 16px 20px;
 
     &-content {
+      @include anchor;
       color: $white-color;
-      max-width: 1272px;
       margin: auto;
       display: flex;
       gap: 20px;
+      align-items: center;
+
+      .title {
+        transition: $transition-settings;
+      }
     }
   }
 
   &__coaches {
     &-images {
-      display: grid;
-      grid-auto-flow: column;
+      @include responsive-columns(
+        $gap: 10px,
+        $column-count: 4,
+        $item-size: 50px
+      );
       width: 100%;
-      gap: 10px;
-      max-width: 280px;
     }
 
     &-image {

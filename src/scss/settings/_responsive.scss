@@ -1,9 +1,18 @@
+// Lay-out variables
+$max-page-width: 1440px;
+
+// Page padding
 $padding-mobile: 16px;
 $padding-tablet: 30px;
 $padding-laptop: 42px;
 $padding-desktop: 84px;
 
+// Base offset
+$base-offset-m: 16px;
+$base-offset-t: 18px;
+$base-offset-l: 20px;
+$base-offset-d: 20px;
+
+// Header
 $header-h-mob: 52px;
 $header-h-tab: 70px;
-
-$max-page-width: 1440px;

@@ -1,82 +1,50 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../partials/head'); %>
-</head>
+  </head>
 
-<body>
-    <%- include('../partials/header'); %>
+  <body>
+    <%- include('../partials/header', {active:"inschrijven"}); %>
 
     <main class="page page--form">
+      <section class="form-container">
+        <form method="post" class="form">
+          <h1 class="title title--h2">Inschrijven</h1>
+          <p>
+            Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij
+            nemen zo snel mogelijk contact met je op!
+          </p>
+          <!-- prettier-ignore -->
+          <%- include('../components/control/control' , {type: "text", name: "name", placeholder:"Naam en achternaam", required:true, label: "Naam"}); %> 
+          <%- include('../components/control/control' , {type: "email", name: "email", placeholder:"naam@voorbeeld.nl", required:true, label: "E-mail (voor de reactie)"}); %> 
+          <%- include('../components/control/control' , {type: "number", name: "age", placeholder:"22", required:true, label: "Leeftijd"}); %> 
+          <%- include('../components/control/control' , {type: "phone", name: "phone", placeholder:"0612345678", required:true, label: "Telefoon nummer"}); %>
+          <%- include('../components/coachselect/coachselect' , {coaches: coaches}); %>
 
-        <section class="form-container">
-            <form method="post" class="form">
-                <h1 class="title title--h2">Inschrijven</h1>
-                <p>Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij nemen zo snel mogelijk contact met
-                    je op!</p>
-                <label class="control">
-                    <span>
-                        Naam
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="text" name="name" placeholder="Naam en achternaam" required />
-                </label>
-                <label class="control">
-                    <span>
-                        E-mailadres (voor de reactie)
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="text" name="email" placeholder="naam@voorbeeld.nl" required />
-                </label>
-                <label class="control">
-                    <span>
-                        Leeftijd
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="number" min="16" placeholder="99" name="age" pattern="\d"
-                        required />
-                </label>
-                <label class="control">
-                    <span>
-                        Telefoon nummer
-                        <span class="control__required">*</span>
-                    </span>
-                    <input class="control__input" type="phone" placeholder="0612345678" name="phone"
-                        pattern="[\d,+, ]{10,}" required />
-                </label>
+          <label class="control">
+            <span>
+              Wat is je bericht aan ons?
+              <span class="control__required">*</span>
+            </span>
+            <textarea
+              class="control__input"
+              name="content"
+              cols="30"
+              rows="5"
+              required></textarea>
+          </label>
 
-                <label class="control control--check" for="coach">
-                    <span>Plan een intake gesprek voor meer informatie</span>
-                    <section class="form__coaches">
-                        <% coaches.forEach(coach => { %>
-                            <section class="form__coach">
-                                <input class="control__input control__input--check" type="checkbox" name="coach" value="<%= coach.name %>" style="background-image: url('<%= coach.image %>')" data-name="<%= coach.name %>"/>
-                            </section>
-                        <% }) %>
-                    </section>
-                </label>
-
-                <label class="control">
-                    <span>
-                        Wat is je bericht aan ons?
-                        <span class="control__required">*</span>
-                    </span>
-                    <textarea class="control__input" name="content" cols="30" rows="10" required></textarea>
-                </label>
-
-                <p>*Verplicht</p>
-                <button class="cta">Verstuur inschrijving</button>
-            </form>
-            <section>
-                <img src="./assets/images/jack-hero.png">
-            </section>
+          <p class="form__requirements">*Verplicht</p>
+          <button class="cta cta-theme">Verstuur inschrijving</button>
+        </form>
+        <section>
+          <img src="./assets/images/jack-hero.png" width="100%" />
         </section>
-
+      </section>
     </main>
 
     <%- include('../partials/footer'); %>
     <script type="module" src="./dist/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>

@@ -9,6 +9,18 @@
   );
 }
 
+// Mostly used in combination with padding-lay-out.
+// Mixin to make sure the content and header aren't overlapping due to position sticky
+@mixin margin-top-lay-out {
+  @include responsive(
+    margin-top,
+    $header-h-mob,
+    $header-h-mob,
+    $header-h-tab,
+    $header-h-tab
+  );
+}
+
 // Make a page full width, based on settings page padding;
 @mixin fullwidth {
   @include responsive(
@@ -68,4 +80,61 @@
     $header-h-tab,
     $header-h-tab
   );
+}
+
+// Mixin for a fluid typography based on the mixin body;
+@mixin fluidbody {
+  @include body;
+  $t-size-m: $typography-font-size-text-mobile;
+  $t-size-t: $typography-font-size-text-tablet;
+  $t-size-l: $typography-font-size-text-laptop;
+  $t-size-d: $typography-font-size-text-desktop;
+  font-size: clamp($t-size-m, 2.08vmin, $t-size-t);
+
+  @include laptop {
+    font-size: clamp($t-size-l, 1.6vmin, $t-size-d);
+  }
+}
+
+// Mixin for a fluid typography based on the @mixin body;
+// And must be used in combination with @mixin body
+@mixin fluidbody--small {
+  @include body--small;
+  $t-size-small-m: $typography-font-size-text-small-mobile;
+  $t-size-small-t: $typography-font-size-text-small-tablet;
+  $t-size-small-l: $typography-font-size-text-small-laptop;
+  $t-size-small-d: $typography-font-size-text-small-desktop;
+  font-size: clamp($t-size-small-m, 1.88vmin, $t-size-small-t);
+
+  @include laptop {
+    font-size: clamp($t-size-small-l, 1.3vmin, $t-size-small-d);
+  }
+}
+
+@mixin base-offset($prop: padding) {
+  @include responsive(
+    $prop,
+    $base-offset-m,
+    $base-offset-t,
+    $base-offset-l,
+    $base-offset-d
+  );
+}
+
+// Mixin to create multiple columns next to each other with the same size
+// This mixin also creates a responsive grid based on the inputted values
+@mixin responsive-columns($gap: 10px, $column-count: 4, $item-size: 50px) {
+  // Total amout of gaps
+  $gap-count: $column-count - 1;
+
+  // Calculated values.
+  $total-gap-width: calc($gap-count * $gap);
+  $grid-item--max-width: calc((100% - $total-gap-width) / $column-count);
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max($item-size, $grid-item--max-width), 1fr)
+  );
+  gap: $gap;
 }

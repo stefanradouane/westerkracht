@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../../partials/head'); %>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="admin">
-        <%- include('../../components/sidebar/admin-sidebar', {adminpage: "info"}); %>
-        <section class="admin__content">
-            <% if (typeof user != "undefined") { %>
-            <%- include('../../partials/header-admin', {user:user}); %>            
-            <% } else { %>
-                <%- include('../../partials/header-admin', {user:undefined}); %>            
-            <% } %>
-            <section class="admin__display">
-                <h2 class="title title--h2">Info Blokken</h2>
-                <section class="infoblokken-container"></section>   
-            </section> 
+      <%- include('../../components/sidebar/admin-sidebar', {adminpage:
+      "info"}); %>
+      <section class="admin__content">
+        <% if (typeof user != "undefined") { %> <%-
+        include('../../partials/header-admin', {user:user}); %> <% } else { %>
+        <%- include('../../partials/header-admin', {user:undefined}); %> <% } %>
+        <section class="admin__display">
+          <h2 class="title title--h2">Info Blokken</h2>
+          <p class="admin__display-notification" data-notification></p>
+          <section class="infoblokken-container">
+            <div class="icon icon--loading"></div>
+          </section>
         </section>
+      </section>
     </main>
 
     <script src="../dist/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>

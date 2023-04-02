@@ -2,7 +2,7 @@
   fill: currentColor;
   width: 51px;
   display: block;
-  transition: 300ms all;
+  transition: $transition-settings;
 
   &--small {
     min-width: 46px;

@@ -35,10 +35,15 @@
       height: 100%;
       display: flex;
       align-items: center;
-      border-top: 6px solid transparent;
+      border-top: 4px solid transparent;
+      transition: $transition-settings;
+
+      &:last-of-type {
+        border-top: none;
+      }
 
       &--active {
-        border-top: 6px solid $white-color;
+        border-top: 4px solid $white-color;
       }
 
       a {

@@ -2,16 +2,20 @@
   <a href="/"> <%- include('../components/logo/logo', {size: "small"}); %> </a>
   <nav class="nav" data-nav>
     <ul class="nav__list">
-      <li class="nav__list-item nav__list-item--active">
+      <li class="nav__list-item <%if(active == "index"){%>nav__list-item--active<%}%>" data-nav-item>
         <a href="/#top">Home</a>
       </li>
-      <li class="nav__list-item">
+      <li class="nav__list-item" data-nav-item>
         <a href="/#westerkracht">Wij zijn westerkracht</a>
       </li>
-      <li class="nav__list-item"><a href="/#coaches">De coaches</a></li>
-      <li class="nav__list-item"><a href="/contact">Contact</a></li>
-      <li class="nav__list-item">
-        <a href="/inschrijven" class="cta cta--small">Schrijf je in</a>
+      <li class="nav__list-item" data-nav-item>
+        <a href="/#coaches">De coaches</a>
+      </li>
+      <li class="nav__list-item <%if(active == "contact"){%>nav__list-item--active<%}%>" data-nav-item>
+        <a href="/contact">Contact</a>
+      </li>
+      <li class="nav__list-item" data-nav-item>
+        <a href="/inschrijven" class="cta cta-theme cta--small">Schrijf je in</a>
       </li>
     </ul>
   </nav>

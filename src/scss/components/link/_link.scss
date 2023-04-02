@@ -6,7 +6,8 @@
   flex-wrap: wrap;
 
   a {
-    @include body;
+    @include fluidbody;
+    @include fluidbody--small;
     @include anchor;
     font-style: italic;
   }

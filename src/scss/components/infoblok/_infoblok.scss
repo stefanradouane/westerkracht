@@ -1,128 +1,134 @@
-.infoblokken{
-    @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
-    @include responsive(gap, 15px, 20px, 20px, 36px);
-    display: flex;
-    justify-content: center;
-    position: relative;
+.infoblokken {
+  @include responsive(flex-wrap, wrap, wrap, nowrap, nowrap);
+  @include responsive(gap, 15px, 20px, 20px, 36px);
+  display: flex;
+  justify-content: center;
+  position: relative;
 
+  &--admin {
+    justify-content: unset;
+    height: 100%;
 
-    &--admin{
-        justify-content: unset;
-        height: 100%;
-
-        @include laptop{
-            max-width: 100% !important;            
-        }
-
-        .infoblok{
-            height: 100%;
-
-            &__info{
-                height: 100%;
-                overflow: auto;   
-            }
-        }
+    @include laptop {
+      max-width: 100% !important;
     }
 
-    &__modal{
-        inset: 0;
-        width: 100%;
+    .infoblok {
+      height: 100%;
+
+      &__info {
         height: 100%;
-        border: none;
-        padding:30px;
-        background-color: rgba($color: $dark-prim-color, $alpha: .95);
-        color:$white-color;
-
-        *{
-            max-width: 400px;
-        }
-
-        .cta{
-            margin-top: 10px;
-        }
+        overflow: auto;
+      }
     }
+  }
+
+  &__modal {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 30px;
+    background-color: rgba($color: $dark-prim-color, $alpha: 0.95);
+    color: $white-color;
+
+    * {
+      max-width: 400px;
+    }
+
+    .cta {
+      margin-top: 10px;
+    }
+  }
 }
 
-.infoblok{
-    @include responsive(flex-direction, column, row, column, column);
-    @include responsive(max-width, 100%, 100%, 400px, 400px);
-    
-    background-color: $dark-prim-color;
-    box-shadow: 2px 2px 5px $dark-grey-color;
-    color:$white-color;
-    display: flex;
-    position: relative;
+.infoblok {
+  @include responsive(flex-direction, column, row, column, column);
+  @include responsive(max-width, 100%, 100%, 400px, 400px);
+
+  background-color: $dark-prim-color;
+  box-shadow: 2px 2px 5px $dark-grey-color;
+  color: $white-color;
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+
+  @include breakpoint($min: 600px) {
+    width: calc(50% - 7.5px);
+    max-width: unset;
+  }
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "image content"
+      "image link";
     width: 100%;
 
-    max-width: 400px;
-    
-    @include breakpoint($min: 600px){
-        width: calc(50% - 7.5px);
-        max-width: unset;
+    // Switch every second block
+    &--about:nth-of-type(2n) {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "content image"
+        "link image";
     }
+    &--coach {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "content image"
+        "link image";
 
-    
-    @include tablet{
-        display: grid;
+      // Switch every second block
+      &:nth-of-type(2n) {
         grid-template-columns: auto 1fr;
-        grid-template-rows: 1fr auto;
-        grid-template-areas: 
-        "image content"
-        "image link";
-        width: 100%;
+        grid-template-areas:
+          "image content"
+          "image link";
+      }
     }
-    &--coach{
-        @include tablet{
-            display: grid;
-            grid-template-columns: 1fr auto;
-            grid-template-areas: 
-            "content image"
-            "link image";
-        }
+  }
+  @include laptop {
+    display: flex;
+  }
 
+  &__image {
+    @include responsive(width, 100%, 300px, 100%, 100%);
+    @include responsive(height, unset, 100%, unset);
+    aspect-ratio: 16/12;
+    display: block;
+    object-fit: cover;
+    grid-area: image;
+
+    &--admin {
+      @include responsive(object-position, unset, top, unset);
+      @include responsive(object-fit, cover, contain, cover);
     }
+  }
 
-    @include laptop{
-        display: flex;
+  &__info {
+    @include base-offset;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-area: content;
+    gap: 5px;
+
+    &--admin {
+      gap: 10px;
     }
+  }
 
-    &__image{
-        @include responsive(width, 100%, 282px, 100%, 100%);
-        @include responsive(height, unset, 100%, unset);
-        aspect-ratio: 16/12;
-        display: block;
-        object-fit: cover;
-        grid-area: image;
+  &__link {
+    grid-area: link;
+    margin-top: auto;
+    max-width: unset;
+  }
 
-        
-        
-        &--admin{
-            @include responsive(object-position, unset, top, unset);
-            @include responsive(object-fit, cover, contain, cover);
-        }
-    }
-
-    &__info{
-        width: 100%;
-        padding:20px;
-        display: flex;
-        flex-direction: column;
-        grid-area: content;
-        
-        &--admin{
-            gap:10px;
-        }
-    }
-
-    &__link {
-        grid-area:link;
-        margin-top: auto;
-        max-width: unset;
-
-    }
-
-    &--coach{
-        background-color: $white-color ;
-        color:$black-color;
-    }
+  &--coach {
+    background-color: $white-color;
+    color: $black-color;
+  }
 }

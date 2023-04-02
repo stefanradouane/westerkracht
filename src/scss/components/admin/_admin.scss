@@ -1,111 +1,167 @@
-@import '../../node_modules/microscope-sass/lib/typography';
+@import "../../node_modules/microscope-sass/lib/typography";
 
-$header-height-m:70px;
-$header-height-l:70px;
-$header-height-d:70px;
+$header-height-m: 70px;
+$header-height-l: 70px;
+$header-height-d: 70px;
 
-$title-height-m:32px;
-$title-height-l:36px;
-$title-height-d:42px;
+$title-height-m: 32px;
+$title-height-l: 36px;
+$title-height-d: 42px;
 
-$padding-display-m:16px;
-$padding-display-l:16px;
-$padding-display-d:16px;
+$padding-display-m: 16px;
+$padding-display-l: 16px;
+$padding-display-d: 16px;
 
-$padding-container-m:16px * 2;
-$padding-container-l:16px * 2;
-$padding-container-d:16px * 2;
+$padding-container-m: 16px * 2;
+$padding-container-l: 16px * 2;
+$padding-container-d: 16px * 2;
 
-$total-offset-m: $header-height-m + $title-height-m + $padding-display-m + $padding-container-m;
-$total-offset-l: $header-height-l + $title-height-l + $padding-display-l + $padding-container-l;
-$total-offset-d: $header-height-d + $title-height-d + $padding-display-d + $padding-container-d;
+$total-offset-m: $header-height-m + $title-height-m + $padding-display-m +
+  $padding-container-m;
+$total-offset-l: $header-height-l + $title-height-l + $padding-display-l +
+  $padding-container-l;
+$total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
+  $padding-container-d;
 
-.admin{
-    width: 100%;
+.admin {
+  width: 100%;
+  display: flex;
+
+  @include laptop {
     display: grid;
     grid-template-columns: 1fr 3fr;
+  }
 
-    &__display{
-        display: flex;
-        flex-direction: column;
-        padding: 16px;
-        height: calc(100vh - 70px);
-        height: calc(100dvh - 70px);
+  &__display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+    height: calc(100vh - 70px);
+    height: calc(100dvh - 70px);
 
-        >section{
-            @include responsive(height, calc(100vh - $total-offset-m), calc(100vh - $total-offset-l), calc(100vh - $total-offset-d));
-            @include responsive(height, calc(100dvh - $total-offset-m), calc(100dvh - $total-offset-l), calc(100dvh - $total-offset-d));
-            margin-top: 1em;
-            overflow: hidden;
-        }
+    .title {
+      width: fit-content;
     }
 
-    &__sidebar{
-        background-color: $dark-grey-color;
-        height:100vh;
-        height:100dvh;
+    > section {
+      @include responsive(
+        height,
+        calc(100vh - $total-offset-m),
+        calc(100vh - $total-offset-l),
+        calc(100vh - $total-offset-d)
+      );
+      @include responsive(
+        height,
+        calc(100dvh - $total-offset-m),
+        calc(100dvh - $total-offset-l),
+        calc(100dvh - $total-offset-d)
+      );
+      width: 100%;
 
-        .logo{
-            margin:16px 0 16px 20px;
-        }
-
-        h1{
-            margin:16px 0 5px 20px;
-        }
+      margin-top: 1em;
+      overflow: hidden;
     }
 
-    &__content{
-        width: 100%;
-        background-color: $grey-color;
-        height: 100vh;
-        height: 100dvh;
+    &-notification {
+      span {
+        animation: fadeOut 1s ease forwards 500ms;
+      }
+    }
+  }
 
-        .cta{
-            padding:7px 15px;
-        }
+  &__sidebar {
+    transition: $transition-settings;
+    background-color: $dark-grey-color;
+    height: 100vh;
+    height: 100dvh;
+    position: absolute;
+    transform: translateX(-100%);
+    width: min(100%, 300px);
+
+    &--open {
+      top: 0;
+      left: 0;
+      transform: translateX(0);
     }
 
-
-
-    &__option{
-        @include body;
-        height: unset;
-        color: $black-color;
-        text-decoration: none;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        padding:14px 20px;
-        border-left: 3px solid transparent;
-
-        .icon{  
-            width: 25px;
-        }
-
-        &:hover{
-            background-color: rgba($prim-color, 0.5);
-            border-left: 3px solid $hover-color;
-        }
-        
-
-        &--disabled{
-            pointer-events: none;
-            cursor: default;
-            background-color: darkgrey;
-            border: grey;
-
-            .icon{
-                fill:grey;
-            }
-            
-            &:hover{
-                background-color: darkgrey;
-            }
-        }
-
-        &--active{
-            border-left: 3px solid $prim-color;
-        }        
+    @include laptop {
+      width: unset;
+      max-width: unset;
+      position: relative;
+      transform: unset;
     }
+
+    .logo {
+      margin: 16px 0 16px 20px;
+    }
+
+    h1 {
+      margin: 16px 0 5px 20px;
+    }
+  }
+
+  &__content {
+    transition: $transition-settings;
+    width: 100%;
+    background-color: $grey-color;
+    height: 100vh;
+    height: 100dvh;
+
+    .cta {
+      padding: 7px 15px;
+    }
+
+    @include laptop {
+      // transition: 0ms all;
+      transform: unset !important;
+    }
+  }
+
+  &__option {
+    @include body;
+    height: unset;
+    color: $black-color;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-left: 3px solid transparent;
+
+    .icon {
+      width: 25px;
+    }
+
+    &:hover {
+      background-color: rgba($prim-color, 0.5);
+      border-left: 3px solid $hover-color;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      cursor: default;
+      background-color: darkgrey;
+      border: grey;
+
+      .icon {
+        fill: grey;
+      }
+
+      &:hover {
+        background-color: darkgrey;
+      }
+    }
+
+    &--active {
+      border-left: 3px solid $prim-color;
+    }
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
 }

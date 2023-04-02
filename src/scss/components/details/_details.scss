@@ -1,0 +1,44 @@
+.details {
+  @include fluidbody;
+  transition: $transition-settings;
+  overflow: hidden; /* Hide the rest of the content */
+  margin-top: 10px;
+
+  // Prevent the HTML style attribute height;
+  // Use only when details is not open
+  &:not([open]) {
+    height: 1lh !important;
+  }
+
+  &__hint {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+    height: 1lh;
+
+    &::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 8'%3E%3Cpath d='M8 8L15.7942 0.5L0.205771 0.5L8 8Z'/%3E%3C/svg%3E%0A");
+      //   font-size: 20px;
+      //   line-height: 20px;
+      height: 8px;
+      width: 16px;
+      display: flex;
+      align-items: center;
+      transition: $transition-settings;
+    }
+  }
+
+  &__content {
+    color: $dark-grey;
+  }
+
+  &[open] {
+    .details__hint {
+      &::before {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

@@ -3,18 +3,23 @@
 .title {
   text-transform: uppercase;
   max-width: 1272px;
+  width: 100%;
 
   &--h1 {
     @include h1;
     color: currentColor;
     @include breakpoint($min: 0px) {
-      font-size: clamp(20px, 9.5vmin, 52px);
+      font-size: clamp(22px, 9.5vmin, 52px);
       line-height: 1em;
     }
   }
 
   &--h2 {
     @include h2;
+    color: currentColor;
+    @include breakpoint($min: 0px) {
+      font-size: clamp(20px, 4.5vmin, 34px);
+    }
 
     &::first-letter {
       color: $prim-color;
@@ -24,7 +29,11 @@
   &--h3 {
     @include h3;
     text-transform: lowercase;
-    color: inherit;
+    color: currentColor;
+
+    @include breakpoint($min: 0px) {
+      font-size: clamp(18px, 3vmin, 26px);
+    }
 
     &::first-letter {
       text-transform: uppercase;
@@ -34,6 +43,10 @@
   &--h4 {
     @include h4;
     color: currentColor;
+
+    @include breakpoint($min: 0px) {
+      font-size: clamp(16px, 2.5vmin, 22px);
+    }
   }
 
   &--tag {
@@ -65,5 +78,9 @@
 
   &--uppercase {
     text-transform: uppercase;
+  }
+
+  &--centered {
+    text-align: center;
   }
 }

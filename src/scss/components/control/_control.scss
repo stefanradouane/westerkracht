@@ -1,34 +1,103 @@
-.control{
-    font-size:18px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 4px;
-    
-    span:not(span > span){
-      display: flex;
-      gap: 4px;
-      width: 100%;
-    }
+.control {
+  @include fluidbody;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 4px;
+  width: 100%;
 
-    &--check span{
-      width: 100%;
+  span:not(span > span) {
+    // display: flex;
+    // gap: 4px;
+    // width: 100%;
+  }
 
-    }
-    
-    &__input{
-      width:100%;
-      font-size:16px;
-      padding:12px;
-      border:none;
-      // line-height: 20px;
-      //   Change color
-      border-bottom:3px solid #610326;
-      //   Change color
-      background-color:#F1F1F1;
+  &--check span {
+    // width: 100%;
+  }
+
+  &__input {
+    @include fluidbody;
+    width: 100%;
+
+    padding: 12px;
+    border: none;
+
+    // line-height: 20px;
+    //   Change color
+    border-bottom: 3px solid #610326;
+    //   Change color
+    background-color: #f1f1f1;
+  }
+
+  &__required {
+    //   Change color
+    color: #5f5f5f;
+  }
+
+  &__fieldset {
+  }
 }
 
-&__required{
-    //   Change color
-      color:#5F5F5F;
+.coachselect {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  &__fieldset {
+    @include responsive-columns($gap: 10px, $column-count: 4, $item-size: 75px);
+    border: none;
+  }
+
+  label {
+    display: contents;
+  }
+
+  span {
+    display: none;
+  }
+
+  &__input {
+    appearance: none;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    display: block;
+    // max-width: 75px;
+    padding: 0;
+    margin-bottom: 20px;
+
+    &::before {
+      content: attr(data-name);
+      position: absolute;
+      bottom: -20px;
+      font-size: 14px;
+      line-height: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    &::after {
+      content: "";
+    }
+
+    &::before,
+    &::after,
+    & {
+      cursor: pointer;
+    }
+
+    // Coach checked styling
+    &:checked::after {
+      background-color: $prim-color;
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      border-radius: 50%;
     }
   }
+}

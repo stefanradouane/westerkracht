@@ -9,10 +9,40 @@
   z-index: 10;
   top: 0;
   transition: $transition-settings;
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: $dark-grey;
+
+  &--admin {
+    position: sticky;
+    padding: 0 20px 0 0;
+
+    @include laptop {
+      padding: 0 20px;
+    }
+  }
+
+  &--admin &__controller {
+    transition: $transition-settings;
+    display: flex;
+    flex-shrink: 0;
+    @include laptop {
+      display: none;
+    }
+  }
+
+  &--admin.header--open &__controller {
+    transform: translateX(-52px);
+    @include laptop {
+      transform: translateX(0);
+    }
+  }
 
   @include mobile-only {
     padding: 0 0 0 20px;
+
+    &--admin {
+      padding: 0 20px 0 0;
+    }
 
     &--open {
       background-color: $dark-grey;
@@ -43,8 +73,10 @@
     }
   }
 
-  &--scrolled {
-    background-color: $dark-grey;
+  &--scrolled-top {
+    background-color: transparent;
+
+    // background-color: $dark-grey;
   }
 }
 

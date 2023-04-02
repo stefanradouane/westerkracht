@@ -1,18 +1,12 @@
 .cta {
-  @include responsive(font-size, 16px, 16px, 18px, 20px);
-  @include responsive(line-height, 24px, 24px, 26px, 28px);
+  @include fluidbody;
+  @include responsive(padding, 17px 12px, 17px 15px, 17px 10px);
 
-  font-size: clamp(12px, 4.5vw, 16px);
   display: block;
-  padding: 17px 15px;
-  background-color: $prim-color;
-  transition: $transition-settings;
-  color: $white-color;
   text-transform: uppercase;
-  font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: none;
+  font-weight: bold;
   cursor: pointer;
   max-width: 408px;
   width: 100%;
@@ -26,6 +20,13 @@
   &--home {
     padding: 17px 34px;
   }
+}
+
+.cta-theme {
+  transition: $transition-settings;
+  color: $white-color;
+  background-color: $prim-color;
+  border: none;
 
   &:hover {
     background-color: $hover-color;

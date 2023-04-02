@@ -1,11 +1,16 @@
-<header class="header header--admin">
+<header class="header header--admin" data-header>
   <% if (typeof user != "undefined") { %>
   <p><%= user?.name %></p>
   <% } %>
+  <button class="header__controller" data-nav-controller>
+    <div class="hb-menu"></div>
+  </button>
 
-  <a href="/" class="cta" style="margin: 0 10px 0 auto"> Site bekijken </a>
+  <a href="/" class="cta cta-theme" style="margin: 0 10px 0 auto">
+    Site bekijken
+  </a>
 
   <form action="/logout?_method=DELETE" method="POST">
-    <button class="cta" type="submit">Log out →</button>
+    <button class="cta cta-theme" type="submit">Log out →</button>
   </form>
 </header>
