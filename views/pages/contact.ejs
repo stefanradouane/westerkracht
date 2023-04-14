@@ -15,43 +15,12 @@
             Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij
             nemen zo snel mogelijk contact met je op!
           </p>
-          <label class="control">
-            <span>
-              Naam
-              <span class="control__required">*</span>
-            </span>
-            <input
-              class="control__input"
-              type="text"
-              name="name"
-              placeholder="Naam"
-              required />
-          </label>
-          <label class="control">
-            <span>
-              E-mailadres (voor de reactie)
-              <span class="control__required">*</span>
-            </span>
-            <input
-              class="control__input"
-              type="email"
-              name="email"
-              placeholder="naam@voorbeeld.nl"
-              required />
-          </label>
-          <label class="control">
-            <span>
-              Onderwerp
-              <span class="control__required">*</span>
-            </span>
-            <input
-              class="control__input"
-              type="text"
-              placeholder="Onderwerp"
-              required />
-          </label>
+          <!-- prettier-ignore -->
+          <%- include('../components/control/control' , {type: "text", name: "name", placeholder:"Naam", required:true, label: "Naam", width:"fw" }); %> 
+          <%- include('../components/control/control' , {type: "email", name: "email", placeholder:"naam@voorbeeld.nl", required:true, label: "E-mail (voor de reactie)", width:"fw"}); %> 
+          <%- include('../components/control/control' , {type: "text", name: "subject", placeholder:"Onderwerp", required:true, label: "Onderwerp", width:"fw"}); %>
 
-          <label class="control">
+          <label class="control control--fw">
             <span>
               Wat is je bericht aan ons?
               <span class="control__required">*</span>
@@ -61,6 +30,7 @@
               name="content"
               cols="30"
               rows="5"
+              placeholder="Wat is je bericht aan ons?"
               required></textarea>
           </label>
 

@@ -1,11 +1,11 @@
 export function popUp(e) {
   e.preventDefault();
   const btnValue = e.target.value;
-  const coachValue = e.target.dataset.name;
+  const value = e.target.dataset.name;
 
-  const currentPopup = document.querySelector(
-    `.cm-block__grid-popup[data-name=${coachValue}]`
-  );
+  const currentPopup = Array.from(
+    document.querySelectorAll(`.cm-block__grid-popup`)
+  ).find((item) => item.dataset.name == value);
 
   switch (btnValue) {
     // Open popup

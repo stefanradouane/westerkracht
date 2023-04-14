@@ -1,101 +1,110 @@
-.mediabank{
+.mediabank {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-container {
+    &:has(.mediabank) {
+      box-shadow: 2px 2px 5px $dark-grey-color;
+      border-radius: 5px;
+    }
+  }
+
+  &__footer {
+    background-color: #e5e5e5;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    gap: 20px;
+    padding: 20px 10px 10px 10px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgba(224, 224, 224, 1);
+    border-top: none;
+  }
 
-    &-container{
-        box-shadow: 2px 2px 5px $dark-grey-color;
-        border-radius: 5px;
+  &-form {
+    display: flex;
+    justify-content: space-between;
+
+    &__displayed-image {
+      max-height: 300px;
+      max-width: 100%;
     }
 
-    &__footer{
-        background-color: #e5e5e5;
+    &__section {
+      max-width: 400px;
+
+      &--add {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding:20px 10px 10px 10px;
-        border-radius: 0 0 5px 5px;
-        border: 1px solid rgba(224, 224, 224, 1);
-        border-top: none;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      &--remove {
+        display: none;
+        align-self: flex-end;
+
+        button {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+        }
+
+        &[aria-hidden="false"] {
+          display: block;
+        }
+      }
     }
-    
-    &-form{
+
+    &__button {
+      border: none;
+    }
+
+    &__file {
+      max-width: 300px;
+      width: 100%;
+
+      &-remove {
+        cursor: pointer;
+        display: none;
+        height: 40px;
+        aspect-ratio: 1/1;
+        background: $prim-color;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &::file-selector-button {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #e5e5e5;
+        padding: 10px 15px;
+        margin-right: 20px;
+        transition: 0.5s;
+      }
+
+      &::file-selector-button:hover {
+        background-color: #eee;
+        border: 1px solid #e5e5e5;
+      }
+    }
+
+    &__filename {
+      display: none;
+      flex-direction: column;
+      align-items: baseline;
+      margin-top: 20px;
+      gap: 10px;
+
+      &[aria-hidden="false"] {
         display: flex;
-        // justify-content: space-between;
+      }
 
-        &__displayed-image{
-            max-height: 300px;
-            max-width: 100%;
-        }
-
-        &__section{
-            max-width: 400px;
-
-            &--add{
-                display: flex;
-                flex-wrap: wrap;
-            }
-
-            &--remove{
-                display: none;
-                align-self: flex-end;
-
-                &[aria-hidden="false"]{
-                    display: block;
-                }
-            }
-        }
-
-        &__button{
-            border:none;
-        }
-
-
-        &__file{
-            max-width: 300px;
-            width: 100%;
-
-            &-remove{
-                display: none;
-                height: 20px;
-                aspect-ratio: 1/1;
-                background: $prim-color;
-            }
-
-            &::file-selector-button {
-                background-color: #fff;
-                color: #000;
-                border: 1px solid #e5e5e5;
-                padding: 10px 15px;
-                margin-right: 20px;
-                transition: .5s;
-            }
-            
-            &::file-selector-button:hover {
-                background-color: #eee;
-                border: 1px solid #e5e5e5;
-            }
-        }
-
-        &__filename{
-            display: none;
-            flex-direction: column;
-            align-items: baseline;
-            margin-top:20px ;
-            gap: 10px;
-
-            &[aria-hidden="false"]{
-                display: flex;
-            }
-
-            &-input{
-                width: 100%;
-                padding:10px;
-
-            }
-        }
-
-        // &__display
+      &-input {
+        width: 100%;
+        padding: 10px;
+      }
     }
 
+    // &__display
+  }
 }

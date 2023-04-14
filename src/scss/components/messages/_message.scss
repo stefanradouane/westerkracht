@@ -1,0 +1,24 @@
+.message {
+  position: relative;
+
+  &__popup {
+    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(32, 33, 36, 0.9);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border: none;
+
+    &[open] {
+      display: flex;
+    }
+
+    .title {
+      font-size: 1.5rem !important;
+    }
+  }
+}

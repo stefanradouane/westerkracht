@@ -1,18 +1,16 @@
 // Express
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const controller = require('../controllers/controllers');
+const controller = require("../controllers/controllers");
 
-const passportConfig = require('../config/passportConfig');
-const passport = require('passport');
+const passportConfig = require("../config/passportConfig");
+const passport = require("passport");
 
-const User = require('../models/model');
+const User = require("../models/model");
 
-const {
-  upload
-} = require('../config/multer');
+const { upload } = require("../config/multer");
 
 passportConfig.initialize2(
   passport,
@@ -20,64 +18,79 @@ passportConfig.initialize2(
     await User.findOne({
       email,
     }),
-    (id) => id
+  (id) => id
 );
 
-express().use(express.json())
-
-
+express().use(express.json());
 
 const checkLogged = passportConfig.checkAuthenticated;
 const checkNotLogged = passportConfig.checkNotAuthenticated;
 
-
-router.get('/', controller.control_index);
-router.get('/inschrijven', controller.control_inschrijven);
-router.post('/inschrijven', controller.control_post_inschrijven);
-router.get('/contact', controller.control_contact);
-router.post('/contact', controller.control_post_contact);
-router.get('/register', controller.control_register);
-router.post('/register', controller.control_registerpost);
+router.get("/", controller.control_index);
+router.get("/inschrijven", controller.control_inschrijven);
+router.post("/inschrijven", controller.control_post_inschrijven);
+router.get("/contact", controller.control_contact);
+router.post("/contact", controller.control_post_contact);
+router.get("/register", controller.control_register);
+router.post("/register", controller.control_registerpost);
 
 // ADMIN
 // Add checklogged middleware function
-router.get('/admin', controller.control_admin);
-router.post('/admin', controller.control_adminpost);
+router.get("/admin", controller.control_admin);
+router.post("/admin", controller.control_adminpost);
 
-router.get('/admin/login', checkNotLogged, controller.control_newadmin);
-router.post('/admin/login', checkNotLogged, passportConfig.login);
+router.get("/admin/login", checkNotLogged, controller.control_newadmin);
+router.post("/admin/login", checkNotLogged, passportConfig.login);
 
-router.get('/admin/gebruikers', controller.control_admin_gebruikers);
-router.get('/admin/inschrijvingen', controller.control_admin_inschrijvingen);
-router.get('/admin/coaches', controller.control_admin_coach);
-
-// Add checklogged middleware function
-router.get('/admin/info', controller.control_admin_info);
-router.get('/admin/media', controller.control_admin_media);
-router.get('/admin/hero', controller.control_admin_hero);
-
-
-
-
-
+router.get("/admin/gebruikers", controller.control_admin_gebruikers);
+router.get("/admin/inschrijvingen", controller.control_admin_inschrijvingen);
+router.get("/admin/coaches", controller.control_admin_coach);
 
 // Add checklogged middleware function
-router.post('/admin/coaches', controller.control_admin_coach_post);
-router.post('/admin/info', controller.control_admin_info_post);
-router.post('/admin/hero', controller.control_admin_hero_post);
+router.get("/admin/info", controller.control_admin_info);
+router.get("/admin/media", controller.control_admin_media);
+router.get("/admin/hero", controller.control_admin_hero);
 
-router.post('/admin/media', upload.single('img'), controller.control_admin_media_post);
+/************************/
+/* Refactor stuff
+/************************/
 
+// Inschrijfing admin
+router.get("/api/inschrijving", controller.api.inschrijfing.get);
+router.post("/api/inschrijving", controller.api.inschrijfing.post);
 
+// Contact API
+router.get("/api/contact", controller.api.contact.get);
+router.post("/api/contact", controller.api.contact.post);
 
-router.get('/api', checkLogged, controller.control_api)
+/************************/
+/* (new) Admin Routes
+/************************/
+
+router.get("/newadmin", controller.admin.get);
+
+/************************/
+/************************/
 
 // Add checklogged middleware function
-router.get('/api/info', controller.control_api_info)
-router.get('/api/media', controller.control_api_media)
-router.get('/api/hero', controller.control_api_hero)
-router.get('/api/coaches', controller.control_api_coaches)
+router.post("/admin/coaches", controller.control_admin_coach_post);
+router.post("/admin/info", controller.control_admin_info_post);
+router.post("/admin/hero", controller.control_admin_hero_post);
 
-router.delete('/logout', controller.control_logout);
+router.post(
+  "/admin/media",
+  upload.single("img"),
+  controller.control_admin_media_post
+);
+
+router.get("/api", checkLogged, controller.control_api);
+
+// Add checklogged middleware function
+router.get("/api/info", controller.control_api_info);
+router.get("/api/media", controller.control_api_media);
+router.get("/api/hero", controller.control_api_hero);
+router.get("/api/coaches", controller.control_api_coaches);
+
+router.delete("/logout", controller.control_logout);
 
 module.exports = router;

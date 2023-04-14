@@ -83,3 +83,13 @@
 body:has(.page--form) .header {
   background-color: $dark-grey;
 }
+
+.header {
+  @include mobile-only {
+    transition: $transition-settings;
+    &--open + .page,
+    &--open + .page + .footer {
+      transform: translateX(-300px);
+    }
+  }
+}

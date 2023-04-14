@@ -1,0 +1,19 @@
+@mixin pageshift {
+  @include mobile-only {
+    transition: $transition-settings;
+    transform: translateX(0);
+  }
+
+  body:has(.header--open) & {
+    @include mobile-only {
+      transform: translateX(-300px);
+    }
+  }
+}
+
+.page {
+  @include pageshift;
+}
+.footer {
+  @include pageshift;
+}

@@ -11,9 +11,9 @@ if (nav && navController) {
     header.classList[action]("header--open");
 
     if (!isOpen) {
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
     } else {
-      document.body.removeAttribute("style");
+      // document.body.removeAttribute("style");
     }
   });
 }
@@ -32,9 +32,9 @@ if (sidebar && navController) {
 
     if (!isOpen) {
       content.style.transform = `translateX(min(100%, 300px))`;
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
     } else {
-      document.body.removeAttribute("style");
+      // document.body.removeAttribute("style");
       content.removeAttribute("style");
     }
   });

@@ -26,6 +26,10 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
 .admin {
   width: 100%;
   display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+  // background-color: $sec-color;
 
   @include laptop {
     display: grid;
@@ -37,26 +41,28 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 16px;
-    height: calc(100vh - 70px);
-    height: calc(100dvh - 70px);
+    max-width: 1080px;
+
+    // height: calc(100vh - 70px);
+    // height: calc(100dvh - 70px);
 
     .title {
       width: fit-content;
     }
 
     > section {
-      @include responsive(
-        height,
-        calc(100vh - $total-offset-m),
-        calc(100vh - $total-offset-l),
-        calc(100vh - $total-offset-d)
-      );
-      @include responsive(
-        height,
-        calc(100dvh - $total-offset-m),
-        calc(100dvh - $total-offset-l),
-        calc(100dvh - $total-offset-d)
-      );
+      // @include responsive(
+      //   height,
+      //   calc(100vh - $total-offset-m),
+      //   calc(100vh - $total-offset-l),
+      //   calc(100vh - $total-offset-d)
+      // );
+      // @include responsive(
+      //   height,
+      //   calc(100dvh - $total-offset-m),
+      //   calc(100dvh - $total-offset-l),
+      //   calc(100dvh - $total-offset-d)
+      // );
       width: 100%;
 
       margin-top: 1em;
@@ -73,16 +79,18 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
   &__sidebar {
     transition: $transition-settings;
     background-color: $dark-grey-color;
-    height: 100vh;
-    height: 100dvh;
-    position: absolute;
+    // height: 100vh;
+    height: 100%;
+    position: fixed;
     transform: translateX(-100%);
     width: min(100%, 300px);
+    top: 0;
 
     &--open {
       top: 0;
       left: 0;
       transform: translateX(0);
+      overflow: scroll;
     }
 
     @include laptop {
@@ -104,9 +112,6 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
   &__content {
     transition: $transition-settings;
     width: 100%;
-    background-color: $grey-color;
-    height: 100vh;
-    height: 100dvh;
 
     .cta {
       padding: 7px 15px;

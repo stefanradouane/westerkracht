@@ -12,4 +12,12 @@ export const endpoint = {
     get: "/api/info",
     post: "/admin/info",
   },
+  api: {
+    inschrijving: "/api/inschrijving",
+    contact: "/api/contact",
+  },
+  hero: {
+    get: "/api/hero",
+    post: "/admin/hero",
+  },
 };

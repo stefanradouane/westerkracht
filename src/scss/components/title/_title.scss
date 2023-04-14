@@ -20,10 +20,6 @@
     @include breakpoint($min: 0px) {
       font-size: clamp(20px, 4.5vmin, 34px);
     }
-
-    &::first-letter {
-      color: $prim-color;
-    }
   }
 
   &--h3 {

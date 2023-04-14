@@ -16,19 +16,20 @@
             nemen zo snel mogelijk contact met je op!
           </p>
           <!-- prettier-ignore -->
-          <%- include('../components/control/control' , {type: "text", name: "name", placeholder:"Naam en achternaam", required:true, label: "Naam"}); %> 
-          <%- include('../components/control/control' , {type: "email", name: "email", placeholder:"naam@voorbeeld.nl", required:true, label: "E-mail (voor de reactie)"}); %> 
-          <%- include('../components/control/control' , {type: "number", name: "age", placeholder:"22", required:true, label: "Leeftijd"}); %> 
-          <%- include('../components/control/control' , {type: "phone", name: "phone", placeholder:"0612345678", required:true, label: "Telefoon nummer"}); %>
+          <%- include('../components/control/control' , {type: "text", name: "name", placeholder:"Naam en achternaam", required:true, label: "Naam", width:"fw" }); %> 
+          <%- include('../components/control/control' , {type: "email", name: "email", placeholder:"naam@voorbeeld.nl", required:true, label: "E-mail (voor de reactie)", width:"fw"}); %> 
+          <%- include('../components/control/control' , {type: "number", name: "age", placeholder:"22", required:true, label: "Leeftijd", width:"small"}); %> 
+          <%- include('../components/control/control' , {type: "phone", name: "phone", placeholder:"0612345678", required:true, label: "Telefoon nummer", width:"small"}); %>
           <%- include('../components/coachselect/coachselect' , {coaches: coaches}); %>
 
-          <label class="control">
+          <label class="control control--fw">
             <span>
               Wat is je bericht aan ons?
               <span class="control__required">*</span>
             </span>
             <textarea
               class="control__input"
+              placeholder="Wat is de reden van jouw inschrivjving?"
               name="content"
               cols="30"
               rows="5"

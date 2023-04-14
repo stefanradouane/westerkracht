@@ -22,6 +22,32 @@
     animation: rotate 1s linear infinite;
     border-radius: 50%;
   }
+
+  &--cross {
+    position: relative;
+    width: 30px;
+    height: 5px;
+    background-color: transparent;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 5px;
+      transition: all 200ms ease-in-out;
+      background-color: $white-color;
+      left: 0;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
 }
 
 @keyframes rotate {

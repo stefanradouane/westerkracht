@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../../partials/head'); %>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="admin">
-        <section class="admin__sidebar">
-            <%- include('../../components/logo/logo'); %>
-            <h1 class="title title--h1">Admin</h1>
-            <%- include('../../components/sidebar/admin-sidebar', {adminpage: "gebruiker"}); %>
+      <%- include('../../components/sidebar/admin-sidebar', {adminpage:
+      "gebruiker"}); %>
+
+      <section class="admin__content">
+        <% if (typeof user != "undefined") { %> <%-
+        include('../../partials/header-admin', {user:user}); %> <% } else { %>
+        <%- include('../../partials/header-admin', {user:undefined}); %> <% } %>
+        <section class="admin__display">
+          <h2 class="title title--h2">Gebruikers</h2>
+          <section>
+            <section class="table-cover">
+              <table class="table">
+                <tr class="table__head">
+                  <th class="table__head-item table__head-item--id">ID</th>
+                  <th class="table__head-item table__head-item--name">Naam</th>
+                  <th class="table__head-item table__head-item--email">
+                    Email
+                  </th>
+                  <th class="table__head-item table__head-item--admin">
+                    Admin
+                  </th>
+                </tr>
+                <% users.forEach(function(user, index){ %>
+                <tr class="table__body">
+                  <td class="table__body-item table__body-item--id">
+                    Gebruiker <%= index + 1 %>
+                  </td>
+                  <td class="table__body-item table__body-item--name">
+                    <%= user.name %>
+                  </td>
+                  <td class="table__body-item table__body-item--email">
+                    <%= user.email %>
+                  </td>
+                  <td class="table__body-item table__body-item--admin">
+                    <% if (user.admin) { %> ✅ <% } else { %> ❌ <% } %>
+                  </td>
+                </tr>
+                <% }) %>
+              </table>
+            </section>
+          </section>
         </section>
-        <section class="admin__content">
-            <% if (typeof user != "undefined") { %>
-            <%- include('../../partials/header-admin', {user:user}); %>            
-            <% } else { %>
-                <%- include('../../partials/header-admin', {user:undefined}); %>            
-            <% } %>
-            <section class="admin__display">
-                <h2 class="title title--h2">Gebruikers</h2>
-                <section>
-                    <section class="table-cover">
-                        <table class="table">
-                            <tr class="table__head">
-                                <th class="table__head-item table__head-item--id">ID</th>        
-                                <th class="table__head-item table__head-item--name">Naam</th>        
-                                <th class="table__head-item table__head-item--email">Email</th>        
-                                <th class="table__head-item table__head-item--admin">Admin</th>        
-                            </tr>
-                            <% users.forEach(function(user, index){ %>
-                                <tr class="table__body">
-                                    <td class="table__body-item table__body-item--id">Gebruiker <%= index + 1 %></td>
-                                    <td class="table__body-item table__body-item--name"><%= user.name %></td>
-                                    <td class="table__body-item table__body-item--email"><%= user.email %></td>
-                                    <td class="table__body-item table__body-item--admin">
-                                        <% if (user.admin) { %>
-                                            ✅
-                                        <% } else { %>
-                                            ❌
-                                        <% } %>
-                                    </td>
-                                </tr>
-                            <% }) %>
-                        </table>
-                    </section> 
-                </section>
-            </section> 
-        </section>
+      </section>
     </main>
 
     <script src="../dist/scripts/main.js"></script>
-</body>
-
+  </body>
 </html>

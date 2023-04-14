@@ -12,9 +12,16 @@ export default function handleSubmit(e, type, remove, next) {
   e.preventDefault();
   const body = form.parseToBody(e.target.form);
 
-  const key = type == "coach" ? "name" : "title";
+  const key = type == "hero" ? null : type == "coach" ? "name" : "title";
   const method = remove ? "verwijderd" : "bijgewerkt";
-  const defValue = body[key] ? body[key] : type == "coach" ? "coach" : "info";
+  const defValue =
+    type == "hero"
+      ? "Hero"
+      : body[key]
+      ? body[key]
+      : type == "coach"
+      ? "coach"
+      : "info";
 
   if (body.invalid) {
     makeNotification(type, true, "bijwerken");

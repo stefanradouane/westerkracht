@@ -97,7 +97,7 @@
   &__image {
     @include responsive(width, 100%, 300px, 100%, 100%);
     @include responsive(height, unset, 100%, unset);
-    aspect-ratio: 16/12;
+    aspect-ratio: 1/1;
     display: block;
     object-fit: cover;
     grid-area: image;

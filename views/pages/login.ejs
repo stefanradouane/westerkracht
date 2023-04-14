@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../partials/head'); %>
-</head>
+  </head>
 
-<body class="index">
-    <%- include('../partials/header'); %>
-    
+  <body class="index">
     <main class="page">
+      <section>
+        <% if (messages.error) {%>
+        <p><%= messages.error%> <%}%></p>
+        <form
+          method="POST"
+          action="/admin/login"
+          class="auth"
+          style="display: flex; flex-direction: column; max-width: 280px">
+          <label for="username">Email</label>
+          <input name="email" class="auth__user-name" type="text" required />
+          <label for="pass">Password</label>
+          <input
+            name="password"
+            class="auth__user-pass"
+            type="password"
+            required />
+          <button value="login" type="submit">Login</button>
+        </form>
+        <a href="/new-admin">Geen account?</a>
+      </section>
 
-        <section>
-            <% if (messages.error) {%>
-            <p><%= messages.error%> <%}%></p>
-            <form method="POST" action="/admin/login" class="auth" style="display: flex; flex-direction: column; max-width: 280px;">
-                <label for="username">Email</label>
-                <input name="email" class="auth__user-name" type="text" required>
-                <label for="pass">Password</label>
-                <input name="password" class="auth__user-pass" type="password" required>
-                <button value="login" type="submit">Login</button>
-            </form>
-            <a href="/new-admin">Geen account?</a>
-        </section>
-
-        <!-- <video class="vidplayer" playsinline="" preload style="max-width:300px;" data-settings='{"colorscheme":["rgba(21,28,30,0.75)", "rgb(190, 30, 200)", "yellow"], "theme": "minimal"}'>
+      <!-- <video class="vidplayer" playsinline="" preload style="max-width:300px;" data-settings='{"colorscheme":["rgba(21,28,30,0.75)", "rgb(190, 30, 200)", "yellow"], "theme": "minimal"}'>
             <source src="./assets/testvideo.MOV" type="video/mp4">
         </video> -->
     </main>
 
-    <%- include('../partials/footer'); %>
     <script src="../dist/scripts/main.js"></script>
     <!-- <script src='https://stefanradouane.github.io/vidplayer/index.js'></script> -->
-</body>
-
+  </body>
 </html>

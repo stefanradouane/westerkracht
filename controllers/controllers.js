@@ -5,10 +5,14 @@ const User = require("../models/model");
 const Coach = require("../models/coach");
 const Info = require("../models/info");
 const Hero = require("../models/hero");
+const Contact = require("../models/contact");
 const getFilesInDirectory = require("../config/fileList");
 const Inschrijving = require("../models/inschrijving");
 
 const { upload } = require("../config/multer");
+
+const api = require("./api/api_controller");
+const admin = require("./admin/admin_controller");
 
 const _ = require("underscore");
 
@@ -59,11 +63,6 @@ const control_contact = async (req, res) => {
 };
 
 const control_post_inschrijven = async (req, res) => {
-  const now = new Intl.DateTimeFormat("nl-NL", {
-    dateStyle: "short",
-    timeStyle: "short",
-  }).format(Date.now());
-
   const object = {
     name: req.body.name,
     email: req.body.email,
@@ -71,35 +70,25 @@ const control_post_inschrijven = async (req, res) => {
     phone: req.body.phone,
     coach: req.body.coach ? req.body.coach : null,
     content: req.body.content,
-    date: now,
     handled: false,
   };
-  console.log(req.body);
 
   const newUser = await Inschrijving.create(object);
   res.redirect("/inschrijven");
 };
 
-const control_post_contact = async (req, res) => {
-  // const now = new Intl.DateTimeFormat('nl-NL', {
-  //     dateStyle: 'short',
-  //     timeStyle: 'short'
-  // }).format(Date.now());
+const control_post_contact = (req, res) => {
+  const object = {
+    name: req.body.name,
+    email: req.body.email,
+    subject: req.body.subject,
+    content: req.body.content,
+    handled: false,
+  };
 
-  // const object = {
-  //     "name": req.body.name,
-  //     "email": req.body.email,
-  //     "age": req.body.age,
-  //     "phone": req.body.phone,
-  //     "coach": req.body.coach ? req.body.coach : null,
-  //     "content": req.body.content,
-  //     "date": now,
-  //     "handled": false,
-  // }
-  // console.log(req.body)
-
-  // const newUser = await Inschrijving.create(object)
-  res.redirect("/inschrijven");
+  Contact.create(object).then(() => {
+    res.redirect("/contact");
+  });
 };
 
 const control_admin = async (req, res) => {
@@ -278,7 +267,6 @@ const control_admin_hero_post = async (req, res) => {
   //         "linkTitle":"Inschrijven",
   //     })
   // }
-
   try {
     Hero.findOneAndUpdate(
       {
@@ -372,6 +360,11 @@ const control_api_coaches = async (req, res) => {
   res.status(200).json(coaches);
 };
 
+const control_api_inschrijving = async (req, res) => {
+  const inschrijvingen = await Inschrijving.find();
+  res.status(200).json(inschrijvingen);
+};
+
 const control_logout = logOut;
 
 module.exports = {
@@ -401,4 +394,6 @@ module.exports = {
   control_admin_info_post,
   control_register,
   control_registerpost,
+  api,
+  admin,
 };

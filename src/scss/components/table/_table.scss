@@ -1,47 +1,67 @@
-.table{
-    width:100%; 
-    padding:5px;
-    border-radius: 3px;
-    border: none;
+.table {
+  width: 100%;
+  padding: 5px;
+  // border-radius: 3px;
+  border: none;
+  border-collapse: collapse;
 
-    &__head{
-        &-item{
-            &--admin{
-                width: 10px;
-                text-align: center;
-            }
-        }
+  .icon {
+    height: 20px;
+    display: inline-block;
+  }
+
+  &__head {
+    &-item {
+      &--admin {
+        width: 10px;
+        text-align: center;
+      }
+
+      &--type {
+        width: 10px;
+        text-align: center;
+      }
+    }
+  }
+
+  &__body {
+    &-item--admin {
+      text-align: center;
     }
 
-    &__body{
-        &-item--admin{
-            text-align: center;
-        }
+    &-item--type {
+      color: $prim-color;
+      text-align: center;
     }
+
+    &-item--redirect {
+      width: 10px;
+    }
+  }
 }
 
-.table-cover{
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    width: 100%;
-    overflow: auto;
-    box-shadow: 2px 2px 5px $dark-grey-color;
+.table-cover {
+  background-color: white;
+  // border: 1px solid #ddd;
+  // border-radius: 3px;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 2px 2px 5px $dark-grey-color;
 
-    &--small{
-        box-shadow: none;
-    }
+  &--small {
+    box-shadow: none;
+  }
 }
 
-td, th {
-border: 1px solid #dddddd;
-text-align: left;
-padding: 8px;
-border-radius: 3px;
-
+td,
+th {
+  // border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  // border-radius: 3px;
+  white-space: nowrap;
 }
 
 tr:nth-child(even) {
-background-color: #dddddd;
-
+  background-color: #dddddd;
 }

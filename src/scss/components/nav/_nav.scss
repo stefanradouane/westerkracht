@@ -1,56 +1,97 @@
 .nav {
-  display: flex;
-  align-items: center;
-  height: 100%;
-
   @include mobile-only {
     transition: $transition-settings;
     transform: translateX(100%);
     position: fixed;
-    inset: 52px 0 0;
-    background-color: $dark-grey;
+    top: 52px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 300px;
+    background-color: $darker-grey;
+  }
 
-    &--open {
-      transform: translateX(0);
-    }
+  // Make sure the nav opens when a link is focused
+  &:has(a:focus-visible, a:focus) {
+    transform: translateX(0);
+  }
 
-    &__list {
-      flex-direction: column;
-
-      &-item {
-        height: unset !important;
-      }
-    }
+  &--open {
+    transform: translateX(0);
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 24px 10px 10px;
+    gap: 20px;
+
+    &-item {
+      padding-left: 10px;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      border-left: 4px solid transparent;
+      transition: $transition-settings;
+
+      &--active {
+        border-left: 4px solid $white-color;
+      }
+
+      &:last-of-type a {
+        width: 100%;
+      }
+    }
+    a {
+      @include responsive(font-size, 12px, 14px, 16px, 18px);
+      @include responsive(line-height, 20px, 22px, 24px, 26px);
+      transition: $transition-settings;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $white-color;
+    }
+  }
+
+  @include tablet {
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 30px;
 
-    &-item {
-      color: white;
-      font-weight: bold;
+    &__list {
+      flex-direction: row;
+      gap: 30px;
       height: 100%;
-      display: flex;
       align-items: center;
-      border-top: 4px solid transparent;
-      transition: $transition-settings;
+      padding: 0;
 
-      &:last-of-type {
-        border-top: none;
-      }
+      &-item {
+        padding-left: 0px;
+        border-top: 4px solid transparent;
+        border-left: none;
+        height: 100%;
 
-      &--active {
-        border-top: 4px solid $white-color;
-      }
+        &:has(a:hover) {
+          color: $prim-color;
+          border-top: 4px solid $prim-color;
 
-      a {
-        @include responsive(font-size, 12px, 14px, 16px, 18px);
-        @include responsive(line-height, 20px, 22px, 24px, 26px);
-        text-transform: uppercase;
-        text-decoration: none;
+          a {
+            color: $prim-color;
+          }
+
+          &:last-of-type a {
+            color: $white-color;
+          }
+        }
+
+        &--active {
+          border-top: 4px solid $white-color;
+          border-left: none;
+        }
+
+        &:last-of-type {
+          border-top: none !important;
+        }
       }
     }
   }

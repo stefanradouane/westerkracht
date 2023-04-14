@@ -1,37 +1,36 @@
-@import '../../node_modules/microscope-sass/lib/typography';
+@import "../../node_modules/microscope-sass/lib/typography";
 
-.datagrid{
-    height: 100%;
+.datagrid {
+  height: 100%;
+  background-color: $white-color;
+  // box-shadow: 2px 2px 5px $dark-grey-color;
+
+  & .MuiDataGrid-root {
     background-color: $white-color;
-    // box-shadow: 2px 2px 5px $dark-grey-color;
+    border-radius: 5px 5px 0 0;
+    height: 50vmin;
 
+    & .MuiDataGrid-selectedRowCount {
+      visibility: hidden;
+      opacity: 0;
+      margin: 0 !important;
+    }
 
-    & .MuiDataGrid-root{
-        background-color: $white-color;
-        border-radius: 5px 5px 0 0 ;
+    & .MuiTablePagination-actions {
+      @include responsive(margin-left, 10px, 10px, 20px);
 
-        & .MuiDataGrid-selectedRowCount{
-            visibility: hidden;
-            opacity: 0;
-            margin: 0 !important;
-        }
+      button {
+        @include responsive(padding, 6px, 6px, 8px);
+      }
+    }
 
-        & .MuiTablePagination-actions{
-            @include responsive(margin-left, 10px, 10px, 20px);
-
-            button{
-                @include responsive(padding, 6px, 6px, 8px);
-
-            }
-        }
-
-        & .rowcount {
-            margin-left:16px;
-            order: -1;
-            max-width: calc(100% - 140px);
-            height: 1lh;
-            overflow:hidden;
-            text-overflow: ellipsis;
-        }
-    }  
+    & .rowcount {
+      margin-left: 16px;
+      order: -1;
+      max-width: calc(100% - 140px);
+      height: 1lh;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }

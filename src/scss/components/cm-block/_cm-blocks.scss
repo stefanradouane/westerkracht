@@ -1,13 +1,35 @@
 .cm-blocks {
   display: flex;
   gap: 10px;
+  height: 100%;
+
+  @include mobile-only {
+    flex-direction: column;
+  }
 
   &__nav {
     display: flex;
     flex-direction: column;
-    // justify-content: stretch;
     align-items: stretch;
     gap: 2px;
+
+    @include mobile-only {
+      flex-direction: row;
+      gap: 10px;
+      width: max-content;
+      overflow: scroll;
+    }
+
+    &-container {
+      display: contents;
+    }
+
+    @include mobile-only {
+      &-container {
+        overflow: scroll;
+        display: block;
+      }
+    }
 
     &-option {
       cursor: pointer;
@@ -21,6 +43,7 @@
         justify-content: center;
         padding: 10px !important;
         width: 50px;
+        flex-shrink: 0;
 
         .icon {
           aspect-ratio: 1/1;
@@ -33,5 +56,6 @@
 
   &__display {
     width: 100%;
+    overflow: scroll;
   }
 }

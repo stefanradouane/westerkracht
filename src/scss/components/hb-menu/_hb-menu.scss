@@ -1,27 +1,30 @@
+$hb-width: 20px;
+$hb-height: 3px;
+
 .hb-menu {
   position: relative;
-  width: 30px;
-  height: 5px;
+  width: $hb-width;
+  height: $hb-height;
   background-color: $white-color;
-  transition: all 200ms ease-in-out;
+  transition: $transition-settings;
 
   &:before,
   &:after {
     content: "";
     position: absolute;
-    width: 30px;
-    height: 5px;
-    transition: all 200ms ease-in-out;
+    width: $hb-width;
+    height: $hb-height;
+    transition: $transition-settings;
     background-color: $white-color;
     left: 0;
   }
 
   &::before {
-    transform: translateY(-10px);
+    transform: translateY(calc($hb-height * -2));
   }
 
   &::after {
-    transform: translateY(10px);
+    transform: translateY(calc($hb-height * 2));
   }
 
   .header--open & {

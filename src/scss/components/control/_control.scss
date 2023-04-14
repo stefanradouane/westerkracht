@@ -1,9 +1,16 @@
 .control {
   @include fluidbody;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px 4px;
-  width: 100%;
+
+  &--fw {
+    width: 100%;
+  }
+
+  &--small {
+    width: fit-content;
+  }
 
   span:not(span > span) {
     // display: flex;
@@ -27,6 +34,23 @@
     border-bottom: 3px solid #610326;
     //   Change color
     background-color: #f1f1f1;
+
+    // &[name="age"] {
+    //   width: fit-content;
+    // }
+
+    // &[name="phone"] {
+    //   width: fit-content;
+    // }
+
+    &textarea {
+      width: 100%;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
   }
 
   &__required {

@@ -39,7 +39,7 @@ export const CM_Block = (props) => {
               type="text"
               name={key}
               defaultValue={defaultVal(props.instance[key])}
-              placeholder="Alleen voornaam"
+              placeholder={type == "info" ? "Titel van het blok" : "Naam"}
               required
             />
           </label>
@@ -68,7 +68,7 @@ export const CM_Block = (props) => {
                 defaultValue={defaultVal(
                   props?.instance?.ig ? props?.instance?.ig[0] : null
                 )}
-                placeholder="igmain"
+                placeholder="Main gram"
                 required
               />
               <input
@@ -78,7 +78,7 @@ export const CM_Block = (props) => {
                 defaultValue={defaultVal(
                   props?.instance?.ig ? props?.instance?.ig[1] : null
                 )}
-                placeholder="iglift"
+                placeholder="Lifting gram"
                 required
               />
             </label>
@@ -112,7 +112,7 @@ export const CM_Block = (props) => {
               name="content"
               rows="5"
               defaultValue={defaultVal(props.instance?.content)}
-              placeholder="Wat informatie over de coach"
+              placeholder="Vul de informatie in"
               required
             />
           </label>

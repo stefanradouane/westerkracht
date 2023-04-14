@@ -1,0 +1,43 @@
+.inbox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: $white-color;
+
+  &__row {
+    display: grid;
+    grid-template-columns: auto auto 175px 1fr auto auto;
+    // grid-template-rows: 1fr auto;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+
+    &:nth-of-type(odd) {
+      background-color: #e5e5e5;
+    }
+
+    &--inschrijving {
+      border-left: 5px solid $prim-color;
+    }
+    &--contact {
+      border-left: 5px solid $sec-color;
+    }
+
+    &-item--name {
+      flex: 1;
+    }
+
+    &-item--expand {
+      display: block;
+      grid-column: 1 / 7;
+
+      &[aria-expanded="false"] {
+        display: none;
+      }
+    }
+
+    .icon {
+      width: 20px;
+    }
+  }
+}
