@@ -9,7 +9,7 @@
     "webpack": "webpack --config webpack.config.js",
     "watch": "npm run gulp -- watch & npm run webpack -- --watch",
     "start": "node server.js",
-    "build": "npm run gulp -- build & npm run webpack -- --mode production"
+    "build": "npm run gulp & npm run webpack -- --mode production"
   },
   "repository": {
     "type": "git",
