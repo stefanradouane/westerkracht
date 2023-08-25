@@ -49,9 +49,9 @@ const Hero = () => {
     handleSubmit(e, "hero", remove, { changeTab: () => {}, setData });
   };
 
-  return data.map((instance) => {
+  return data.map((instance, i) => {
     return (
-      <form method="POST">
+      <form method="POST" key={i}>
         <input name="id" type="hidden" value={instance._id} />
         <Image files={files} image={image} noCmBlock={true} />
 

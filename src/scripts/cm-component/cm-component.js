@@ -77,7 +77,7 @@ export default function CM_Component(props) {
 
     if (target) {
       selectedForm = document.querySelector(
-        `.cm-block[data-value=${e.target.value}]`
+        `.cm-block[data-value='${e.target.value}']`
       );
 
       console.log(formNavBtn);

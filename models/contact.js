@@ -27,6 +27,10 @@ const contactSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  type: {
+    type: String,
+    default: "contact",
+  },
 });
 
 const Contact = mongoose.model("Contact", contactSchema);

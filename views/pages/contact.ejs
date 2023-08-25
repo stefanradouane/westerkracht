@@ -12,8 +12,8 @@
         <form method="post" class="form">
           <h1 class="title title--h2">Contact</h1>
           <p>
-            Tof dat je lid wilt worden! Vul dit formulier in verstuur het, wij
-            nemen zo snel mogelijk contact met je op!
+            Tof dat je contact met ons op wilt nemen! Vul dit formulier in en
+            stuur naar ons wat je wilt weten of vragen.
           </p>
           <!-- prettier-ignore -->
           <%- include('../components/control/control' , {type: "text", name: "name", placeholder:"Naam", required:true, label: "Naam", width:"fw" }); %> 
@@ -35,8 +35,25 @@
           </label>
 
           <p>*Verplicht</p>
-          <button class="cta cta-theme">Verstuur inschrijving</button>
+          <button class="cta cta-theme">Verstuur bericht</button>
         </form>
+        <dialog id="succes" class="form-succes">
+          <section class="form-succes__section">
+            <h1 class="title title--h2">Bedankt voor je bericht!</h1>
+            <p>
+              We nemen zo snel mogelijk contact met je op. Mocht je je ook
+              willen inschrijven dan kan dat via het
+              <a href="/inschrijven" class="link link--inline"
+                >inschrijfformulier</a
+              >.
+            </p>
+            <button
+              class="cta cta-theme"
+              onclick="event.target.parentElement.parentElement.id = ''">
+              Sluiten
+            </button>
+          </section>
+        </dialog>
         <section>
           <img src="./assets/images/zyco-hero.png" />
         </section>

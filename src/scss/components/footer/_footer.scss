@@ -23,9 +23,9 @@
     }
 
     > section {
+      @include responsive(gap, 10px, 14px, 14px);
       display: flex;
       flex-direction: column;
-      gap: 10px; // fixme to responsive gap
       width: 100%;
       @include breakpoint(650px) {
         width: calc(50% - 20px);
@@ -59,22 +59,27 @@
     @include responsive(margin-top, 30px, 40px, 50px);
 
     background-color: #101114;
-    padding: 42px 20px;
+    padding: 42px 0;
 
     @include laptop {
-      @include padding-lay-out;
       padding-top: 16px !important;
       padding-bottom: 16px !important;
+    }
+
+    &-wrapper {
+      @include padding-lay-out;
+      max-width: 1440px;
+      margin: auto;
     }
 
     &-content {
       @include anchor;
       color: $white-color;
-      margin: auto;
       display: flex;
       gap: 10px;
       align-items: center;
       justify-content: center;
+      width: fit-content;
 
       .title {
         transition: $transition-settings;

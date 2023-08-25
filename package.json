@@ -8,7 +8,8 @@
     "gulp": "gulp",
     "webpack": "webpack --config webpack.config.js",
     "watch": "npm run gulp -- watch & npm run webpack -- --watch",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "npm run gulp -- build & npm run webpack -- --mode production"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.7",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
     "@mui/x-data-grid": "^5.17.21",
     "array-back": "^6.2.2",
     "bcrypt": "^5.1.0",
@@ -41,6 +43,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-imagemin": "^8.0.0",
     "gulp-webp": "^4.0.1",
+    "jquery": "^3.6.4",
     "method-override": "^3.0.0",
     "microscope-sass": "^1.1.0",
     "mongoose": "^6.9.0",
@@ -74,7 +77,8 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "src/*"
+      "src/*",
+      "public/*"
     ]
   }
 }

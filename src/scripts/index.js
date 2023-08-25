@@ -1,4 +1,5 @@
 import "./admin/";
+import "./cms/";
 import "./coaches/";
 import "./details/";
 import "./header/";

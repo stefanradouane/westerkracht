@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-
-import CircularProgress from "@mui/material/CircularProgress";
-
 import { DataGrid } from "@mui/x-data-grid";
+import { endpoint } from "../api/endpoints";
 
-const endpointMediaAPIget = "/api/media";
-const endpointMediaAPIpost = "/admin/media";
+// File must be refactored.
+// 1. Implement api.js
+// 2. Implement endpoints.js
 
 export const Mediabank = () => {
   const [data, setData] = useState(null);
@@ -19,7 +18,7 @@ export const Mediabank = () => {
       const selectedRow = document.querySelector('[aria-selected="true"]');
       const id = selectedRow.dataset.id;
       if (selectedRow) {
-        fetch(endpointMediaAPIpost, {
+        fetch(endpoint.media.post, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -28,7 +27,7 @@ export const Mediabank = () => {
         });
 
         const fetchData = async () => {
-          const response = await fetch(endpointMediaAPIget);
+          const response = await fetch(endpoint.media.get);
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
@@ -55,13 +54,13 @@ export const Mediabank = () => {
     formData.append("img", fileInput.files[0]);
 
     try {
-      const addItems = fetch(endpointMediaAPIpost, {
+      const addItems = fetch(endpoint.media.post, {
         method: "POST",
         body: formData,
       });
 
       const fetchData = async () => {
-        const response = await fetch(endpointMediaAPIget);
+        const response = await fetch(endpoint.media.get);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -82,7 +81,7 @@ export const Mediabank = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(endpointMediaAPIget);
+      const response = await fetch(endpoint.media.get);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -236,7 +235,7 @@ export const Mediabank = () => {
                 value="add"
                 className="mediabank-form__button mediabank-form__button--add cta cta-theme"
                 onClick={handleSubmit}>
-                Add file
+                Foto toevoegen
               </button>
             </section>
           </section>
@@ -246,7 +245,7 @@ export const Mediabank = () => {
               className="mediabank-form__button mediabank-form__button--remove cta cta-theme"
               value="remove"
               onClick={handleSubmit}>
-              Remove file
+              Foto verwijderen?
               <svg
                 className="icon icon--bin"
                 viewBox="0 0 101 101"

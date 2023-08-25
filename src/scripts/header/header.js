@@ -56,3 +56,20 @@ if (hero && info) {
   observerOne.observe(hero);
   observerOne.observe(info);
 }
+
+// Add a window scroll event listener
+window.addEventListener("scroll", function () {
+  colorHeader();
+});
+
+window.addEventListener("load", () => {
+  colorHeader();
+});
+
+function colorHeader() {
+  if (window.scrollY <= 10) {
+    header.classList.add("header--top");
+  } else {
+    header.classList.remove("header--top");
+  }
+}

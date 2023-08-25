@@ -14,6 +14,14 @@
     pattern="\d"
     placeholder="<%- placeholder %>"
     required />
+  <%} else if (name=="email") { %>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    placeholder="<%- placeholder %>"
+    autocomplete="email"
+    required />
   <%} else if (type=="phone") { %>
   <input
     class="control__input"
@@ -22,7 +30,14 @@
     pattern="[\d,+, ]{10,}"
     placeholder="<%- placeholder %>"
     required />
-
+  <%} else if (type=="password") { %>
+  <input
+    class="control__input"
+    type="<%- type %>"
+    name="<%- name %>"
+    placeholder="<%- placeholder %>"
+    autocomplete="current-password"
+    required />
   <%} else if (required) { %>
   <input
     class="control__input"

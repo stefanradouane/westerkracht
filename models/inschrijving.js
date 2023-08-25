@@ -35,6 +35,10 @@ const userSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  type: {
+    type: String,
+    default: "inschrijving",
+  },
 });
 
 const Inschrijving = mongoose.model("Inschrijving", userSchema);

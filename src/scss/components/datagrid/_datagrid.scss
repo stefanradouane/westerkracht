@@ -1,14 +1,34 @@
 @import "../../node_modules/microscope-sass/lib/typography";
 
+$color: $prim-color;
+$border: 1px solid $color;
+
 .datagrid {
   height: 100%;
-  background-color: $white-color;
-  // box-shadow: 2px 2px 5px $dark-grey-color;
+  // background-color: $darker-grey;
 
   & .MuiDataGrid-root {
-    background-color: $white-color;
-    border-radius: 5px 5px 0 0;
+    color: currentColor;
     height: 50vmin;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: $border;
+
+    & .MuiDataGrid-columnSeparator {
+      color: $color;
+    }
+
+    & .MuiDataGrid-footerContainer {
+      border-top: $border;
+    }
+
+    & .MuiDataGrid-cell {
+      border-bottom: $border;
+    }
+
+    & .MuiDataGrid-columnHeaders {
+      border-bottom: $border;
+    }
 
     & .MuiDataGrid-selectedRowCount {
       visibility: hidden;
@@ -21,6 +41,20 @@
 
       button {
         @include responsive(padding, 6px, 6px, 8px);
+      }
+    }
+
+    .MuiTablePagination-root {
+      color: currentColor;
+
+      * {
+        font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      .MuiSvgIcon-root {
+        color: currentColor;
       }
     }
 

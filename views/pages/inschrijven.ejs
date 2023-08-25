@@ -39,6 +39,22 @@
           <p class="form__requirements">*Verplicht</p>
           <button class="cta cta-theme">Verstuur inschrijving</button>
         </form>
+        <dialog id="succes" class="form-succes">
+          <section class="form-succes__section">
+            <h1 class="title title--h2">Bedankt voor je inschrijving!</h1>
+            <p>
+              We nemen zo snel mogelijk contact met je op. Als je nog vragen
+              hebt, neem dan contact met ons op via het
+              <a href="/contact" class="link link--inline">contact</a>
+              formulier.
+            </p>
+            <button
+              class="cta cta-theme"
+              onclick="event.target.parentElement.parentElement.id = 'gone'">
+              Sluiten
+            </button>
+          </section>
+        </dialog>
         <section>
           <img src="./assets/images/jack-hero.png" width="100%" />
         </section>

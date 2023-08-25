@@ -29,9 +29,13 @@ export default function handleSubmit(e, type, remove, next) {
   }
 
   if (remove) {
-    body.remove = "remove";
+    body.method = "remove";
     next.changeTab();
+  } else {
+    body.method = "update";
   }
+
+  console.log(body);
 
   api
     .post(endpoint[type].post, body)

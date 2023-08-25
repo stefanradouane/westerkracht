@@ -1,19 +1,35 @@
+$breakpoint: 550px;
+
 .inbox {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background-color: $white-color;
+
+  .MuiButtonBase-root {
+    color: $prim-color;
+    background-color: $darker-grey;
+
+    &:hover {
+      background-color: rgba($darker-grey, 0.5);
+      color: $prim-color;
+    }
+  }
 
   &__row {
+    @include fluidbody;
+    @include fluidbody--small;
+    color: currentColor;
     display: grid;
-    grid-template-columns: auto auto 175px 1fr auto auto;
+    grid-template-columns: auto auto 1fr auto auto;
+
     // grid-template-rows: 1fr auto;
-    gap: 20px;
+    background-color: rgba($darker-grey, 0.4);
+    @include responsive(gap, 10px, 10px, 20px);
     padding: 10px;
     align-items: center;
 
     &:nth-of-type(odd) {
-      background-color: #e5e5e5;
+      background-color: rgba($darker-grey, 0.6);
     }
 
     &--inschrijving {
@@ -23,21 +39,122 @@
       border-left: 5px solid $sec-color;
     }
 
-    &-item--name {
-      flex: 1;
-    }
-
     &-item--expand {
       display: block;
-      grid-column: 1 / 7;
+      @include breakpoint($max: $breakpoint) {
+        grid-column: 1 / 5;
+      }
+      grid-column: 1 / 6;
 
       &[aria-expanded="false"] {
         display: none;
       }
     }
 
+    &-item--handle {
+      fill: $prim-color;
+      color: $prim-color;
+    }
+
+    &-item-control {
+      appearance: none;
+      color: currentColor;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      place-items: center;
+      cursor: pointer;
+
+      .icon {
+        transition: $transition-settings;
+      }
+
+      &--expand {
+        .icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    a,
+    &-item-control {
+      color: $prim-color;
+      background-color: $darker-grey;
+      border-radius: 50%;
+      display: block;
+      box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+
+      &:hover {
+        background-color: rgba($darker-grey, 0.5);
+        color: rgba($prim-color, 0.8);
+      }
+
+      &:active {
+        background-color: rgba($darker-grey, 0.7);
+        color: rgba($prim-color, 0.6);
+      }
+    }
+
     .icon {
-      width: 20px;
+      &--expand {
+        width: 25px;
+        height: 25px;
+      }
+
+      &--mail,
+      &--pencil {
+        height: 20px;
+        margin-right: 10px;
+        width: 20px;
+      }
+
+      &--link,
+      &--expand {
+        box-sizing: content-box;
+        padding: 10px;
+      }
+    }
+
+    @include breakpoint($max: $breakpoint + 200px) {
+      grid-template-columns: auto auto 1fr auto auto;
+
+      &-item--name {
+        display: none;
+      }
+    }
+
+    @include breakpoint($max: $breakpoint) {
+      grid-template-columns: auto auto 1fr auto;
+      margin: 0;
+
+      .icon {
+        &--expand {
+          width: 20px;
+          height: 20px;
+        }
+
+        &--mail,
+        &--pencil {
+          height: 15px;
+          margin-right: 5px;
+          width: 15px;
+        }
+
+        &--link,
+        &--expand {
+          padding: 7.5px;
+        }
+      }
+
+      &-item--date {
+        display: none;
+      }
     }
   }
+}
+
+[aria-expanded="false"] {
+  display: none;
 }

@@ -99,33 +99,6 @@ export default function Messages(props) {
         <div className="icon icon--loading"></div>
       ) : (
         <>
-          <form className="filters">
-            <div className="filter">
-              <label htmlFor="filter">Sorteer op:</label>
-              <select onInput={filterData}>
-                <option value="all">Alle</option>
-                <option value="handled">Afgehandeld</option>
-                <option value="unhandled">Niet afgehandeld</option>
-              </select>
-            </div>
-
-            <div className="filter">
-              <label htmlFor="filter">Inschrijving met coach:</label>
-              <select onInput={filterCoach}>
-                <option value="all">Alle</option>
-                {coaches.map((instance, i) => (
-                  <option value={instance.name} key={i}>
-                    {instance.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="filter">
-              <label htmlFor="filter">Datum inschrijving:</label>
-              <input type="date" onInput={filterDate} />
-            </div>
-          </form>
           <section className="inbox">
             <Inbox rows={undefined} type={"expanded"} />
             {/* {data.map((instance, i) => (
@@ -136,4 +109,35 @@ export default function Messages(props) {
       )}
     </>
   );
+}
+
+// Add filter later
+{
+  /*<form className="filters">
+<div className="filter">
+<label htmlFor="filter">Sorteer op:</label>
+<select onInput={filterData}>
+  <option value="all">Alle</option>
+  <option value="handled">Afgehandeld</option>
+  <option value="unhandled">Niet afgehandeld</option>
+</select>
+</div>
+
+<div className="filter">
+<label htmlFor="filter">Inschrijving met coach:</label>
+<select onInput={filterCoach}>
+  <option value="all">Alle</option>
+  {coaches.map((instance, i) => (
+    <option value={instance.name} key={i}>
+      {instance.name}
+    </option>
+  ))}
+</select>
+</div>
+
+<div className="filter">
+<label htmlFor="filter">Datum inschrijving:</label>
+<input type="date" onInput={filterDate} />
+</div>
+</form>*/
 }

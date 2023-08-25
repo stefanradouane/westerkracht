@@ -54,6 +54,25 @@
   width: 100%;
   max-width: 400px;
 
+  &--important {
+    background-color: rgba($sec-color, 0.5);
+    color: $darker-grey;
+    order: -1;
+
+    .subtitle {
+      color: $dark-grey;
+    }
+
+    .cta {
+      background-color: $sec-color;
+      color: $white-color;
+
+      &:hover {
+        background-color: rgba($sec-color, 0.8);
+      }
+    }
+  }
+
   @include breakpoint($min: 600px) {
     width: calc(50% - 7.5px);
     max-width: unset;

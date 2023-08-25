@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Functie connect mongoDB
 const connectDB = async () => {
@@ -6,7 +6,7 @@ const connectDB = async () => {
     await mongoose.connect(
       process.env.DB_URI,
       {
-        dbName: 'westerkracht',
+        dbName: process.env.DB_NAME,
       },
       {
         useUnifiedTopology: true,
@@ -17,6 +17,6 @@ const connectDB = async () => {
     console.error(err);
   }
 };
-mongoose.set('strictQuery', true)
+mongoose.set("strictQuery", true);
 
 module.exports = connectDB;

@@ -46,48 +46,6 @@
                     <section class="dashboard__card">
                         <h3 class="title title--h3">Inbox</h3>
                         <section class="inbox" data-inbox></section>
-                        <section class="table-cover table-cover--small">
-                            <table class="table">
-                                <tr class="table__head">
-                                    <th class="table__head-item table__head-item--type">Type</th>
-                                    <th class="table__head-item table__head-item--name">Naam</th>
-                                    <th class="table__head-item table__head-item--admin">Afgehandelt</th>
-                                    <th class="table__head-item table__head-item--redirect">Link</th>
-                                </tr>
-                                <% inschrijvingen.forEach(function(inschrijving, index){ %>
-                                <tr class="table__body">
-                                    <td class="table__body-item table__body-item--type">
-                                        <% if (inschrijving) { %>
-                                            <svg class="icon icon--pencil" viewBox="0 0 101 101" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M70.0226 1.54229C71.0104 0.554762 72.35 0 73.7468 0C75.1436 0 76.4832 0.554762 77.471 1.54229L98.5415 22.6128C99.529 23.6006 100.084 24.9402 100.084 26.337C100.084 27.7338 99.529 29.0734 98.5415 30.0612L30.0623 98.5404C29.0747 99.5283 27.7351 100.083 26.3381 100.084H5.26763C3.87057 100.084 2.53072 99.5288 1.54285 98.5409C0.55498 97.5531 0 96.2132 0 94.8162V73.7457C0.000298345 72.3487 0.555475 71.0091 1.54341 70.0214L54.2197 17.3452L70.0226 1.54229ZM57.9439 28.5178L10.5353 75.9265V89.5485H24.1573L71.566 42.1399L57.9439 28.5178ZM79.0144 34.6915L87.3689 26.337L73.7468 12.7149L65.3923 21.0694L79.0144 34.6915Z" />
-                                            </svg>
-                                        <% } else if (!inschrijving) { %>
-                                            <svg class="icon icon--pencil" viewBox="0 0 101 101" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M70.0226 1.54229C71.0104 0.554762 72.35 0 73.7468 0C75.1436 0 76.4832 0.554762 77.471 1.54229L98.5415 22.6128C99.529 23.6006 100.084 24.9402 100.084 26.337C100.084 27.7338 99.529 29.0734 98.5415 30.0612L30.0623 98.5404C29.0747 99.5283 27.7351 100.083 26.3381 100.084H5.26763C3.87057 100.084 2.53072 99.5288 1.54285 98.5409C0.55498 97.5531 0 96.2132 0 94.8162V73.7457C0.000298345 72.3487 0.555475 71.0091 1.54341 70.0214L54.2197 17.3452L70.0226 1.54229ZM57.9439 28.5178L10.5353 75.9265V89.5485H24.1573L71.566 42.1399L57.9439 28.5178ZM79.0144 34.6915L87.3689 26.337L73.7468 12.7149L65.3923 21.0694L79.0144 34.6915Z" />
-                                            </svg>
-                                        <%}%>
-                                    </td>    
-                                    <td class="table__body-item table__body-item--name"><%= inschrijving.name %></td>
-                                    <td class="table__body-item table__body-item--admin">
-                                        <% if (inschrijving.handled) { %>
-                                        ✅
-                                        <% } else { %>
-                                        ❌
-                                        <% } %>
-                                    </td>
-                                    <td class="table__body-item table__body-item--redirect">
-                                        <% if (inschrijving) { %>
-                                        <a href="/admin/inschrijvingen">Bekijk</a>
-                                        <% } else if (!inschrijving) { %>
-                                        <a href="/admin/inschrijvingen">No inschrijving</a>
-                                        <%}%>
-                                    </td>
-                                </tr>
-                                <% }) %>
-                            </table>
-                        </section>
                     </section>
                 </section>
             </section>

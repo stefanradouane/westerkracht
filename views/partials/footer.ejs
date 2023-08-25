@@ -1,7 +1,7 @@
 <footer class="footer">
   <section class="footer__content">
     <section class="footer__coaches">
-      <h3 class="title title--h3">Meet the team</h3>
+      <h3 class="title title--h3">De coaches</h3>
       <p>Bekijk het team van Westerkracht</p>
       <section class="footer__coaches-images">
         <% coaches.forEach(coach => { %>
@@ -16,7 +16,7 @@
     <section class="footer__redirect">
       <section>
         <h3 class="title title--h3">Ga direct naar</h3>
-        <a href="#" class="footer__redirect-link">
+        <!-- <a href="#" class="footer__redirect-link">
           <svg
             class="icon icon--social"
             viewBox="0 0 39 39"
@@ -28,8 +28,10 @@
           </svg>
 
           westerkracht
-        </a>
-        <a href="#" class="footer__redirect-link">
+        </a> -->
+        <a
+          href="https://instagram.com/westerkracht"
+          class="footer__redirect-link">
           <svg
             class="icon icon--social"
             viewBox="0 0 39 39"
@@ -46,16 +48,18 @@
     <section class="footer__inschrijven">
       <h3 class="title title--h3">Schrijf je nu in</h3>
       <p>Schrijf je in als lid of voor de personal coaching</p>
-      <a href="/inschrijven" class="cta cta-theme"
-        >Inschrijven bij Westerkracht</a
-      >
+      <a href="/inschrijven" class="cta cta-theme">
+        Inschrijven bij Westerkracht
+      </a>
     </section>
   </section>
 
   <section class="footer__branding">
-    <a class="footer__branding-content" href="/">
-      <%- include('../components/logo/logo', {size: "x-small"}); %>
-      <h4 class="title title--h4 title--uppercase">Westerkracht</h4>
-    </a>
+    <section class="footer__branding-wrapper">
+      <a class="footer__branding-content" href="/#top">
+        <%- include('../components/logo/logo', {size: "x-small"}); %>
+        <h4 class="title title--h4 title--uppercase">Westerkracht</h4>
+      </a>
+    </section>
   </section>
 </footer>

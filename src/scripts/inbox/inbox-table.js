@@ -3,11 +3,12 @@ import InboxRow from "./inbox-row";
 import sortArray from "./inbox-sort";
 
 const InboxTable = (props) => {
-  const { state, rows, type } = props;
-  const value = state.value;
+  const { useMessage, rows, type } = props;
+  const { useContact, useInschrijving } = useMessage;
+
   const messages = [
-    ...addedType(value.inschrijving, "inschrijving"),
-    ...addedType(value.contact, "contact"),
+    ...addedType(useInschrijving.inschrijving, "inschrijving"),
+    ...addedType(useContact.contact, "contact"),
   ];
 
   function addedType(arr, type) {
@@ -18,20 +19,21 @@ const InboxTable = (props) => {
   }
 
   const sortedMessages = sortArray.byCreated(messages, rows);
+  console.log(sortedMessages);
 
-  return (
+  return sortedMessages.length == 0 ? (
+    <p className="text">Geen berichten gevonden</p>
+  ) : (
     <>
       {sortedMessages.map((message, i) => (
-        <InboxRow message={message} key={i} type={type} />
+        <InboxRow
+          message={message}
+          useMessage={useMessage}
+          key={i}
+          type={type}
+        />
       ))}
-
-      <dialog className="inbox__popup">
-        <section className="inbox__popup-content">
-          <h2>Are you sure you want to delete this message?</h2>
-          <button>Yes</button>
-          <button>No</button>
-        </section>
-      </dialog>
+      <dialog className="inbox__popup"></dialog>
     </>
   );
 };

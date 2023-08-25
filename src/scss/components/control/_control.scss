@@ -1,5 +1,6 @@
 .control {
   @include fluidbody;
+  color: currentColor;
   display: flex;
   flex-direction: column;
   gap: 10px 4px;
@@ -12,36 +13,16 @@
     width: fit-content;
   }
 
-  span:not(span > span) {
-    // display: flex;
-    // gap: 4px;
-    // width: 100%;
-  }
-
-  &--check span {
-    // width: 100%;
-  }
-
   &__input {
     @include fluidbody;
     width: 100%;
 
     padding: 12px;
     border: none;
-
-    // line-height: 20px;
     //   Change color
     border-bottom: 3px solid #610326;
     //   Change color
-    background-color: #f1f1f1;
-
-    // &[name="age"] {
-    //   width: fit-content;
-    // }
-
-    // &[name="phone"] {
-    //   width: fit-content;
-    // }
+    background-color: $white-color;
 
     &textarea {
       width: 100%;

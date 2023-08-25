@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="nl">
-
-<head>
+  <head>
     <%- include('../../partials/head'); %>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="admin">
-        <%- include('../../components/sidebar/admin-sidebar', {adminpage: "inschrijf"}); %>
-        
-        <section class="admin__content">
-            <% if (typeof user != "undefined") { %>
-            <%- include('../../partials/header-admin', {user:user}); %>
-            <% } else { %>
-            <%- include('../../partials/header-admin', {user:undefined}); %>
-            <% } %>
-            <section class="admin__display">
-                <h2 class="title title--h2">Inschrijvingen</h2>
-                <p><em>TO DO: back-end handle & verwijderen</em></p>
-                <section class="inschrijfing-container"></section>
-            </section>
-        </section>
-        </section>
-    </main>
-    
-    <script src="../dist/scripts/main.js"></script>
-</body>
+      <%- include('../../components/sidebar/admin-sidebar', {adminpage:
+      "inschrijf"}); %>
 
+      <section class="admin__content">
+        <% if (typeof user != "undefined") { %> <%-
+        include('../../partials/header-admin', {user:user}); %> <% } else { %>
+        <%- include('../../partials/header-admin', {user:undefined}); %> <% } %>
+        <section class="admin__display admin__display--inbox">
+          <h2 class="title title--h2">Inbox</h2>
+          <section class="inschrijfing-container"></section>
+        </section>
+      </section>
+    </main>
+    <dialog class="toplayer"></dialog>
+
+    <script src="../dist/scripts/main.js"></script>
+  </body>
 </html>

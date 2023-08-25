@@ -83,22 +83,40 @@ export const CM_Block = (props) => {
               />
             </label>
           ) : (
-            <label className="control control--insta" htmlFor="subtitle">
-              <span>
-                {type} ondertitel
-                <span className="control__required">*</span>
-              </span>
-              <input
-                className="control__input"
-                type="text"
-                name="subtitle"
-                defaultValue={defaultVal(
-                  props?.instance?.subtitle ? props?.instance?.subtitle : null
-                )}
-                placeholder="Ondertitel van het blok"
-                required
-              />
-            </label>
+            <>
+              <label className="control control--subtitle" htmlFor="subtitle">
+                <span>
+                  {type} ondertitel
+                  <span className="control__required">*</span>
+                </span>
+                <input
+                  className="control__input"
+                  type="text"
+                  name="subtitle"
+                  defaultValue={defaultVal(
+                    props?.instance?.subtitle ? props?.instance?.subtitle : null
+                  )}
+                  placeholder="Ondertitel van het blok"
+                  required
+                />
+              </label>
+              <label className="control" htmlFor="image">
+                <span>
+                  {type} visual
+                  <span className="control__required">*</span>
+                </span>
+                <select
+                  name="visual"
+                  className="control__input"
+                  defaultValue={props.instance.visual}>
+                  <option value="default">Normaal</option>
+                  <option value="important">Belangrijk</option>
+                  <option value="info" disabled>
+                    Info
+                  </option>
+                </select>
+              </label>
+            </>
           )}
         </section>
         <section className="cm-block__grid-content">
@@ -145,7 +163,6 @@ export const CM_Block = (props) => {
           <button
             className="cta cta-theme"
             onClick={props.submit}
-            value="change"
             data-name={props.instance[key]}>
             {props.next ? `Voeg ${type} toe` : "Verander gegevens"}
           </button>
@@ -160,6 +177,7 @@ export const CM_Block = (props) => {
                   }
                 : popUp
             }
+            name="popup"
             value="open"
             role="button"
             data-name={props.instance[key]}>
@@ -177,6 +195,7 @@ export const CM_Block = (props) => {
             <button
               className="cta cta-theme"
               onClick={popUp}
+              name="popup"
               value="close"
               data-name={props.instance[key]}>
               Annuleer

@@ -1,6 +1,6 @@
 .content {
   &__section {
-    @include responsive(gap, 10px, 10px, 20px, 24px);
+    @include responsive(gap, 20px, 20px, 30px, 30px);
     @include responsive(padding, 30px 0, 40px 0, 50px 0);
     scroll-margin-top: 69px;
     display: flex;

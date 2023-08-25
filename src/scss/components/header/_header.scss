@@ -9,8 +9,12 @@
   z-index: 10;
   top: 0;
   transition: $transition-settings;
-  // background-color: transparent;
   background-color: $dark-grey;
+  isolation: isolate;
+
+  &--top {
+    background-color: transparent;
+  }
 
   &--admin {
     position: sticky;
@@ -43,14 +47,11 @@
     &--admin {
       padding: 0 20px 0 0;
     }
-
-    &--open {
-      background-color: $dark-grey;
-    }
   }
 
   a {
     color: $white-color;
+    z-index: 10;
   }
 
   .cta {
@@ -67,6 +68,7 @@
     background-color: $prim-color;
     color: $white-color;
     cursor: pointer;
+    z-index: 10;
 
     @include mobile-only {
       display: flex;
@@ -81,6 +83,10 @@
 }
 
 body:has(.page--form) .header {
+  background-color: $dark-grey;
+}
+
+.admin .header {
   background-color: $dark-grey;
 }
 

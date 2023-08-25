@@ -43,30 +43,17 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
     padding: 16px;
     max-width: 1080px;
 
-    // height: calc(100vh - 70px);
-    // height: calc(100dvh - 70px);
+    &--inbox {
+      max-width: 100%;
+    }
 
     .title {
       width: fit-content;
     }
 
     > section {
-      // @include responsive(
-      //   height,
-      //   calc(100vh - $total-offset-m),
-      //   calc(100vh - $total-offset-l),
-      //   calc(100vh - $total-offset-d)
-      // );
-      // @include responsive(
-      //   height,
-      //   calc(100dvh - $total-offset-m),
-      //   calc(100dvh - $total-offset-l),
-      //   calc(100dvh - $total-offset-d)
-      // );
       width: 100%;
-
       margin-top: 1em;
-      overflow: hidden;
     }
 
     &-notification {
@@ -78,13 +65,14 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
 
   &__sidebar {
     transition: $transition-settings;
-    background-color: $dark-grey-color;
+    background-color: $darker-grey;
     // height: 100vh;
     height: 100%;
     position: fixed;
     transform: translateX(-100%);
     width: min(100%, 300px);
     top: 0;
+    color: $white-color;
 
     &--open {
       top: 0;
@@ -105,54 +93,70 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
     }
 
     h1 {
-      margin: 16px 0 5px 20px;
+      margin: 16px 0 25px 20px;
     }
   }
 
   &__content {
     transition: $transition-settings;
     width: 100%;
+    background: $darker-grey;
+    background: linear-gradient(
+          to bottom,
+          rgba(#000, 0.5) 50%,
+          rgba($prim-color, 0.75)
+        )
+        50%,
+      $darker-grey;
+    color: $white-color;
 
     .cta {
       padding: 7px 15px;
     }
 
     @include laptop {
-      // transition: 0ms all;
       transform: unset !important;
     }
   }
 
   &__option {
     @include body;
+    @include body--small;
+
     height: unset;
-    color: $black-color;
+    color: currentColor;
     text-decoration: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     padding: 14px 20px;
-    border-left: 3px solid transparent;
+    border-left: 5px solid transparent;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: $transition-settings;
 
     .icon {
-      width: 25px;
+      width: 20px;
+      height: 20px;
     }
 
     &:hover {
-      background-color: rgba($prim-color, 0.5);
-      border-left: 3px solid $hover-color;
+      background-color: rgba($prim-color, 0.2);
+      border-left: 5px solid rgba($prim-color, 0.5);
+    }
+
+    &:active {
+      background-color: rgba($prim-color, 0.4);
+      border-left: 5px solid rgba($prim-color, 0.7);
     }
 
     &--disabled {
       pointer-events: none;
       cursor: default;
-      background-color: darkgrey;
-      border: grey;
-
-      .icon {
-        fill: grey;
-      }
+      background-color: $dark-grey;
+      border: $dark-grey;
+      color: grey;
 
       &:hover {
         background-color: darkgrey;
@@ -160,8 +164,14 @@ $total-offset-d: $header-height-d + $title-height-d + $padding-display-d +
     }
 
     &--active {
-      border-left: 3px solid $prim-color;
+      border-left: 5px solid $prim-color;
+      background-color: rgba($prim-color, 0.1);
     }
+  }
+
+  .control__input {
+    background-color: $dark-grey;
+    color: currentColor;
   }
 }
 

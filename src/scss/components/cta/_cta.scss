@@ -37,4 +37,9 @@
     background-color: $hover-color;
     color: $white-color;
   }
+
+  &:active {
+    background-color: $dark-prim-color;
+    color: $white-color;
+  }
 }

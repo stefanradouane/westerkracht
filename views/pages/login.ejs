@@ -7,32 +7,23 @@
   <body class="index">
     <main class="page">
       <section>
-        <% if (messages.error) {%>
-        <p><%= messages.error%> <%}%></p>
+        <% if (messages.error) { %>
+        <p><%= messages.error%></p>
+        <%}%>
         <form
           method="POST"
-          action="/admin/login"
           class="auth"
+          action="/login"
           style="display: flex; flex-direction: column; max-width: 280px">
-          <label for="username">Email</label>
-          <input name="email" class="auth__user-name" type="text" required />
-          <label for="pass">Password</label>
-          <input
-            name="password"
-            class="auth__user-pass"
-            type="password"
-            required />
+          <!-- prettier-ignore -->
+          <%- include('../components/control/control' , {type: "text", name: "email", placeholder:"Email", required:true, label: "Email", width:"fw" }); %> 
+          <%- include('../components/control/control' , {type: "password", name: "password", placeholder:"Wachtwoord", required:true, label: "Wachtwoord", width:"fw" }); %>
           <button value="login" type="submit">Login</button>
         </form>
         <a href="/new-admin">Geen account?</a>
       </section>
-
-      <!-- <video class="vidplayer" playsinline="" preload style="max-width:300px;" data-settings='{"colorscheme":["rgba(21,28,30,0.75)", "rgb(190, 30, 200)", "yellow"], "theme": "minimal"}'>
-            <source src="./assets/testvideo.MOV" type="video/mp4">
-        </video> -->
     </main>
 
     <script src="../dist/scripts/main.js"></script>
-    <!-- <script src='https://stefanradouane.github.io/vidplayer/index.js'></script> -->
   </body>
 </html>

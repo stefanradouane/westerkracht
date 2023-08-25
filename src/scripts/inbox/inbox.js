@@ -1,30 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import InboxRow from "./inbox-row";
 import { api } from "../api/api";
-import { useAsync } from "react-use";
 import InboxTable from "./inbox-table";
+import { endpoint } from "../api/endpoints";
 
 const container = document.querySelector("[data-inbox]");
 
 const Inbox = (props) => {
   const { rows, type } = props;
-  const state = useAsync(async () => {
-    // Fetch contact messages
-    const contact = await api.get("/api/contact");
-    // Fetch inschrijving messages
-    const inschrijving = await api.get("/api/inschrijving");
+  const [contact, setContact] = useState(null);
+  const [inschrijving, setInschrijving] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    return {
-      contact,
-      inschrijving,
-    };
+  useEffect(() => {
+    api
+      .get(endpoint.api.contact)
+      .then((data) => {
+        setContact(data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
+    api
+      .get(endpoint.api.inschrijving)
+      .then((data) => {
+        console.log(data);
+        setInschrijving(data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, []);
 
-  if (state.loading) {
+  useEffect(() => {
+    if (contact && inschrijving) {
+      if (contact.length >= 0 && inschrijving.length >= 0) {
+        setLoading(false);
+      }
+    }
+  }, [contact, inschrijving]);
+
+  if (loading) {
     return <div className="icon icon--loading"></div>;
   }
-  return <InboxTable state={state} rows={rows} type={type} />;
+
+  return (
+    <InboxTable
+      useContact={{ contact, setContact }}
+      useInschrijving={{ inschrijving, setInschrijving }}
+      useMessage={{
+        useContact: { contact, setContact },
+        useInschrijving: { inschrijving, setInschrijving },
+      }}
+      rows={rows}
+      type={type}
+    />
+  );
 };
 
 if (container) {

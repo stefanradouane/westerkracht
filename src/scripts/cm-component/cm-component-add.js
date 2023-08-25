@@ -18,6 +18,9 @@ export default function addItem(e, type, next) {
     makeNotification(type, true, "toevoegen");
     return;
   }
+
+  body.method = "new";
+
   api
     .post(endpoint[type].post, body)
     .then((data) => {

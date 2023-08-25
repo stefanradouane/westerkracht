@@ -3,7 +3,8 @@
     transition: $transition-settings;
     transform: translateX(100%);
     position: fixed;
-    top: 52px;
+    top: 0;
+    padding-top: 52px;
     right: 0;
     bottom: 0;
     width: 100%;

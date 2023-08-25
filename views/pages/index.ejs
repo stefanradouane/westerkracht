@@ -4,7 +4,7 @@
     <%- include('../partials/head'); %>
   </head>
 
-  <body>
+  <body class="home">
     <%- include('../partials/header', {active: "index"}); %>
 
     <main class="page" id="top">
@@ -19,10 +19,11 @@
           </h2>
           <section class="infoblokken">
             <% infos.forEach(function(info, index){ %>
-            <section class="infoblok infoblok--about">
+            <section
+              class="infoblok infoblok--about infoblok--<%- info.visual %>">
               <img class="infoblok__image" src="<%= info.image %>" />
               <section class="infoblok__info">
-                <h3 class="title title--h3 title--white"><%= info.title %></h3>
+                <h3 class="title title--h3"><%= info.title %></h3>
                 <p class="subtitle"><%= info.subtitle %></p>
                 <p class="text"><%= info.content %></p>
               </section>

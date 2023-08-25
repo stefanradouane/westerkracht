@@ -1,96 +1,47 @@
-// Express
-const express = require("express");
-
-const router = express.Router();
-
+const { Router } = require("express");
 const controller = require("../controllers/controllers");
+const api = require("./api");
+const { upload } = require("../utils/multer");
+const auth = require("../controllers/auth_controller");
 
-const passportConfig = require("../config/passportConfig");
-const passport = require("passport");
+function router(passport) {
+  const router = Router();
 
-const User = require("../models/model");
+  // Default routes
+  router.get("/", controller.control_index);
+  router.get("/:page", controller.page_get);
 
-const { upload } = require("../config/multer");
+  // Login routes
+  router.get("/login", auth.checkNotLogged, controller.page_get);
+  router.post("/login", auth.checkNotLogged, auth.login(passport));
 
-passportConfig.initialize2(
-  passport,
-  async (email) =>
-    await User.findOne({
-      email,
-    }),
-  (id) => id
-);
+  // Logout routes
+  router.get("/register", auth.checkNotLogged, controller.page_get);
+  router.post("/register", auth.register);
 
-express().use(express.json());
+  router.post("/contact", controller.control_post_contact);
+  router.post("/inschrijven", controller.control_post_inschrijven);
 
-const checkLogged = passportConfig.checkAuthenticated;
-const checkNotLogged = passportConfig.checkNotAuthenticated;
+  // ADMIN
+  router.get("/admin", controller.control_admin);
+  router.get("/admin/:type", controller.control_admin_type);
 
-router.get("/", controller.control_index);
-router.get("/inschrijven", controller.control_inschrijven);
-router.post("/inschrijven", controller.control_post_inschrijven);
-router.get("/contact", controller.control_contact);
-router.post("/contact", controller.control_post_contact);
-router.get("/register", controller.control_register);
-router.post("/register", controller.control_registerpost);
+  router.post(
+    "/admin/media",
+    upload.single("img"),
+    controller.control_admin_media_post
+  );
 
-// ADMIN
-// Add checklogged middleware function
-router.get("/admin", controller.control_admin);
-router.post("/admin", controller.control_adminpost);
+  // Add checklogged middleware function
+  router.delete("/logout", auth.logout);
 
-router.get("/admin/login", checkNotLogged, controller.control_newadmin);
-router.post("/admin/login", checkNotLogged, passportConfig.login);
-
-router.get("/admin/gebruikers", controller.control_admin_gebruikers);
-router.get("/admin/inschrijvingen", controller.control_admin_inschrijvingen);
-router.get("/admin/coaches", controller.control_admin_coach);
-
-// Add checklogged middleware function
-router.get("/admin/info", controller.control_admin_info);
-router.get("/admin/media", controller.control_admin_media);
-router.get("/admin/hero", controller.control_admin_hero);
-
+  /************************/
+  /* (new) API Routes
 /************************/
-/* Refactor stuff
-/************************/
+  // router.use("/api/v1", auth.checkLogged, api);
+  router.use("/api/v1", api);
 
-// Inschrijfing admin
-router.get("/api/inschrijving", controller.api.inschrijfing.get);
-router.post("/api/inschrijving", controller.api.inschrijfing.post);
-
-// Contact API
-router.get("/api/contact", controller.api.contact.get);
-router.post("/api/contact", controller.api.contact.post);
-
-/************************/
-/* (new) Admin Routes
-/************************/
-
-router.get("/newadmin", controller.admin.get);
-
-/************************/
-/************************/
-
-// Add checklogged middleware function
-router.post("/admin/coaches", controller.control_admin_coach_post);
-router.post("/admin/info", controller.control_admin_info_post);
-router.post("/admin/hero", controller.control_admin_hero_post);
-
-router.post(
-  "/admin/media",
-  upload.single("img"),
-  controller.control_admin_media_post
-);
-
-router.get("/api", checkLogged, controller.control_api);
-
-// Add checklogged middleware function
-router.get("/api/info", controller.control_api_info);
-router.get("/api/media", controller.control_api_media);
-router.get("/api/hero", controller.control_api_hero);
-router.get("/api/coaches", controller.control_api_coaches);
-
-router.delete("/logout", controller.control_logout);
+  return router;
+}
 
 module.exports = router;
